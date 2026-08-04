@@ -1,92 +1,360 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Política de Privacidad · Music Kids</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Política de Privacidad — WOD Voice Timer</title>
 <style>
-  body { font-family: -apple-system, Segoe UI, Roboto, Arial, sans-serif; max-width: 820px; margin: 0 auto; padding: 24px; color: #2E2422; line-height: 1.6; }
-  h1 { color: #B23A3D; } h2 { color: #B23A3D; margin-top: 2em; } h3 { margin-top: 1.4em; }
-  .muted { color: #867371; font-size: 0.9em; }
-  hr { border: none; border-top: 1px solid #eee; margin: 3em 0; }
-  a { color: #1F7A73; }
-  code { background: #f4f0ef; padding: 1px 5px; border-radius: 4px; }
+  :root {
+    --bg: #ffffff;
+    --text: #1a1d1d;
+    --muted: #55605c;
+    --accent: #506600;
+    --accent-bg: #eef7d6;
+    --border: #e3e6e0;
+    --card: #f7f9f5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111414;
+      --text: #e1e3e2;
+      --muted: #b9c2ba;
+      --accent: #abd600;
+      --accent-bg: #1d2408;
+      --border: #2a2f2c;
+      --card: #191c1c;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 32px 20px 80px; }
+  header {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 12px;
+    padding-bottom: 20px; margin-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  header h1 { font-size: 1.3rem; margin: 0; }
+  .lang-switch { display: flex; gap: 6px; }
+  .lang-switch button {
+    border: 1px solid var(--border); background: var(--card); color: var(--text);
+    padding: 8px 14px; border-radius: 999px; font-size: 0.85rem; font-weight: 600;
+    cursor: pointer;
+  }
+  .lang-switch button.active { background: var(--accent); border-color: var(--accent); color: #0d1400; }
+  .meta { color: var(--muted); font-size: 0.9rem; margin-top: -8px; margin-bottom: 28px; }
+  h2 { font-size: 1.15rem; margin-top: 36px; margin-bottom: 10px; }
+  h3 { font-size: 1rem; margin-top: 20px; margin-bottom: 6px; }
+  p, li { color: var(--text); }
+  ul { padding-left: 1.2em; }
+  li { margin-bottom: 6px; }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 16px 18px; margin: 16px 0;
+  }
+  .note {
+    background: var(--accent-bg); border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px 16px; margin: 20px 0; font-size: 0.92rem;
+  }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.92rem; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--accent); }
+  .lang-block[hidden] { display: none; }
+  footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; }
+  code { background: var(--card); padding: 1px 6px; border-radius: 4px; font-size: 0.9em; }
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<h1>Política de Privacidad — Music Kids</h1>
-<p class="muted">Última actualización: [FECHA] · Desarrollador: GutsApps · App: Music Kids (<code>com.musickids.app</code>)</p>
+  <header>
+    <h1 id="title">Política de Privacidad</h1>
+    <div class="lang-switch">
+      <button id="btn-es" class="active" onclick="setLang('es')">Español</button>
+      <button id="btn-en" onclick="setLang('en')">English</button>
+    </div>
+  </header>
 
-<p>En <strong>GutsApps</strong> nos tomamos muy en serio la privacidad, especialmente la de los niños. Esta política explica qué datos trata (y cuáles no) la aplicación <strong>Music Kids</strong>.</p>
+  <!-- ============================= ESPAÑOL ============================= -->
+  <div class="lang-block" id="lang-es">
+    <p class="meta">WOD Voice Timer · Última actualización: <span id="date-es">[fecha]</span></p>
 
-<h2>1. Resumen rápido</h2>
-<p>Music Kids es una app musical pensada para niños. <strong>No requiere registro, no pide datos personales y funciona sin conexión.</strong> No recopilamos nombre, correo, ubicación, contactos ni fotos. Las grabaciones que crea el niño se guardan <strong>solo en el dispositivo</strong>.</p>
+    <div class="note">
+      Esta app funciona <strong>sin cuentas ni registro</strong>. No pedimos tu nombre, email
+      ni ningún dato que te identifique directamente. Lo que sí procesamos se detalla abajo.
+    </div>
 
-<h2>2. Datos que trata la aplicación</h2>
-<p><strong>La app en sí no recopila datos personales identificables.</strong> Todo lo que se crea (canciones grabadas) se almacena localmente en el dispositivo y no se envía a ningún servidor nuestro.</p>
+    <h2>1. Responsable del tratamiento</h2>
+    <p>
+      <strong>[Tu nombre o el de tu empresa]</strong>, desarrollador de la app <strong>WOD Voice Timer</strong>
+      (paquete <code>com.agutierg.wodvoicetimer</code>), es responsable de los datos descritos en esta
+      política. Puedes contactar en: <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a>.
+    </p>
 
-<h2>3. Publicidad (Google AdMob)</h2>
-<p>Music Kids muestra anuncios a través de <strong>Google AdMob</strong>. Para servir estos anuncios, el SDK de Google puede procesar <strong>identificadores del dispositivo y del anuncio</strong> y datos técnicos básicos. Hemos configurado los anuncios en modo <strong>dirigido a niños</strong> (child-directed treatment, COPPA) y limitado a contenido apto para todos los públicos (clasificación G), lo que restringe la publicidad personalizada.</p>
-<p>Puedes consultar cómo Google usa estos datos aquí:
-<a href="https://policies.google.com/technologies/partner-sites">Cómo usa Google la información</a> ·
-<a href="https://support.google.com/admob/answer/6128543">Política de AdMob para familias</a>.</p>
+    <h2>2. Qué datos tratamos</h2>
 
-<h2>4. Privacidad de los menores (COPPA / RGPD-K)</h2>
-<p>Music Kids está diseñada para familias. No recopilamos conscientemente información personal de menores. El acceso a los Ajustes y a cualquier función sensible está protegido por una <strong>Puerta Parental</strong> (una operación matemática que solo un adulto puede resolver). Si crees que un menor nos ha proporcionado datos personales, contáctanos y los eliminaremos.</p>
+    <h3>2.1 Identificador anónimo de dispositivo</h3>
+    <p>
+      Al instalar la app se genera un identificador aleatorio (UUID) que se guarda solo en tu
+      dispositivo. Se usa exclusivamente para aplicar el límite mensual gratuito de interpretaciones
+      por voz y para gestionar recompensas por ver anuncios. No está vinculado a tu nombre, email
+      ni a ninguna cuenta.
+    </p>
 
-<h2>5. Compartir contenido</h2>
-<p>Si el usuario decide compartir una grabación, esta se envía mediante el <strong>selector de compartir del propio sistema Android</strong> (WhatsApp, correo, etc.), por elección del usuario. Nosotros no recibimos ni almacenamos ese contenido.</p>
+    <h3>2.2 Voz y transcripciones (configuración por voz)</h3>
+    <p>
+      Cuando usas el micrófono para configurar un WOD, registrar un PR o pedir un cálculo, el audio
+      se envía de forma cifrada a nuestro servidor (alojado en Cloudflare) para transcribirlo e
+      interpretarlo mediante modelos de inteligencia artificial. El audio se procesa al vuelo y
+      <strong>no se guarda</strong> de forma permanente; el texto transcrito puede conservarse
+      brevemente junto con tu identificador anónimo solo para aplicar el límite de uso mensual
+      (caduca automáticamente a los 35 días).
+    </p>
+    <p>
+      Si una petición por voz no se entiende bien, puedes elegir voluntariamente "Enviar a revisión".
+      En ese caso guardamos el texto transcrito y la respuesta de la IA (asociados a tu identificador
+      anónimo, nunca a tu identidad) hasta 180 días, únicamente para mejorar la interpretación por voz.
+    </p>
 
-<h2>6. Conservación y eliminación de datos</h2>
-<p>Las grabaciones y preferencias se guardan localmente. Puedes borrarlas desde la propia app o desinstalando la aplicación, lo que elimina todos los datos locales.</p>
+    <h3>2.3 Entrenamientos, PRs e historial</h3>
+    <p>
+      Tus records personales (PRs), historial de entrenamientos y ajustes se guardan
+      <strong>únicamente en tu dispositivo</strong> (base de datos local). Nunca se suben a ningún
+      servidor, salvo cuando pides por voz un cálculo basado en un PR guardado (p. ej. "el 70% de mi
+      PR de sentadilla"): en ese caso la búsqueda se resuelve en tu propio móvil y el peso nunca se
+      envía a la nube. Puedes borrar todos estos datos en cualquier momento desde
+      Ajustes → Borrar datos locales, o desinstalando la app.
+    </p>
 
-<h2>7. Seguridad</h2>
-<p>Al no recopilar ni transmitir datos personales, la exposición es mínima. Los datos locales quedan protegidos por el sistema de seguridad del propio dispositivo.</p>
+    <h3>2.4 Compras y suscripción</h3>
+    <p>
+      Las compras (quitar anuncios, suscripción Pro) se procesan íntegramente a través de
+      <strong>Google Play Facturación</strong>; nosotros no vemos ni almacenamos tus datos de pago.
+      Para verificar una suscripción activa, tu token de compra (un identificador técnico, no tus
+      datos bancarios) puede enviarse a nuestro servidor, que lo consulta contra la API de Google Play.
+    </p>
 
-<h2>8. Cambios en esta política</h2>
-<p>Podemos actualizar esta política ocasionalmente. Publicaremos la versión vigente en esta misma página con su fecha de actualización.</p>
+    <h3>2.5 Publicidad</h3>
+    <p>
+      La versión gratuita muestra anuncios a través de <strong>Google AdMob</strong>, incluyendo
+      vídeos recompensados opcionales para conseguir usos extra de la IA por voz. AdMob puede
+      recopilar identificadores de publicidad y datos técnicos del dispositivo conforme a la propia
+      política de privacidad de Google. Si compras "quitar anuncios" o te suscribes a Pro, dejas de
+      ver anuncios.
+    </p>
 
-<h2>9. Contacto</h2>
-<p>Para cualquier duda sobre privacidad: <strong>[TU-EMAIL-DE-CONTACTO]</strong></p>
+    <h3>2.6 Permisos del dispositivo</h3>
+    <table>
+      <tr><th>Permiso</th><th>Para qué se usa</th></tr>
+      <tr><td>Micrófono</td><td>Solo mientras grabas activamente una petición por voz (no hay escucha en segundo plano).</td></tr>
+      <tr><td>Notificaciones</td><td>Mostrar el estado del temporizador mientras entrenas.</td></tr>
+      <tr><td>Servicio en primer plano</td><td>Que el cronómetro siga funcionando con la pantalla apagada.</td></tr>
+      <tr><td>Vibración</td><td>Avisos táctiles del temporizador.</td></tr>
+    </table>
+    <p>La app no accede a tu ubicación, contactos, cámara, fotos ni archivos.</p>
 
-<hr />
+    <h2>3. Con quién compartimos datos</h2>
+    <ul>
+      <li><strong>Cloudflare</strong> (Workers AI) — transcripción e interpretación de voz.</li>
+      <li><strong>Google AdMob</strong> — publicidad en la versión gratuita.</li>
+      <li><strong>Google Play Facturación</strong> — procesamiento de compras y verificación de suscripción.</li>
+    </ul>
+    <p>No vendemos tus datos a terceros ni los usamos con fines distintos a los descritos aquí.</p>
 
-<html lang="en"></html>
-<h1>Privacy Policy — Music Kids</h1>
-<p class="muted">Last updated: [DATE] · Developer: GutsApps · App: Music Kids (<code>com.musickids.app</code>)</p>
+    <h2>4. Cuánto tiempo conservamos los datos</h2>
+    <ul>
+      <li>Datos locales (PRs, historial, ajustes): hasta que los borres tú o desinstales la app.</li>
+      <li>Contadores de uso por voz (identificador anónimo): 35 días.</li>
+      <li>Peticiones enviadas voluntariamente a revisión: hasta 180 días.</li>
+      <li>Audio de voz: no se almacena de forma persistente.</li>
+    </ul>
 
-<p>At <strong>GutsApps</strong> we take privacy seriously, especially children's privacy. This policy explains what data the <strong>Music Kids</strong> app processes (and what it does not).</p>
+    <h2>5. Tus derechos</h2>
+    <p>
+      Si resides en el Espacio Económico Europeo, el RGPD te reconoce derecho de acceso,
+      rectificación, supresión, limitación, portabilidad y oposición sobre tus datos. Como la app no
+      usa cuentas, la forma más directa de ejercerlos es borrar los datos locales desde Ajustes o
+      desinstalar la app; para cualquier dato asociado a tu identificador anónimo en nuestros
+      servidores, escríbenos a <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a> indicando el
+      identificador de dispositivo (visible en Ajustes) y qué quieres solicitar. También puedes
+      reclamar ante la <a href="https://www.aepd.es" target="_blank" rel="noopener">Agencia Española
+      de Protección de Datos (AEPD)</a>.
+    </p>
 
-<h2>1. Quick summary</h2>
-<p>Music Kids is a musical app made for children. <strong>It requires no sign-up, asks for no personal data and works offline.</strong> We do not collect names, email, location, contacts or photos. Recordings the child creates are stored <strong>only on the device</strong>.</p>
+    <h2>6. Menores de edad</h2>
+    <p>
+      Esta app no está dirigida a menores de 16 años ni recopila conscientemente datos de menores.
+    </p>
 
-<h2>2. Data the app processes</h2>
-<p><strong>The app itself collects no personally identifiable data.</strong> Everything created (recorded songs) is stored locally on the device and is not sent to any server of ours.</p>
+    <h2>7. Seguridad</h2>
+    <p>
+      Las comunicaciones con nuestros servidores viajan cifradas (HTTPS). Aplicamos medidas
+      razonables para proteger los datos que procesamos, aunque ningún sistema es 100% infalible.
+    </p>
 
-<h2>3. Advertising (Google AdMob)</h2>
-<p>Music Kids shows ads through <strong>Google AdMob</strong>. To serve these ads, Google's SDK may process <strong>device and advertising identifiers</strong> and basic technical data. We have configured ads as <strong>child-directed</strong> (COPPA) and limited to content rated for everyone (G rating), which restricts personalized advertising.</p>
-<p>Learn how Google uses this data:
-<a href="https://policies.google.com/technologies/partner-sites">How Google uses information</a> ·
-<a href="https://support.google.com/admob/answer/6128543">AdMob families policy</a>.</p>
+    <h2>8. Cambios en esta política</h2>
+    <p>
+      Podemos actualizar esta política si cambian las funciones de la app. Publicaremos la nueva
+      versión en esta misma página con la fecha de actualización correspondiente.
+    </p>
 
-<h2>4. Children's privacy (COPPA / GDPR-K)</h2>
-<p>Music Kids is designed for families. We do not knowingly collect personal information from children. Access to Settings and any sensitive feature is protected by a <strong>Parental Gate</strong> (a math problem only an adult can solve). If you believe a child has provided us personal data, contact us and we will delete it.</p>
+    <h2>9. Contacto</h2>
+    <p>Dudas sobre privacidad: <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a></p>
+  </div>
 
-<h2>5. Sharing content</h2>
-<p>If the user chooses to share a recording, it is sent via the <strong>Android system share sheet</strong> (WhatsApp, email, etc.), at the user's choice. We neither receive nor store that content.</p>
+  <!-- ============================= ENGLISH ============================= -->
+  <div class="lang-block" id="lang-en" hidden>
+    <p class="meta">WOD Voice Timer · Last updated: <span id="date-en">[date]</span></p>
 
-<h2>6. Data retention and deletion</h2>
-<p>Recordings and preferences are stored locally. You can delete them from within the app or by uninstalling it, which removes all local data.</p>
+    <div class="note">
+      This app works <strong>without accounts or sign-up</strong>. We don't ask for your name,
+      email, or anything that directly identifies you. What we do process is detailed below.
+    </div>
 
-<h2>7. Security</h2>
-<p>Since we collect and transmit no personal data, exposure is minimal. Local data is protected by the device's own security.</p>
+    <h2>1. Data controller</h2>
+    <p>
+      <strong>[Your name or company name]</strong>, developer of the <strong>WOD Voice Timer</strong>
+      app (package <code>com.agutierg.wodvoicetimer</code>), is responsible for the data described
+      in this policy. Contact: <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a>.
+    </p>
 
-<h2>8. Changes to this policy</h2>
-<p>We may update this policy occasionally. The current version will be posted on this page with its update date.</p>
+    <h2>2. What data we process</h2>
 
-<h2>9. Contact</h2>
-<p>For any privacy questions: <strong>[YOUR-CONTACT-EMAIL]</strong></p>
+    <h3>2.1 Anonymous device identifier</h3>
+    <p>
+      When you install the app, a random identifier (UUID) is generated and stored only on your
+      device. It's used exclusively to enforce the monthly free voice-interpretation limit and to
+      manage rewarded-ad bonuses. It is not linked to your name, email, or any account.
+    </p>
 
+    <h3>2.2 Voice and transcripts (voice setup)</h3>
+    <p>
+      When you use the microphone to set up a WOD, log a PR, or ask for a calculation, the audio is
+      sent securely to our server (hosted on Cloudflare) to be transcribed and interpreted using AI
+      models. Audio is processed on the fly and <strong>is not stored permanently</strong>; the
+      transcribed text may be kept briefly together with your anonymous identifier only to enforce
+      the monthly usage limit (it expires automatically after 35 days).
+    </p>
+    <p>
+      If a voice request isn't understood correctly, you can optionally choose "Send for review". In
+      that case we store the transcribed text and the AI's response (tied to your anonymous
+      identifier, never your identity) for up to 180 days, solely to improve voice interpretation.
+    </p>
+
+    <h3>2.3 Workouts, PRs, and history</h3>
+    <p>
+      Your personal records (PRs), workout history, and settings are stored
+      <strong>only on your device</strong> (local database). They are never uploaded to any server,
+      except when you ask by voice for a calculation based on a saved PR (e.g. "70% of my squat PR"):
+      in that case the lookup happens on your own phone and the weight is never sent to the cloud.
+      You can delete all this data anytime from Settings → Delete local data, or by uninstalling
+      the app.
+    </p>
+
+    <h3>2.4 Purchases and subscription</h3>
+    <p>
+      Purchases (remove ads, Pro subscription) are processed entirely through
+      <strong>Google Play Billing</strong>; we never see or store your payment details. To verify an
+      active subscription, your purchase token (a technical identifier, not your banking details) may
+      be sent to our server, which checks it against the Google Play API.
+    </p>
+
+    <h3>2.5 Advertising</h3>
+    <p>
+      The free version shows ads via <strong>Google AdMob</strong>, including optional rewarded
+      videos to earn extra voice-AI uses. AdMob may collect advertising identifiers and technical
+      device data under Google's own privacy policy. Buying "remove ads" or subscribing to Pro stops
+      ads from showing.
+    </p>
+
+    <h3>2.6 Device permissions</h3>
+    <table>
+      <tr><th>Permission</th><th>What it's used for</th></tr>
+      <tr><td>Microphone</td><td>Only while you're actively recording a voice request (no background listening).</td></tr>
+      <tr><td>Notifications</td><td>Showing the timer's status while you train.</td></tr>
+      <tr><td>Foreground service</td><td>Keeping the timer running with the screen off.</td></tr>
+      <tr><td>Vibration</td><td>Timer haptic cues.</td></tr>
+    </table>
+    <p>The app does not access your location, contacts, camera, photos, or files.</p>
+
+    <h2>3. Who we share data with</h2>
+    <ul>
+      <li><strong>Cloudflare</strong> (Workers AI) — voice transcription and interpretation.</li>
+      <li><strong>Google AdMob</strong> — advertising in the free version.</li>
+      <li><strong>Google Play Billing</strong> — payment processing and subscription verification.</li>
+    </ul>
+    <p>We do not sell your data to third parties or use it for purposes other than those described here.</p>
+
+    <h2>4. How long we keep data</h2>
+    <ul>
+      <li>Local data (PRs, history, settings): until you delete it or uninstall the app.</li>
+      <li>Voice usage counters (anonymous identifier): 35 days.</li>
+      <li>Requests voluntarily sent for review: up to 180 days.</li>
+      <li>Voice audio: not stored persistently.</li>
+    </ul>
+
+    <h2>5. Your rights</h2>
+    <p>
+      If you're in the European Economic Area, the GDPR grants you rights of access, rectification,
+      erasure, restriction, portability, and objection over your data. Since the app has no accounts,
+      the most direct way to exercise them is to delete local data from Settings or uninstall the
+      app; for any data tied to your anonymous identifier on our servers, email us at
+      <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a> with your device identifier (visible
+      in Settings) and what you'd like to request. You can also file a complaint with your local data
+      protection authority (in Spain: the
+      <a href="https://www.aepd.es" target="_blank" rel="noopener">AEPD</a>).
+    </p>
+
+    <h2>6. Children</h2>
+    <p>This app is not directed at children under 16 and does not knowingly collect data from children.</p>
+
+    <h2>7. Security</h2>
+    <p>
+      Communications with our servers are encrypted (HTTPS). We take reasonable measures to protect
+      the data we process, though no system is 100% infallible.
+    </p>
+
+    <h2>8. Changes to this policy</h2>
+    <p>
+      We may update this policy as the app's features change. The new version will be published on
+      this same page along with its update date.
+    </p>
+
+    <h2>9. Contact</h2>
+    <p>Privacy questions: <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a></p>
+  </div>
+
+  <footer>WOD Voice Timer — <span id="footer-text">Política de Privacidad</span></footer>
+</div>
+
+<script>
+  function setLang(lang) {
+    document.getElementById('lang-es').hidden = lang !== 'es';
+    document.getElementById('lang-en').hidden = lang !== 'en';
+    document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('title').textContent = lang === 'es' ? 'Política de Privacidad' : 'Privacy Policy';
+    document.getElementById('footer-text').textContent = lang === 'es' ? 'Política de Privacidad' : 'Privacy Policy';
+    document.documentElement.lang = lang;
+    document.title = lang === 'es' ? 'Política de Privacidad — WOD Voice Timer' : 'Privacy Policy — WOD Voice Timer';
+    try { localStorage.setItem('wvt_lang', lang); } catch (e) {}
+  }
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem('wvt_lang'); } catch (e) {}
+    var browserEn = navigator.language && navigator.language.toLowerCase().indexOf('es') !== 0;
+    setLang(saved || (browserEn ? 'en' : 'es'));
+    var today = new Date().toISOString().slice(0, 10);
+    document.getElementById('date-es').textContent = today;
+    document.getElementById('date-en').textContent = today;
+  })();
+</script>
 </body>
 </html>
