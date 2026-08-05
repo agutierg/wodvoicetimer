@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Términos del Registro Previo — WOD Voice Timer</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --text: #1a1d1d;
+    --muted: #55605c;
+    --accent: #506600;
+    --accent-bg: #eef7d6;
+    --border: #e3e6e0;
+    --card: #f7f9f5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111414;
+      --text: #e1e3e2;
+      --muted: #b9c2ba;
+      --accent: #abd600;
+      --accent-bg: #1d2408;
+      --border: #2a2f2c;
+      --card: #191c1c;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 32px 20px 80px; }
+  header {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 12px;
+    padding-bottom: 20px; margin-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  header h1 { font-size: 1.3rem; margin: 0; }
+  .lang-switch { display: flex; gap: 6px; }
+  .lang-switch button {
+    border: 1px solid var(--border); background: var(--card); color: var(--text);
+    padding: 8px 14px; border-radius: 999px; font-size: 0.85rem; font-weight: 600;
+    cursor: pointer;
+  }
+  .lang-switch button.active { background: var(--accent); border-color: var(--accent); color: #0d1400; }
+  .meta { color: var(--muted); font-size: 0.9rem; margin-top: -8px; margin-bottom: 28px; }
+  h2 { font-size: 1.15rem; margin-top: 36px; margin-bottom: 10px; }
+  h3 { font-size: 1rem; margin-top: 20px; margin-bottom: 6px; }
+  p, li { color: var(--text); }
+  ul { padding-left: 1.2em; }
+  li { margin-bottom: 6px; }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 16px 18px; margin: 16px 0;
+  }
+  .note {
+    background: var(--accent-bg); border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px 16px; margin: 20px 0; font-size: 0.92rem;
+  }
+  a { color: var(--accent); }
+  .lang-block[hidden] { display: none; }
+  footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; }
+  code { background: var(--card); padding: 1px 6px; border-radius: 4px; font-size: 0.9em; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1 id="title">Términos del Registro Previo</h1>
+    <div class="lang-switch">
+      <button id="btn-es" class="active" onclick="setLang('es')">Español</button>
+      <button id="btn-en" onclick="setLang('en')">English</button>
+    </div>
+  </header>
+
+  <!-- ============================= ESPAÑOL ============================= -->
+  <div class="lang-block" id="lang-es">
+    <p class="meta">WOD Voice Timer · Última actualización: <span id="date-es">[fecha]</span></p>
+
+    <div class="note">
+      Regístrate antes del lanzamiento y consigue <strong>"Quitar anuncios" gratis para
+      siempre</strong>, sin tener que introducir ningún código.
+    </div>
+
+    <h2>1. La recompensa</h2>
+    <p>
+      Quien active el registro previo de <strong>WOD Voice Timer</strong> en Google Play antes de
+      su lanzamiento recibe, sin coste, el producto "Quitar anuncios" (que normalmente se compra
+      dentro de la app). Elimina los anuncios de la app de forma permanente.
+    </p>
+
+    <h2>2. Cómo se entrega</h2>
+    <p>
+      No hace falta hacer nada además de registrarte e instalar la app cuando se publique. Google
+      Play concede la recompensa automáticamente en cuanto abres la app por primera vez tras
+      instalarla, con conexión a internet. No es necesario introducir ningún código promocional.
+    </p>
+
+    <h2>3. Condiciones</h2>
+    <ul>
+      <li>Solo se aplica a la cuenta de Google con la que activaste el registro previo.</li>
+      <li>Una recompensa por cuenta/dispositivo; no es acumulable con otras promociones.</li>
+      <li>Solo cubre la eliminación de anuncios — no incluye la suscripción Pro (voz por IA
+        ilimitada), que sigue siendo una compra aparte.</li>
+      <li>Si ya tenías "Quitar anuncios" comprado, no se te cobrará ni se duplicará nada.</li>
+    </ul>
+
+    <h2>4. Cambios y disponibilidad</h2>
+    <p>
+      El registro previo y esta recompensa están sujetos a las
+      <a href="https://play.google/play-terms/" target="_blank" rel="noopener">condiciones de
+      Google Play</a> para campañas de registro previo. Podemos modificar o finalizar la campaña
+      antes del lanzamiento; quien ya haya canjeado la recompensa la conserva.
+    </p>
+
+    <h2>5. Contacto</h2>
+    <p>Dudas sobre esta promoción: <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a></p>
+  </div>
+
+  <!-- ============================= ENGLISH ============================= -->
+  <div class="lang-block" id="lang-en" hidden>
+    <p class="meta">WOD Voice Timer · Last updated: <span id="date-en">[date]</span></p>
+
+    <div class="note">
+      Pre-register before launch and get <strong>"Remove ads" for free, forever</strong> — no
+      code needed.
+    </div>
+
+    <h2>1. The reward</h2>
+    <p>
+      Anyone who pre-registers for <strong>WOD Voice Timer</strong> on Google Play before its
+      launch receives, at no cost, the "Remove ads" product (normally a paid purchase inside the
+      app). It permanently removes ads from the app.
+    </p>
+
+    <h2>2. How it's delivered</h2>
+    <p>
+      There's nothing extra to do beyond pre-registering and installing the app once it's
+      released. Google Play grants the reward automatically the first time you open the app after
+      installing it, while connected to the internet. No promo code is required.
+    </p>
+
+    <h2>3. Conditions</h2>
+    <ul>
+      <li>Only applies to the Google account you used to pre-register.</li>
+      <li>One reward per account/device; not stackable with other promotions.</li>
+      <li>Covers ad removal only — it does not include the Pro subscription (unlimited AI
+        voice), which remains a separate purchase.</li>
+      <li>If you'd already purchased "Remove ads", you won't be charged or granted a duplicate.</li>
+    </ul>
+
+    <h2>4. Changes and availability</h2>
+    <p>
+      Pre-registration and this reward are subject to
+      <a href="https://play.google/play-terms/" target="_blank" rel="noopener">Google Play's
+      terms</a> for pre-registration campaigns. We may change or end the campaign before launch;
+      anyone who already redeemed the reward keeps it.
+    </p>
+
+    <h2>5. Contact</h2>
+    <p>Questions about this promotion: <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a></p>
+  </div>
+
+  <footer>WOD Voice Timer — <span id="footer-text">Términos del Registro Previo</span></footer>
+</div>
+
+<script>
+  function setLang(lang) {
+    document.getElementById('lang-es').hidden = lang !== 'es';
+    document.getElementById('lang-en').hidden = lang !== 'en';
+    document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('title').textContent = lang === 'es' ? 'Términos del Registro Previo' : 'Pre-Registration Terms';
+    document.getElementById('footer-text').textContent = lang === 'es' ? 'Términos del Registro Previo' : 'Pre-Registration Terms';
+    document.documentElement.lang = lang;
+    document.title = lang === 'es' ? 'Términos del Registro Previo — WOD Voice Timer' : 'Pre-Registration Terms — WOD Voice Timer';
+    try { localStorage.setItem('wvt_lang', lang); } catch (e) {}
+  }
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem('wvt_lang'); } catch (e) {}
+    var browserEn = navigator.language && navigator.language.toLowerCase().indexOf('es') !== 0;
+    setLang(saved || (browserEn ? 'en' : 'es'));
+    var today = new Date().toISOString().slice(0, 10);
+    document.getElementById('date-es').textContent = today;
+    document.getElementById('date-en').textContent = today;
+  })();
+</script>
+</body>
+</html>
