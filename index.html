@@ -80,6 +80,10 @@
     <div class="lang-switch">
       <button id="btn-es" class="active" onclick="setLang('es')">Español</button>
       <button id="btn-en" onclick="setLang('en')">English</button>
+      <button id="btn-it" onclick="setLang('it')">Italiano</button>
+      <button id="btn-de" onclick="setLang('de')">Deutsch</button>
+      <button id="btn-fr" onclick="setLang('fr')">Français</button>
+      <button id="btn-pt" onclick="setLang('pt')">Português</button>
     </div>
   </header>
 
@@ -94,7 +98,7 @@
 
     <h2>1. Responsable del tratamiento</h2>
     <p>
-      <strong>Gutsapps</strong>, desarrollador de la app <strong>WOD Voice Timer</strong>
+      <strong>GutsApps</strong>, desarrollador de la app <strong>WOD Voice Timer</strong>
       (paquete <code>com.agutierg.kineticvolt</code>), es responsable de los datos descritos en esta
       política. Puedes contactar en: <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a>.
     </p>
@@ -252,7 +256,7 @@
       <li>Audio de voz: no se almacena de forma persistente.</li>
     </ul>
 
-    <h2>5. Tus derechos</h2>
+    <h2 id="derechos">5. Tus derechos</h2>
     <p>
       Si resides en el Espacio Económico Europeo, el RGPD te reconoce derecho de acceso,
       rectificación, supresión, limitación, portabilidad y oposición sobre tus datos. Como la app no
@@ -298,7 +302,7 @@
 
     <h2>1. Data controller</h2>
     <p>
-      <strong>Gutsapps</strong>, developer of the <strong>WOD Voice Timer</strong>
+      <strong>GutsApps</strong>, developer of the <strong>WOD Voice Timer</strong>
       app (package <code>com.agutierg.kineticvolt</code>), is responsible for the data described
       in this policy. Contact: <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a>.
     </p>
@@ -449,7 +453,7 @@
       <li>Voice audio: not stored persistently.</li>
     </ul>
 
-    <h2>5. Your rights</h2>
+    <h2 id="rights">5. Your rights</h2>
     <p>
       If you're in the European Economic Area, the GDPR grants you rights of access, rectification,
       erasure, restriction, portability, and objection over your data. Since the app has no accounts,
@@ -482,29 +486,884 @@
     <p>Privacy questions: <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a></p>
   </div>
 
+
+  <div class="lang-block" id="lang-it" hidden>
+<p class="meta">WOD Voice Timer · Ultimo aggiornamento: <span id="date-it">[data]</span></p>
+
+<div class="note">
+  Questa app funziona <strong>senza account né registrazione</strong>. Non ti chiediamo il nome, l'email
+  né alcun dato che ti identifichi direttamente. Ciò che effettivamente trattiamo è descritto qui sotto.
+</div>
+
+<h2>1. Titolare del trattamento</h2>
+<p>
+  <strong>GutsApps</strong>, sviluppatore dell'app <strong>WOD Voice Timer</strong> (pacchetto
+  <code>com.agutierg.kineticvolt</code>), è responsabile dei dati descritti in questa informativa.
+  Contatto: <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a>.
+</p>
+
+<h2>2. Quali dati trattiamo</h2>
+
+<h3>2.1 Identificativo anonimo del dispositivo</h3>
+<p>
+  All'installazione dell'app viene generato un identificativo casuale (UUID), salvato solo sul tuo
+  dispositivo. Viene usato esclusivamente per applicare il limite mensile gratuito di interpretazioni
+  vocali e per gestire le ricompense per la visione di annunci pubblicitari. Non è collegato al tuo
+  nome, alla tua email né a nessun account.
+</p>
+
+<h3>2.2 Voce e trascrizioni (configurazione vocale)</h3>
+<p>
+  Quando usi il microfono per configurare un WOD, registrare un PR o richiedere un calcolo, l'audio
+  viene inviato in modo cifrato al nostro server (ospitato su Cloudflare) per essere trascritto e
+  interpretato mediante modelli di intelligenza artificiale. L'audio viene elaborato al volo e
+  <strong>non viene salvato</strong> in modo permanente; il testo trascritto può essere conservato
+  brevemente insieme al tuo identificativo anonimo solo per applicare il limite di utilizzo mensile
+  (scade automaticamente dopo 35 giorni).
+</p>
+<p>
+  Se una richiesta vocale non viene compresa correttamente, puoi scegliere volontariamente "Invia per
+  revisione". In questo caso conserviamo il testo trascritto e la risposta dell'IA (associati al tuo
+  identificativo anonimo, mai alla tua identità) fino a 180 giorni, unicamente per migliorare
+  l'interpretazione vocale.
+</p>
+
+<h3>2.3 Allenamenti, PR e storico</h3>
+<p>
+  I tuoi record personali (PR), lo storico degli allenamenti e le impostazioni sono salvati
+  <strong>sul tuo dispositivo</strong> (database locale); questa è la copia completa ed è quella che
+  vedi nell'app. Inoltre:
+</p>
+<ul>
+  <li>
+    Quando chiedi a voce un calcolo basato su un PR salvato (ad es. "il 70% del mio PR di squat"),
+    la ricerca viene risolta sul tuo stesso telefono e il peso non viene mai inviato al cloud.
+  </li>
+  <li>
+    Quando registri un nuovo PR, un <strong>valore comparabile di quel PR</strong> (il peso, il tempo
+    o il risultato — mai il tuo nome né alcun dato che ti identifichi) viene inviato al nostro server
+    per calcolare il tuo percentile e la tua posizione anonima nel <strong>Ranking</strong> di quel
+    movimento rispetto agli altri utenti. Quel valore resta associato solo al tuo identificativo
+    anonimo di dispositivo, in modo permanente (finché usi la funzione), finché non cancelli i dati
+    locali dell'app.
+  </li>
+</ul>
+<p>
+  Puoi cancellare tutti questi dati in qualsiasi momento da Impostazioni → Cancella dati locali:
+  oltre al tuo storico e ai tuoi PR salvati sul telefono, questo cancella anche la tua posizione nel
+  Ranking anonimo (e il tuo nickname) dal nostro server. Disinstallare l'app SENZA usare prima quel
+  pulsante cancella i dati dal telefono ma non quelli già inviati al server.
+</p>
+
+<h3>2.4 Nickname, paese, categoria, genere, età e box del Ranking (facoltativo)</h3>
+<p>
+  In Impostazioni (o nella finestra iniziale che può comparire quando apri l'app) puoi impostare,
+  cambiare o cancellare un nickname per il Ranking. È del tutto facoltativo e non serve per usare
+  l'app né per comparire nelle classifiche (senza nickname, la tua posizione viene mostrata in forma
+  anonima). Se lo imposti,
+  <strong>viene mostrato pubblicamente</strong> accanto al tuo risultato a chiunque consulti quel
+  Ranking — non trattarlo come un dato privato, è un contenuto visibile a terzi. Applichiamo un
+  filtro di base per bloccare nickname offensivi, anche se non si tratta di una moderazione esaustiva.
+</p>
+<p>
+  Se indichi anche il tuo paese o il tuo box/palestra, <strong>vengono anch'essi mostrati
+  pubblicamente</strong> accanto al tuo risultato nella top 100 (ad esempio "Italia" o "CrossFit
+  Retiro"), con lo stesso criterio del nickname: non trattarli come dati privati. Il box è, dei
+  quattro campi di questa sezione, il più identificabile — un box piccolo può avere pochi iscritti,
+  quindi può renderti riconoscibile a chi sa già a quale box vai. Applichiamo lo stesso filtro di
+  base contro nomi offensivi applicato al nickname. Inoltre, se hai il filtro del box impostato su
+  "Tutti" (il punto di partenza predefinito), l'elenco evidenzia nel tuo colore d'accento il box di
+  qualsiasi altro risultato anonimo che coincide con il tuo, confrontando il tuo box con quello di
+  ogni voce.
+</p>
+<p>
+  La tua categoria (Scaled, Intermedio, RX o Elite), il genere e la fascia d'età, invece,
+  <strong>non vengono mostrati</strong> accanto al tuo risultato né agli altri utenti: vengono usati
+  solo per filtrare e restringere il gruppo anonimo con cui ti confronti (ad esempio, vedere il
+  Ranking solo di RX, o solo del tuo paese, del tuo genere, della tua fascia d'età o del tuo box — i
+  filtri possono essere combinati). Entrando in un Ranking, solo categoria e genere vengono applicati
+  per default dal tuo profilo; paese, fascia d'età e box iniziano sempre su "Tutti" e vanno scelti
+  manualmente dal filtro se vuoi restringere ulteriormente. Tieni presente che, quanto più stretto è
+  il filtro che usi tu o un'altra persona, tanto più piccolo è il gruppo anonimo all'interno del quale
+  appare il tuo risultato — proprio come già accade oggi con qualsiasi Ranking con pochi
+  partecipanti.
+</p>
+<p>
+  Nickname, paese, categoria, genere, fascia d'età e box/palestra sono salvati associati al tuo
+  identificativo anonimo di dispositivo finché non li cambi, non li cancelli, o non cancelli i dati
+  locali dell'app.
+</p>
+<p>
+  Puoi anche indicare la tua disciplina (CrossFit, Hyrox, Powerlifting o Palestra) affinché l'app ti
+  mostri per prima cosa ciò che ti interessa di più (l'ordine del Ranking, il filtro predefinito
+  delle Competizioni, l'obiettivo preselezionato quando crei un Piano). A differenza di tutto quanto
+  sopra, la disciplina <strong>non viene mai inviata ai nostri server</strong>: viene salvata solo sul
+  tuo dispositivo e viene usata esclusivamente per decidere cosa mostrarti nell'app.
+</p>
+
+<h3>2.5 Suggerimenti e proposte di competizioni</h3>
+<p>
+  Se invii un suggerimento di funzionalità dall'apposita casella dell'app, conserviamo il testo
+  (insieme al tuo identificativo anonimo) fino a 365 giorni, solo per valutare miglioramenti futuri.
+  Se proponi una competizione per il motore di ricerca (nome, paese, date, prezzo...), questi dati
+  riguardano l'<strong>evento</strong>, non te, e vengono conservati finché non vengono pubblicati o
+  scartati nella revisione manuale, senza un termine prestabilito.
+</p>
+
+<h3>2.6 Acquisti e abbonamento</h3>
+<p>
+  Gli acquisti (rimozione degli annunci, abbonamento Pro) vengono elaborati interamente tramite
+  <strong>Google Play Fatturazione</strong>; noi non vediamo né conserviamo i tuoi dati di pagamento.
+  Per verificare un abbonamento attivo, il tuo token di acquisto (un identificativo tecnico, non i
+  tuoi dati bancari) può essere inviato al nostro server, che lo verifica tramite l'API di Google
+  Play.
+</p>
+
+<h3>2.7 Pubblicità</h3>
+<p>
+  La versione gratuita mostra annunci tramite <strong>Google AdMob</strong>, inclusi video con
+  ricompensa opzionali per ottenere usi extra dell'IA vocale. AdMob può raccogliere identificativi
+  pubblicitari e dati tecnici del dispositivo in base alla informativa sulla privacy di Google. Se
+  acquisti la rimozione degli annunci o ti abboni a Pro, smetterai di vedere annunci.
+</p>
+
+<h3>2.8 Permessi del dispositivo</h3>
+<table>
+  <tr><th>Permesso</th><th>A cosa serve</th></tr>
+  <tr><td>Microfono</td><td>Solo mentre registri attivamente una richiesta vocale (nessun ascolto in background).</td></tr>
+  <tr><td>Notifiche</td><td>Mostrare lo stato del timer mentre ti alleni.</td></tr>
+  <tr><td>Servizio in primo piano</td><td>Permettere al cronometro di continuare a funzionare a schermo spento.</td></tr>
+  <tr><td>Vibrazione</td><td>Avvisi tattili del timer.</td></tr>
+</table>
+<p>L'app non accede alla tua posizione, ai contatti, alla fotocamera, alle foto né ai file.</p>
+
+<h2>3. Con chi condividiamo i dati</h2>
+<ul>
+  <li><strong>Cloudflare</strong> (Workers AI) — trascrizione e interpretazione vocale.</li>
+  <li><strong>Google AdMob</strong> — pubblicità nella versione gratuita.</li>
+  <li><strong>Google Play Fatturazione</strong> — elaborazione degli acquisti e verifica dell'abbonamento.</li>
+</ul>
+<p>Non vendiamo i tuoi dati a terzi né li usiamo per finalità diverse da quelle descritte qui.</p>
+
+<h2>4. Per quanto tempo conserviamo i dati</h2>
+<ul>
+  <li>Dati locali (PR, storico, impostazioni): finché non li cancelli tu o disinstalli l'app.</li>
+  <li>Valore comparabile dei PR per il Ranking, e nickname/paese/categoria/genere/età/box (se li
+    imposti): finché non cancelli i dati locali, li cambi, o li cancelli tu.</li>
+  <li>Contatori di utilizzo vocale (identificativo anonimo): 35 giorni.</li>
+  <li>Richieste inviate volontariamente per la revisione: fino a 180 giorni.</li>
+  <li>Suggerimenti di funzionalità: fino a 365 giorni.</li>
+  <li>Proposte di competizioni: senza termine prestabilito, finché non vengono pubblicate o scartate.</li>
+  <li>Audio vocale: non viene archiviato in modo permanente.</li>
+</ul>
+
+<h2 id="derechos">5. I tuoi diritti</h2>
+<p>
+  Se risiedi nello Spazio Economico Europeo, il RGPD ti riconosce il diritto di accesso, rettifica,
+  cancellazione, limitazione, portabilità e opposizione riguardo ai tuoi dati. Poiché l'app non usa
+  account, il modo più diretto per esercitarli è Impostazioni → Cancella dati locali, che cancella
+  sia quanto salvato sul telefono sia la tua posizione nel Ranking e il tuo nickname sul server
+  (disinstallare l'app senza usare prima quel pulsante NON cancella quanto già inviato al server);
+  per qualsiasi dato associato al tuo identificativo anonimo sui nostri server, scrivici a
+  <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a> indicando l'identificativo del dispositivo
+  (visibile in Impostazioni) e cosa desideri richiedere. Puoi inoltre presentare reclamo presso il
+  <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">Garante per la protezione
+  dei dati personali</a>.
+</p>
+
+<h2>6. Minori</h2>
+<p>
+  Questa app non è rivolta a minori di 16 anni e non raccoglie consapevolmente dati di minori.
+</p>
+
+<h2>7. Sicurezza</h2>
+<p>
+  Le comunicazioni con i nostri server viaggiano cifrate (HTTPS). Applichiamo misure ragionevoli per
+  proteggere i dati che trattiamo, anche se nessun sistema è infallibile al 100%.
+</p>
+
+<h2>8. Modifiche a questa informativa</h2>
+<p>
+  Possiamo aggiornare questa informativa se cambiano le funzionalità dell'app. Pubblicheremo la nuova
+  versione in questa stessa pagina con la relativa data di aggiornamento.
+</p>
+
+<h2>9. Contatto</h2>
+<p>Domande sulla privacy: <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a></p>
+</div>
+
+  <div class="lang-block" id="lang-de" hidden>
+<p class="meta">WOD Voice Timer · Letzte Aktualisierung: <span id="date-de">[Datum]</span></p>
+
+<div class="note">
+  Diese App funktioniert <strong>ohne Konten und ohne Registrierung</strong>. Wir fragen weder
+  deinen Namen noch deine E-Mail-Adresse noch andere Daten ab, die dich direkt identifizieren.
+  Was wir tatsächlich verarbeiten, ist unten beschrieben.
+</div>
+
+<h2>1. Verantwortlicher</h2>
+<p>
+  <strong>GutsApps</strong>, Entwickler der App <strong>WOD Voice Timer</strong>
+  (Paket <code>com.agutierg.kineticvolt</code>), ist verantwortlich für die in dieser Richtlinie
+  beschriebenen Daten. Kontakt: <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a>.
+</p>
+
+<h2>2. Welche Daten wir verarbeiten</h2>
+
+<h3>2.1 Anonyme Geräte-ID</h3>
+<p>
+  Bei der Installation der App wird eine zufällige Kennung (UUID) erzeugt, die ausschließlich
+  auf deinem Gerät gespeichert wird. Sie dient allein dazu, das monatliche kostenlose Limit für
+  Sprachinterpretationen durchzusetzen und Belohnungen für das Ansehen von Werbung zu verwalten.
+  Sie ist nicht mit deinem Namen, deiner E-Mail-Adresse oder einem Konto verknüpft.
+</p>
+
+<h3>2.2 Sprache und Transkriptionen (Konfiguration per Sprachbefehl)</h3>
+<p>
+  Wenn du das Mikrofon nutzt, um ein WOD zu konfigurieren, einen PR einzutragen oder eine
+  Berechnung anzufordern, wird das Audio verschlüsselt an unseren Server (gehostet bei
+  Cloudflare) übertragen, um es mithilfe von KI-Modellen zu transkribieren und zu
+  interpretieren. Das Audio wird in Echtzeit verarbeitet und
+  <strong>nicht dauerhaft gespeichert</strong>; der transkribierte Text kann zusammen mit deiner
+  anonymen Kennung kurzzeitig aufbewahrt werden, ausschließlich um das monatliche Nutzungslimit
+  durchzusetzen (läuft automatisch nach 35 Tagen ab).
+</p>
+<p>
+  Wenn eine Sprachanfrage nicht richtig verstanden wird, kannst du freiwillig
+  "Zur Überprüfung senden" wählen. In diesem Fall speichern wir den transkribierten Text und die
+  Antwort der KI (verknüpft mit deiner anonymen Kennung, niemals mit deiner Identität) bis zu
+  180 Tage lang, ausschließlich um die Spracherkennung zu verbessern.
+</p>
+
+<h3>2.3 Trainings, PRs und Verlauf</h3>
+<p>
+  Deine persönlichen Rekorde (PRs), dein Trainingsverlauf und deine Einstellungen werden
+  <strong>auf deinem Gerät</strong> gespeichert (lokale Datenbank); das ist die vollständige
+  Kopie und die, die du in der App siehst. Außerdem gilt:
+</p>
+<ul>
+  <li>
+    Wenn du per Sprachbefehl eine Berechnung auf Basis eines gespeicherten PR anforderst (z. B.
+    "70 % meines Kniebeugen-PRs"), wird die Berechnung direkt auf deinem Handy durchgeführt, und
+    das Gewicht wird niemals an die Cloud gesendet.
+  </li>
+  <li>
+    Wenn du einen neuen PR einträgst, wird ein <strong>vergleichbarer Wert dieses PRs</strong>
+    (das Gewicht, die Zeit oder die Marke — niemals dein Name oder ein anderes identifizierendes
+    Datum) an unseren Server gesendet, um deinen Perzentilwert und deinen anonymen Platz im
+    <strong>Ranking</strong> dieser Übung im Vergleich zu anderen Nutzern zu berechnen. Dieser
+    Wert wird nur mit deiner anonymen Geräte-ID verknüpft, dauerhaft (solange du die Funktion
+    nutzt), bis du die lokalen Daten der App löschst.
+  </li>
+</ul>
+<p>
+  Du kannst all diese Daten jederzeit über Einstellungen → Lokale Daten löschen entfernen: Das
+  löscht neben deinem Verlauf und deinen auf dem Handy gespeicherten PRs auch deine Marke im
+  anonymen Ranking (und deinen Spitznamen) auf unserem Server. Wenn du die App deinstallierst,
+  OHNE vorher diese Schaltfläche zu verwenden, werden nur die Daten auf dem Handy gelöscht, nicht
+  aber die bereits an den Server übermittelten Daten.
+</p>
+
+<h3>2.4 Spitzname, Land, Kategorie, Geschlecht, Altersgruppe und Box des Rankings (optional)</h3>
+<p>
+  In den Einstellungen (oder im Anfangsdialog, der beim Öffnen der App erscheinen kann) kannst
+  du einen Spitznamen für das Ranking festlegen, ändern oder löschen. Das ist vollständig
+  optional und weder für die Nutzung der App noch für das Erscheinen in den Ranglisten
+  erforderlich (ohne Spitznamen wird deine Position anonym angezeigt). Wenn du ihn festlegst,
+  <strong>wird er öffentlich angezeigt</strong>, zusammen mit deiner Marke, für jede Person, die
+  dieses Ranking einsieht — behandle ihn nicht als privates Datum, er ist für Dritte sichtbarer
+  Inhalt. Wir wenden einen einfachen Filter an, um anstößige Spitznamen zu blockieren, auch wenn
+  dies keine umfassende Moderation darstellt.
+</p>
+<p>
+  Wenn du zusätzlich dein Land oder deine Box/dein Gym angibst, <strong>werden auch diese
+  öffentlich angezeigt</strong>, zusammen mit deiner Marke in den Top 100 (zum Beispiel
+  "Deutschland" oder "CrossFit Mitte"), nach demselben Grundsatz wie beim Spitznamen: behandle
+  sie nicht als private Daten. Von den vier Feldern in diesem Abschnitt ist die Box am ehesten
+  identifizierend — eine kleine Box kann wenige Mitglieder haben, sodass du für Leute, die schon
+  wissen, in welche Box du gehst, erkennbar sein kannst. Wir wenden denselben einfachen Filter
+  gegen anstößige Namen an wie beim Spitznamen. Wenn du außerdem den Box-Filter auf "Alle"
+  stehen hast (die Standardeinstellung), hebt die Liste in deiner Akzentfarbe die Box jeder
+  anderen anonymen Marke hervor, die mit deiner übereinstimmt, indem deine eigene Box mit der
+  jedes Eintrags verglichen wird.
+</p>
+<p>
+  Deine Kategorie (Scaled, Mittelstufe, RX oder Elite), dein Geschlecht und deine Altersgruppe
+  hingegen <strong>werden nicht</strong> zusammen mit deiner Marke oder anderen Nutzern
+  angezeigt: Sie dienen ausschließlich dazu, die anonyme Gruppe einzugrenzen, mit der du dich
+  vergleichst (zum Beispiel das Ranking nur für RX anzeigen, oder nur für dein Land, dein
+  Geschlecht, deine Altersgruppe oder deine Box — die Filter lassen sich kombinieren). Beim
+  Aufrufen eines Rankings werden standardmäßig nur Kategorie und Geschlecht aus deinem Profil
+  übernommen; Land, Altersgruppe und Box stehen immer zunächst auf "Alle" und müssen bei Bedarf
+  manuell über den Filter ausgewählt werden, wenn du weiter eingrenzen möchtest. Beachte: Je
+  enger der Filter ist, den du oder eine andere Person verwendet, desto kleiner ist die anonyme
+  Gruppe, innerhalb derer deine Marke erscheint — genau wie es heute schon bei jedem Ranking mit
+  wenigen Teilnehmern der Fall ist.
+</p>
+<p>
+  Spitzname, Land, Kategorie, Geschlecht, Altersgruppe und Box/Gym werden mit deiner anonymen
+  Geräte-ID gespeichert, bis du sie änderst, löschst oder die lokalen Daten der App löschst.
+</p>
+<p>
+  Du kannst außerdem deine Disziplin angeben (CrossFit, Hyrox, Powerlifting oder Gym), damit dir
+  die App bevorzugt das zeigt, was dich am meisten interessiert (die Reihenfolge im Ranking, der
+  Standardfilter bei Wettkämpfen, das vorausgewählte Ziel beim Erstellen eines Plans). Anders als
+  alles zuvor Genannte wird die Disziplin <strong>niemals an unsere Server gesendet</strong>: Sie
+  wird nur auf deinem Gerät gespeichert und ausschließlich dazu verwendet, zu entscheiden, was
+  dir die App anzeigt.
+</p>
+
+<h3>2.5 Vorschläge und Wettkampfvorschläge</h3>
+<p>
+  Wenn du über den Vorschlagsbriefkasten der App einen Funktionsvorschlag sendest, speichern wir
+  den Text (zusammen mit deiner anonymen Kennung) bis zu 365 Tage lang, ausschließlich um
+  zukünftige Verbesserungen zu bewerten. Wenn du einen Wettkampf für die Suchfunktion
+  vorschlägst (Name, Land, Termine, Preis usw.), beziehen sich diese Daten auf die
+  <strong>Veranstaltung</strong>, nicht auf dich, und werden bis zur Veröffentlichung oder
+  Ablehnung im Rahmen der manuellen Prüfung aufbewahrt, ohne feste Frist.
+</p>
+
+<h3>2.6 Käufe und Abonnement</h3>
+<p>
+  Käufe (Werbung entfernen, Pro-Abonnement) werden vollständig über
+  <strong>Google Play Abrechnung</strong> abgewickelt; wir sehen oder speichern deine
+  Zahlungsdaten nicht. Um ein aktives Abonnement zu überprüfen, kann dein Kauf-Token (eine
+  technische Kennung, nicht deine Bankdaten) an unseren Server gesendet werden, der ihn bei der
+  Google Play API abfragt.
+</p>
+
+<h3>2.7 Werbung</h3>
+<p>
+  Die kostenlose Version zeigt Werbung über <strong>Google AdMob</strong> an, einschließlich
+  optionaler Werbevideos mit Belohnung, um zusätzliche Nutzungen der Sprach-KI zu erhalten.
+  AdMob kann gemäß der eigenen Datenschutzrichtlinie von Google Werbekennungen und technische
+  Gerätedaten erfassen. Wenn du "Werbung entfernen" kaufst oder Pro abonnierst, siehst du keine
+  Werbung mehr.
+</p>
+
+<h3>2.8 Geräteberechtigungen</h3>
+<table>
+  <tr><th>Berechtigung</th><th>Wofür sie verwendet wird</th></tr>
+  <tr><td>Mikrofon</td><td>Nur während du aktiv eine Sprachanfrage aufnimmst (kein Mithören im Hintergrund).</td></tr>
+  <tr><td>Benachrichtigungen</td><td>Anzeige des Timer-Status während des Trainings.</td></tr>
+  <tr><td>Dienst im Vordergrund</td><td>Damit der Timer auch bei ausgeschaltetem Bildschirm weiterläuft.</td></tr>
+  <tr><td>Vibration</td><td>Haptische Hinweise des Timers.</td></tr>
+</table>
+<p>Die App greift nicht auf deinen Standort, deine Kontakte, deine Kamera, deine Fotos oder deine Dateien zu.</p>
+
+<h2>3. Mit wem wir Daten teilen</h2>
+<ul>
+  <li><strong>Cloudflare</strong> (Workers AI) — Transkription und Interpretation von Sprache.</li>
+  <li><strong>Google AdMob</strong> — Werbung in der kostenlosen Version.</li>
+  <li><strong>Google Play Abrechnung</strong> — Abwicklung von Käufen und Überprüfung des Abonnements.</li>
+</ul>
+<p>Wir verkaufen deine Daten nicht an Dritte und verwenden sie nicht für andere als die hier beschriebenen Zwecke.</p>
+
+<h2>4. Wie lange wir die Daten aufbewahren</h2>
+<ul>
+  <li>Lokale Daten (PRs, Verlauf, Einstellungen): bis du sie selbst löschst oder die App deinstallierst.</li>
+  <li>Vergleichbarer PR-Wert für das Ranking sowie Spitzname/Land/Kategorie/Geschlecht/Altersgruppe/Box
+    (falls angegeben): bis du die lokalen Daten löschst, sie änderst oder selbst löschst.</li>
+  <li>Nutzungszähler für Sprachbefehle (anonyme Kennung): 35 Tage.</li>
+  <li>Freiwillig zur Überprüfung gesendete Anfragen: bis zu 180 Tage.</li>
+  <li>Funktionsvorschläge: bis zu 365 Tage.</li>
+  <li>Wettkampfvorschläge: ohne feste Frist, bis zur Veröffentlichung oder Ablehnung.</li>
+  <li>Sprachaudio: wird nicht dauerhaft gespeichert.</li>
+</ul>
+
+<h2 id="derechos">5. Deine Rechte</h2>
+<p>
+  Wenn du im Europäischen Wirtschaftsraum wohnst, gewährt dir die DSGVO ein Recht auf Auskunft,
+  Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch bezüglich deiner
+  Daten. Da die App keine Konten verwendet, ist der direkteste Weg, diese Rechte auszuüben,
+  Einstellungen → Lokale Daten löschen; damit werden sowohl die auf dem Handy gespeicherten
+  Daten als auch deine Marke im Ranking und dein Spitzname auf dem Server gelöscht (wenn du die
+  App deinstallierst, ohne vorher diese Schaltfläche zu verwenden, werden die bereits an den
+  Server übermittelten Daten NICHT gelöscht); für alle Daten, die mit deiner anonymen Kennung
+  auf unseren Servern verknüpft sind, schreib uns an
+  <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a> und gib deine Geräte-ID (sichtbar in
+  den Einstellungen) sowie dein Anliegen an. Du kannst dich außerdem bei der
+  <a href="https://www.bfdi.bund.de" target="_blank" rel="noopener">Bundesbeauftragten für den
+  Datenschutz und die Informationsfreiheit (BfDI)</a> beschweren.
+</p>
+
+<h2>6. Minderjährige</h2>
+<p>
+  Diese App richtet sich nicht an Personen unter 16 Jahren und erhebt wissentlich keine Daten
+  von Minderjährigen.
+</p>
+
+<h2>7. Sicherheit</h2>
+<p>
+  Die Kommunikation mit unseren Servern erfolgt verschlüsselt (HTTPS). Wir setzen angemessene
+  Maßnahmen zum Schutz der von uns verarbeiteten Daten ein, auch wenn kein System zu 100 %
+  narrensicher ist.
+</p>
+
+<h2>8. Änderungen dieser Richtlinie</h2>
+<p>
+  Wir können diese Richtlinie aktualisieren, wenn sich die Funktionen der App ändern. Die neue
+  Version wird auf dieser Seite mit dem entsprechenden Aktualisierungsdatum veröffentlicht.
+</p>
+
+<h2>9. Kontakt</h2>
+<p>Fragen zum Datenschutz: <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a></p>
+</div>
+
+  <div class="lang-block" id="lang-fr" hidden>
+
+<p class="meta">WOD Voice Timer · Dernière mise à jour : <span id="date-fr">[date]</span></p>
+
+<div class="note">
+  Cette app fonctionne <strong>sans compte ni inscription</strong>. On ne te demande ni ton nom,
+  ni ton email, ni aucune donnée qui t'identifie directement. Ce qu'on traite réellement est
+  détaillé ci-dessous.
+</div>
+
+<h2>1. Responsable du traitement</h2>
+<p>
+  <strong>GutsApps</strong>, développeur de l'app <strong>WOD Voice Timer</strong>
+  (paquet <code>com.agutierg.kineticvolt</code>), est responsable des données décrites dans cette
+  politique. Contact : <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a>.
+</p>
+
+<h2>2. Quelles données on traite</h2>
+
+<h3>2.1 Identifiant anonyme d'appareil</h3>
+<p>
+  À l'installation de l'app, un identifiant aléatoire (UUID) est généré et sauvegardé uniquement
+  sur ton appareil. Il sert exclusivement à appliquer la limite mensuelle gratuite
+  d'interprétations vocales et à gérer les récompenses pour le visionnage de publicités. Il n'est
+  lié ni à ton nom, ni à ton email, ni à aucun compte.
+</p>
+
+<h3>2.2 Voix et transcriptions (configuration vocale)</h3>
+<p>
+  Quand tu utilises le micro pour configurer un WOD, enregistrer un PR ou demander un calcul,
+  l'audio est envoyé de façon chiffrée à notre serveur (hébergé sur Cloudflare) pour le
+  transcrire et l'interpréter via des modèles d'intelligence artificielle. L'audio est traité à
+  la volée et <strong>n'est pas conservé</strong> de façon permanente ; le texte transcrit peut
+  être conservé brièvement avec ton identifiant anonyme, uniquement pour appliquer la limite
+  d'usage mensuelle (expire automatiquement au bout de 35 jours).
+</p>
+<p>
+  Si une demande vocale n'est pas bien comprise, tu peux choisir volontairement "Envoyer en
+  révision". Dans ce cas, on conserve le texte transcrit et la réponse de l'IA (associés à ton
+  identifiant anonyme, jamais à ton identité) jusqu'à 180 jours, uniquement pour améliorer
+  l'interprétation vocale.
+</p>
+
+<h3>2.3 Entraînements, PRs et historique</h3>
+<p>
+  Tes records personnels (PRs), ton historique d'entraînements et tes réglages sont sauvegardés
+  <strong>sur ton appareil</strong> (base de données locale) ; c'est la copie complète, celle que
+  tu vois dans l'app. De plus :
+</p>
+<ul>
+  <li>
+    Quand tu demandes à la voix un calcul basé sur un PR enregistré (par ex. "70% de mon PR de
+    squat"), la recherche est résolue directement sur ton mobile et le poids n'est jamais envoyé
+    vers le cloud.
+  </li>
+  <li>
+    Quand tu enregistres un nouveau PR, une <strong>valeur comparable de ce PR</strong> (le poids,
+    le temps ou la marque — jamais ton nom ni aucune donnée qui t'identifie) est envoyée à notre
+    serveur pour calculer ton percentile et ta position anonyme dans le <strong>Ranking</strong>
+    de ce mouvement, face aux autres utilisateurs. Cette valeur reste associée uniquement à ton
+    identifiant anonyme d'appareil, de façon permanente (tant que tu utilises cette fonction),
+    jusqu'à ce que tu effaces les données locales de l'app.
+  </li>
+</ul>
+<p>
+  Tu peux effacer toutes ces données à tout moment depuis Paramètres → Effacer les données
+  locales : en plus de ton historique et de tes PRs enregistrés sur le mobile, cela efface aussi
+  ta marque du Ranking anonyme (et ton pseudo) sur notre serveur. Désinstaller l'app SANS utiliser
+  ce bouton au préalable efface les données du mobile mais pas celles déjà envoyées au serveur.
+</p>
+
+<h3>2.4 Pseudo, pays, catégorie, genre, âge et box du Ranking (optionnel)</h3>
+<p>
+  Dans Paramètres (ou dans le dialogue initial qui peut apparaître à l'ouverture de l'app), tu
+  peux définir, modifier ou effacer un pseudo pour le Ranking. C'est totalement optionnel et ce
+  n'est pas nécessaire pour utiliser l'app ni pour apparaître dans les classements (sans pseudo,
+  ta position s'affiche de façon anonyme). Si tu en définis un,
+  <strong>il s'affiche publiquement</strong> à côté de ta marque pour toute personne consultant ce
+  Ranking — ne le traite pas comme une donnée privée, c'est un contenu visible par des tiers. On
+  applique un filtre basique pour bloquer les pseudos offensants, même si ce n'est pas une
+  modération exhaustive.
+</p>
+<p>
+  Si tu indiques en plus ton pays ou ton box/salle, <strong>ils s'affichent aussi publiquement</strong>
+  à côté de ta marque dans le top 100 (par exemple "France" ou "CrossFit Bastille"), avec le même
+  principe que le pseudo : ne les traite pas comme une donnée privée. Le box est, des quatre champs
+  de cette section, le plus identifiable — un petit box peut avoir peu d'adhérents, ce qui peut te
+  rendre reconnaissable par des personnes qui savent déjà où tu t'entraînes. On applique le même
+  filtre basique contre les noms offensants que pour le pseudo. De plus, si ton filtre de box est
+  sur "Tous" (le point de départ par défaut), la liste met en évidence dans ta couleur d'accent le
+  box de toute autre marque anonyme qui correspond au tien, en comparant ton propre box à celui de
+  chaque entrée.
+</p>
+<p>
+  Ta catégorie (Scaled, Intermédiaire, RX ou Élite), ton genre et ta tranche d'âge, en revanche,
+  <strong>ne s'affichent pas</strong> à côté de ta marque ni aux autres utilisateurs : ils servent
+  uniquement à filtrer et à restreindre le groupe anonyme auquel tu te compares (par exemple, voir
+  le Ranking uniquement en RX, ou uniquement de ton pays, ton genre, ta tranche d'âge ou ton box —
+  les filtres peuvent se combiner). En entrant dans un Ranking, seuls la catégorie et le genre sont
+  appliqués par défaut depuis ton profil ; le pays, la tranche d'âge et le box démarrent toujours
+  sur "Tous" et doivent être choisis manuellement dans le filtre si tu veux restreindre davantage.
+  Garde à l'esprit que plus le filtre que toi ou une autre personne utilisez est restreint, plus le
+  groupe anonyme dans lequel apparaît ta marque est petit — comme c'est déjà le cas aujourd'hui
+  pour tout Ranking comptant peu de participants.
+</p>
+<p>
+  Pseudo, pays, catégorie, genre, tranche d'âge et box/salle sont sauvegardés en association avec
+  ton identifiant anonyme d'appareil jusqu'à ce que tu les modifies, les effaces, ou effaces les
+  données locales de l'app.
+</p>
+<p>
+  Tu peux aussi indiquer ta discipline (CrossFit, Hyrox, Powerlifting ou Salle de sport) pour que
+  l'app te montre en priorité ce qui t'intéresse le plus (l'ordre du Ranking, le filtre par défaut
+  des Compétitions, l'objectif présélectionné à la création d'un plan). Contrairement à tout ce qui
+  précède, la discipline <strong>n'est jamais envoyée à nos serveurs</strong> : elle est sauvegardée
+  uniquement sur ton appareil et sert exclusivement à décider ce que l'app t'affiche.
+</p>
+
+<h3>2.5 Suggestions et propositions de compétitions</h3>
+<p>
+  Si tu envoies une suggestion de fonctionnalité depuis la boîte à idées de l'app, on conserve le
+  texte (avec ton identifiant anonyme) jusqu'à 365 jours, uniquement pour évaluer de futures
+  améliorations. Si tu proposes une compétition pour le moteur de recherche (nom, pays, dates,
+  prix...), ces données concernent l'<strong>événement</strong>, pas toi, et sont conservées jusqu'à
+  leur publication ou leur rejet lors de la révision manuelle, sans délai fixe.
+</p>
+
+<h3>2.6 Achats et abonnement</h3>
+<p>
+  Les achats (suppression des publicités, abonnement Pro) sont traités intégralement via
+  <strong>Google Play Facturation</strong> ; nous ne voyons ni ne stockons tes données de paiement.
+  Pour vérifier un abonnement actif, ton jeton d'achat (un identifiant technique, pas tes données
+  bancaires) peut être envoyé à notre serveur, qui le vérifie auprès de l'API de Google Play.
+</p>
+
+<h3>2.7 Publicité</h3>
+<p>
+  La version gratuite affiche des publicités via <strong>Google AdMob</strong>, y compris des
+  vidéos récompensées optionnelles pour obtenir des utilisations supplémentaires de l'IA vocale.
+  AdMob peut collecter des identifiants publicitaires et des données techniques de l'appareil,
+  conformément à la propre politique de confidentialité de Google. Si tu achètes la suppression
+  des publicités ou t'abonnes à Pro, tu ne vois plus de publicités.
+</p>
+
+<h3>2.8 Autorisations de l'appareil</h3>
+<table>
+  <tr><th>Autorisation</th><th>À quoi elle sert</th></tr>
+  <tr><td>Micro</td><td>Uniquement pendant l'enregistrement actif d'une demande vocale (pas d'écoute en arrière-plan).</td></tr>
+  <tr><td>Notifications</td><td>Afficher l'état du minuteur pendant ton entraînement.</td></tr>
+  <tr><td>Service en premier plan</td><td>Permettre au chronomètre de continuer à fonctionner écran éteint.</td></tr>
+  <tr><td>Vibration</td><td>Alertes tactiles du minuteur.</td></tr>
+</table>
+<p>L'app n'accède ni à ta localisation, ni à tes contacts, ni à ta caméra, ni à tes photos, ni à tes fichiers.</p>
+
+<h2>3. Avec qui on partage des données</h2>
+<ul>
+  <li><strong>Cloudflare</strong> (Workers AI) — transcription et interprétation vocale.</li>
+  <li><strong>Google AdMob</strong> — publicité dans la version gratuite.</li>
+  <li><strong>Google Play Facturation</strong> — traitement des achats et vérification de l'abonnement.</li>
+</ul>
+<p>On ne vend pas tes données à des tiers et on ne les utilise pas à des fins autres que celles décrites ici.</p>
+
+<h2>4. Combien de temps on conserve les données</h2>
+<ul>
+  <li>Données locales (PRs, historique, réglages) : jusqu'à ce que tu les effaces ou que tu désinstalles l'app.</li>
+  <li>Valeur comparable des PRs pour le Ranking, et pseudo/pays/catégorie/genre/âge/box (si
+    renseignés) : jusqu'à ce que tu effaces les données locales, les modifies, ou les effaces.</li>
+  <li>Compteurs d'usage vocal (identifiant anonyme) : 35 jours.</li>
+  <li>Demandes envoyées volontairement en révision : jusqu'à 180 jours.</li>
+  <li>Suggestions de fonctionnalités : jusqu'à 365 jours.</li>
+  <li>Propositions de compétitions : sans délai fixe, jusqu'à leur publication ou leur rejet.</li>
+  <li>Audio vocal : non stocké de façon persistante.</li>
+</ul>
+
+<h2 id="derechos">5. Tes droits</h2>
+<p>
+  Si tu résides dans l'Espace Économique Européen, le RGPD te reconnaît un droit d'accès, de
+  rectification, d'effacement, de limitation, de portabilité et d'opposition sur tes données.
+  Comme l'app ne repose pas sur des comptes, le moyen le plus direct de les exercer est
+  Paramètres → Effacer les données locales, qui efface aussi bien ce qui est sauvegardé sur le
+  mobile que ta marque du Ranking et ton pseudo sur le serveur (désinstaller l'app sans utiliser
+  ce bouton au préalable N'efface PAS ce qui a déjà été envoyé au serveur) ; pour toute donnée
+  associée à ton identifiant anonyme sur nos serveurs, écris-nous à
+  <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a> en indiquant l'identifiant d'appareil
+  (visible dans Paramètres) et ce que tu souhaites demander. Tu peux également déposer une
+  réclamation auprès de la <a href="https://www.cnil.fr" target="_blank" rel="noopener">Commission
+  Nationale de l'Informatique et des Libertés (CNIL)</a>.
+</p>
+
+<h2>6. Mineurs</h2>
+<p>
+  Cette app ne s'adresse pas aux mineurs de moins de 16 ans et ne collecte pas sciemment de
+  données de mineurs.
+</p>
+
+<h2>7. Sécurité</h2>
+<p>
+  Les communications avec nos serveurs sont chiffrées (HTTPS). On applique des mesures
+  raisonnables pour protéger les données qu'on traite, même si aucun système n'est infaillible à
+  100 %.
+</p>
+
+<h2>8. Modifications de cette politique</h2>
+<p>
+  On peut mettre à jour cette politique si les fonctionnalités de l'app évoluent. On publiera la
+  nouvelle version sur cette même page avec la date de mise à jour correspondante.
+</p>
+
+<h2>9. Contact</h2>
+<p>Questions sur la confidentialité : <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a></p>
+
+</div>
+
+  <div class="lang-block" id="lang-pt" hidden>
+<p class="meta">WOD Voice Timer · Última atualização: <span id="date-pt">[data]</span></p>
+
+<div class="note">
+  Esta app funciona <strong>sem contas nem registo</strong>. Não pedimos o teu nome, e-mail
+  nem nenhum dado que te identifique diretamente. O que efetivamente processamos está detalhado abaixo.
+</div>
+
+<h2>1. Responsável pelo tratamento</h2>
+<p>
+  <strong>GutsApps</strong>, criadora da app <strong>WOD Voice Timer</strong>
+  (pacote <code>com.agutierg.kineticvolt</code>), é responsável pelos dados descritos nesta política.
+  Contacto: <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a>.
+</p>
+
+<h2>2. Que dados tratamos</h2>
+
+<h3>2.1 Identificador anónimo do dispositivo</h3>
+<p>
+  Ao instalar a app é gerado um identificador aleatório (UUID) que fica guardado apenas no teu
+  dispositivo. É usado exclusivamente para aplicar o limite mensal gratuito de interpretações
+  por voz e para gerir recompensas por veres anúncios. Não está associado ao teu nome, e-mail
+  nem a nenhuma conta.
+</p>
+
+<h3>2.2 Voz e transcrições (configuração por voz)</h3>
+<p>
+  Quando usas o microfone para configurar um WOD, registar um PR ou pedir um cálculo, o áudio
+  é enviado de forma cifrada para o nosso servidor (alojado na Cloudflare) para ser transcrito e
+  interpretado através de modelos de inteligência artificial. O áudio é processado em tempo real e
+  <strong>não é guardado</strong> de forma permanente; o texto transcrito pode ser conservado
+  brevemente junto com o teu identificador anónimo apenas para aplicar o limite de utilização
+  mensal (expira automaticamente ao fim de 35 dias).
+</p>
+<p>
+  Se um pedido por voz não for bem entendido, podes escolher voluntariamente "Enviar para revisão".
+  Nesse caso guardamos o texto transcrito e a resposta da IA (associados ao teu identificador
+  anónimo, nunca à tua identidade) durante até 180 dias, apenas para melhorar a interpretação por voz.
+</p>
+
+<h3>2.3 Treinos, PRs e histórico</h3>
+<p>
+  Os teus recordes pessoais (PRs), histórico de treinos e definições ficam guardados
+  <strong>no teu dispositivo</strong> (base de dados local); essa é a cópia completa e a que
+  vês na app. Além disso:
+</p>
+<ul>
+  <li>
+    Quando pedes por voz um cálculo baseado num PR guardado (por exemplo, "70% do meu PR de
+    agachamento"), a pesquisa é resolvida no teu próprio telemóvel e o peso nunca é enviado para a nuvem.
+  </li>
+  <li>
+    Quando registas um PR novo, um <strong>valor comparável desse PR</strong> (o peso, tempo
+    ou marca — nunca o teu nome nem nenhum dado que te identifique) é enviado para o nosso servidor
+    para calcular o teu percentil e a tua posição anónima no <strong>Ranking</strong> desse movimento
+    face aos restantes utilizadores. Esse valor fica associado apenas ao teu identificador anónimo de
+    dispositivo, de forma permanente (enquanto usares a funcionalidade), até apagares os dados locais
+    da app.
+  </li>
+</ul>
+<p>
+  Podes apagar todos estes dados a qualquer momento em Definições → Apagar dados locais:
+  além do teu histórico e dos teus PRs guardados no telemóvel, isto apaga também a tua marca do
+  Ranking anónimo (e a tua alcunha) do nosso servidor. Desinstalar a app SEM usares antes esse
+  botão apaga os dados do telemóvel mas não os que já foram enviados para o servidor.
+</p>
+
+<h3>2.4 Alcunha, país, categoria, género, idade e box do Ranking (opcional)</h3>
+<p>
+  Em Definições (ou na caixa de diálogo inicial que pode aparecer-te ao abrires a app) podes
+  definir, alterar ou apagar uma alcunha para o Ranking. É totalmente opcional e não é necessária
+  para usar a app nem para apareceres nas classificações (sem alcunha, a tua posição é mostrada de
+  forma anónima). Se a definires,
+  <strong>é mostrada publicamente</strong> junto à tua marca a qualquer pessoa que consulte esse
+  Ranking — não a trates como um dado privado, é conteúdo visível para terceiros. Aplicamos um
+  filtro básico para bloquear alcunhas ofensivas, embora não seja uma moderação exaustiva.
+</p>
+<p>
+  Se além disso indicares o teu país ou o teu box/ginásio, <strong>também são mostrados
+  publicamente</strong> junto à tua marca no top 100 (por exemplo "Portugal" ou "CrossFit
+  Lisboa"), com o mesmo critério que a alcunha: não os trates como um dado privado. O box é, dos
+  quatro campos desta secção, o mais identificável — um box pequeno pode ter poucos sócios, o que
+  pode tornar-te reconhecível por pessoas que já saibam a que box vais. Aplicamos o mesmo filtro
+  básico contra nomes ofensivos que aplicamos à alcunha. Além disso, se tiveres o filtro de box em
+  "Todos" (o ponto de partida por defeito), a lista realça na tua cor de destaque o box de
+  qualquer outra marca anónima que coincida com o teu, comparando o teu próprio box com o de cada
+  entrada.
+</p>
+<p>
+  A tua categoria (Scaled, Intermédio, RX ou Elite), género e faixa etária, pelo contrário,
+  <strong>não são mostrados</strong> junto à tua marca nem a outros utilizadores: são usados
+  apenas para filtrar e restringir o grupo anónimo com o qual te comparas (por exemplo, ver o
+  Ranking só de RX, ou só do teu país, do teu género, da tua faixa etária ou do teu box — os
+  filtros podem ser combinados). Ao entrares num Ranking, só a categoria e o género são aplicados
+  por defeito a partir do teu perfil; país, faixa etária e box começam sempre em "Todos" e têm de
+  ser escolhidos manualmente no filtro se quiseres restringir mais. Tem em conta que, quanto mais
+  restrito for o filtro que uses ou que outra pessoa use, mais pequeno é o grupo anónimo dentro do
+  qual aparece a tua marca — tal como já acontece hoje com qualquer Ranking com poucos
+  participantes.
+</p>
+<p>
+  Alcunha, país, categoria, género, faixa etária e box/ginásio ficam guardados associados ao teu
+  identificador anónimo de dispositivo até que os alteres, os apagues, ou apagues os dados
+  locais da app.
+</p>
+<p>
+  Também podes indicar a tua disciplina (CrossFit, Hyrox, Powerlifting ou Ginásio) para que a
+  app te mostre primeiro o que mais te interessa (a ordem do Ranking, o filtro por defeito de
+  Competições, o objetivo pré-selecionado ao criares um Plano). Ao contrário de tudo o anterior,
+  a disciplina <strong>nunca é enviada para os nossos servidores</strong>: fica guardada apenas
+  no teu dispositivo e é usada exclusivamente para decidir o que a app te mostra.
+</p>
+
+<h3>2.5 Sugestões e propostas de competições</h3>
+<p>
+  Se enviares uma sugestão de funcionalidade a partir da caixa de sugestões da app, guardamos o
+  texto (junto com o teu identificador anónimo) durante até 365 dias, apenas para avaliar
+  melhorias futuras. Se propuseres uma competição para o motor de busca (nome, país, datas,
+  preço...), esses dados são sobre o <strong>evento</strong>, não sobre ti, e são conservados até
+  serem publicados ou descartados na revisão manual, sem um prazo fixo.
+</p>
+
+<h3>2.6 Compras e subscrição</h3>
+<p>
+  As compras (remover anúncios, subscrição Pro) são processadas integralmente através da
+  <strong>Faturação do Google Play</strong>; nós não vemos nem armazenamos os teus dados de
+  pagamento. Para verificar uma subscrição ativa, o teu token de compra (um identificador
+  técnico, não os teus dados bancários) pode ser enviado para o nosso servidor, que o consulta
+  junto da API do Google Play.
+</p>
+
+<h3>2.7 Publicidade</h3>
+<p>
+  A versão gratuita mostra anúncios através do <strong>Google AdMob</strong>, incluindo
+  vídeos recompensados opcionais para obteres utilizações extra da IA por voz. O AdMob pode
+  recolher identificadores de publicidade e dados técnicos do dispositivo, de acordo com a
+  própria política de privacidade da Google. Se comprares "remover anúncios" ou subscreveres o
+  Pro, deixas de ver anúncios.
+</p>
+
+<h3>2.8 Permissões do dispositivo</h3>
+<table>
+  <tr><th>Permissão</th><th>Para que é usada</th></tr>
+  <tr><td>Microfone</td><td>Apenas enquanto estás a gravar ativamente um pedido por voz (não há escuta em segundo plano).</td></tr>
+  <tr><td>Notificações</td><td>Mostrar o estado do temporizador enquanto treinas.</td></tr>
+  <tr><td>Serviço em primeiro plano</td><td>Permitir que o cronómetro continue a funcionar com o ecrã desligado.</td></tr>
+  <tr><td>Vibração</td><td>Avisos táteis do temporizador.</td></tr>
+</table>
+<p>A app não acede à tua localização, contactos, câmara, fotos nem ficheiros.</p>
+
+<h2>3. Com quem partilhamos dados</h2>
+<ul>
+  <li><strong>Cloudflare</strong> (Workers AI) — transcrição e interpretação de voz.</li>
+  <li><strong>Google AdMob</strong> — publicidade na versão gratuita.</li>
+  <li><strong>Faturação do Google Play</strong> — processamento de compras e verificação de subscrição.</li>
+</ul>
+<p>Não vendemos os teus dados a terceiros nem os usamos para fins diferentes dos aqui descritos.</p>
+
+<h2>4. Durante quanto tempo conservamos os dados</h2>
+<ul>
+  <li>Dados locais (PRs, histórico, definições): até que os apagues ou desinstales a app.</li>
+  <li>Valor comparável de PRs para o Ranking, e alcunha/país/categoria/género/idade/box (se os
+    definires): até apagares os dados locais, os alterares, ou os apagares.</li>
+  <li>Contadores de utilização por voz (identificador anónimo): 35 dias.</li>
+  <li>Pedidos enviados voluntariamente para revisão: até 180 dias.</li>
+  <li>Sugestões de funcionalidade: até 365 dias.</li>
+  <li>Propostas de competições: sem prazo fixo, até serem publicadas ou descartadas.</li>
+  <li>Áudio de voz: não é armazenado de forma persistente.</li>
+</ul>
+
+<h2 id="direitos">5. Os teus direitos</h2>
+<p>
+  Se residires no Espaço Económico Europeu, o RGPD reconhece-te o direito de acesso,
+  retificação, apagamento, limitação, portabilidade e oposição sobre os teus dados. Como a app
+  não usa contas, a forma mais direta de os exercer é em Definições → Apagar dados locais, que
+  apaga tanto o que está guardado no telemóvel como a tua marca do Ranking e a tua alcunha no
+  servidor (desinstalar a app sem usares antes esse botão NÃO apaga o que já foi enviado para o
+  servidor); para qualquer dado associado ao teu identificador anónimo nos nossos
+  servidores, escreve-nos para <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a> indicando
+  o identificador de dispositivo (visível em Definições) e o que pretendes solicitar. Também
+  podes apresentar reclamação junto da <a href="https://www.cnpd.pt" target="_blank"
+  rel="noopener">Comissão Nacional de Proteção de Dados (CNPD)</a>.
+</p>
+
+<h2>6. Menores de idade</h2>
+<p>
+  Esta app não se dirige a menores de 16 anos nem recolhe conscientemente dados de menores.
+</p>
+
+<h2>7. Segurança</h2>
+<p>
+  As comunicações com os nossos servidores viajam cifradas (HTTPS). Aplicamos medidas
+  razoáveis para proteger os dados que processamos, embora nenhum sistema seja 100% infalível.
+</p>
+
+<h2>8. Alterações a esta política</h2>
+<p>
+  Podemos atualizar esta política se as funcionalidades da app mudarem. Publicaremos a nova
+  versão nesta mesma página com a respetiva data de atualização.
+</p>
+
+<h2>9. Contacto</h2>
+<p>Dúvidas sobre privacidade: <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a></p>
+</div>
+
   <footer>WOD Voice Timer — <span id="footer-text">Política de Privacidad</span></footer>
 </div>
 
 <script>
+  var LANGS = ['es', 'en', 'it', 'de', 'fr', 'pt'];
+  var TITLES = {
+    es: 'Política de Privacidad',
+    en: 'Privacy Policy',
+    it: 'Informativa sulla Privacy',
+    de: 'Datenschutzerklärung',
+    fr: 'Politique de Confidentialité',
+    pt: 'Política de Privacidade'
+  };
+
   function setLang(lang) {
-    document.getElementById('lang-es').hidden = lang !== 'es';
-    document.getElementById('lang-en').hidden = lang !== 'en';
-    document.getElementById('btn-es').classList.toggle('active', lang === 'es');
-    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-    document.getElementById('title').textContent = lang === 'es' ? 'Política de Privacidad' : 'Privacy Policy';
-    document.getElementById('footer-text').textContent = lang === 'es' ? 'Política de Privacidad' : 'Privacy Policy';
+    if (LANGS.indexOf(lang) === -1) lang = 'es';
+    LANGS.forEach(function (l) {
+      document.getElementById('lang-' + l).hidden = l !== lang;
+      document.getElementById('btn-' + l).classList.toggle('active', l === lang);
+    });
+    document.getElementById('title').textContent = TITLES[lang];
+    document.getElementById('footer-text').textContent = TITLES[lang];
     document.documentElement.lang = lang;
-    document.title = lang === 'es' ? 'Política de Privacidad — WOD Voice Timer' : 'Privacy Policy — WOD Voice Timer';
+    document.title = TITLES[lang] + ' — WOD Voice Timer';
     try { localStorage.setItem('wvt_lang', lang); } catch (e) {}
   }
   (function () {
     var saved = null;
     try { saved = localStorage.getItem('wvt_lang'); } catch (e) {}
-    var browserEn = navigator.language && navigator.language.toLowerCase().indexOf('es') !== 0;
-    setLang(saved || (browserEn ? 'en' : 'es'));
+    var browserLang = (navigator.language || 'es').toLowerCase().slice(0, 2);
+    var initial = saved || (LANGS.indexOf(browserLang) !== -1 ? browserLang : 'es');
+    setLang(initial);
     var today = new Date().toISOString().slice(0, 10);
-    document.getElementById('date-es').textContent = today;
-    document.getElementById('date-en').textContent = today;
+    LANGS.forEach(function (l) {
+      document.getElementById('date-' + l).textContent = today;
+    });
   })();
 </script>
 </body>
