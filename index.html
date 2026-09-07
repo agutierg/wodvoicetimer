@@ -92,8 +92,11 @@
     <p class="meta">WOD Voice Timer · Última actualización: <span id="date-es">[fecha]</span></p>
 
     <div class="note">
-      Esta app funciona <strong>sin cuentas ni registro</strong>. No pedimos tu nombre, email
-      ni ningún dato que te identifique directamente. Lo que sí procesamos se detalla abajo.
+      Puedes usar la mayor parte de la app <strong>sin crear cuenta ni registrarte</strong> —el
+      temporizador, el generador de WODs, tus PRs y el Ranking anónimo funcionan igual que
+      siempre, sin pedirte nombre ni email. Crear una cuenta gratuita es opcional y solo hace
+      falta para <strong>Comunidad</strong> y <strong>Ligas</strong> (buscar y seguir atletas,
+      publicar en el feed, competir en grupo). Lo que procesamos en cada caso se detalla abajo.
     </div>
 
     <h2>1. Responsable del tratamiento</h2>
@@ -155,12 +158,13 @@
       botón borra los datos del móvil pero no los ya enviados al servidor.
     </p>
 
-    <h3>2.4 Apodo, país, categoría, género, edad y box del Ranking (opcional)</h3>
+    <h3>2.4 Apodo, país, categoría, género, edad y box del Ranking</h3>
     <p>
       En Ajustes (o en el diálogo inicial que puede aparecerte al abrir la app) puedes ponerte,
-      cambiar o borrar un apodo para el Ranking. Es totalmente opcional y no hace falta para usar la
-      app ni para aparecer en las clasificaciones (sin apodo, tu posición se muestra de forma
-      anónima). Si lo pones,
+      cambiar o borrar un apodo para el Ranking. No hace falta para usar el resto de la app —tus
+      PRs se siguen guardando en tu historial local igual que siempre— pero <strong>sí hace falta
+      para que tu marca se compare con las de otros usuarios en el Ranking</strong>: sin apodo, la
+      marca no se publica (para frenar el spam anónimo). En cuanto pones un apodo,
       <strong>se muestra públicamente</strong> junto a tu marca a cualquier persona que consulte ese
       Ranking — no lo trates como un dato privado, es contenido visible para terceros. Aplicamos un
       filtro básico para bloquear apodos ofensivos, aunque no es una moderación exhaustiva.
@@ -200,16 +204,66 @@
       en tu dispositivo y se usa exclusivamente para decidir qué te muestra la app.
     </p>
 
-    <h3>2.5 Sugerencias y propuestas de competiciones</h3>
+    <h3>2.5 Cuenta (opcional)</h3>
     <p>
-      Si envías una sugerencia de funcionalidad desde el buzón de la app, guardamos el texto (junto a
-      tu identificador anónimo) hasta 365 días, solo para valorar mejoras futuras. Si propones una
-      competición para el buscador (nombre, país, fechas, precio...), esos datos son sobre el
-      <strong>evento</strong>, no sobre ti, y se conservan hasta que se publican o se descartan en la
-      revisión manual, sin un plazo fijo.
+      Comunidad y Ligas piden una cuenta gratuita (email y contraseña, o tu cuenta de Google, a
+      través de <strong>Firebase Authentication</strong> de Google) o, si lo prefieres, seguir como
+      invitado. Guardamos tu email solo para identificar tu cuenta y dejarte iniciar sesión en otro
+      dispositivo; nunca lo mostramos a otros usuarios. Puedes eliminar tu cuenta cuando quieras
+      desde Perfil → Ajustes de cuenta → Eliminar cuenta (ver sección 5).
     </p>
 
-    <h3>2.6 Compras y suscripción</h3>
+    <h3>2.6 Comunidad: @handle, amistades, feed y fotos</h3>
+    <p>
+      Con una cuenta puedes elegir un <strong>@handle</strong> público —distinto del apodo anónimo
+      del Ranking descrito arriba— para que otros usuarios te encuentren y te añadan como amigo
+      (petición que la otra persona acepta). También puedes: publicar en el feed comunitario tus
+      PRs, insignias o resultados de Ligas, con una foto opcional; reaccionar y comentar en
+      publicaciones de otros; buscar atletas por nombre, por tu box o entre gente que sigues; y
+      poner una foto de perfil pública opcional. Todo esto —tu @handle, tus amistades, tus
+      publicaciones, tus comentarios y tus fotos— es visible para otros usuarios de la Comunidad
+      mientras tu cuenta esté activa, y se borra al eliminarla. Las fotos que subes (perfil, feed,
+      Ligas) se guardan en nuestro proveedor de almacenamiento en la nube (Cloudflare R2) con una
+      dirección no adivinable; no las revisamos manualmente salvo que se reporten.
+    </p>
+
+    <h3>2.7 Boxes y ubicación aproximada</h3>
+    <p>
+      El directorio "Encuentra tu box" puede pedirte permiso de <strong>ubicación aproximada</strong>
+      para ordenar los gimnasios por cercanía; si lo concedes, esa ubicación se usa solo al momento
+      y en tu propio dispositivo, y <strong>no se envía a nuestros servidores ni se guarda</strong>.
+      Si lo rechazas, el directorio sigue funcionando igual, ordenado alfabéticamente. Para mostrar
+      horario y nivel de precio de cada box (cuando existen), consultamos la <strong>API de Google
+      Places</strong> con el nombre/dirección del propio box — nunca con tu ubicación ni tu
+      identidad. Cualquier usuario puede además valorar un box o sugerir datos que falten
+      (disciplinas, horario), de forma anónima o asociada a tu cuenta si tienes sesión iniciada.
+    </p>
+
+    <h3>2.8 Ligas: resultados, fotos y lectura por IA</h3>
+    <p>
+      Con una cuenta puedes crear o unirte a Ligas (grupos públicos o privados) para competir con tu
+      box o tu grupo de entreno. Lo que subas cada día a una Liga —los bloques del entreno, sus
+      valores, una nota y una foto opcional— es visible para el resto de miembros de esa Liga,
+      junto a tu @handle. Si usas "Escanear foto" para que la IA proponga los bloques a partir de
+      una foto de tu pizarra o cuaderno, esa foto se envía a <strong>Cloudflare Workers AI</strong>
+      (un modelo de visión) solo para leerla y proponerte los bloques; tú la revisas y corriges
+      antes de guardar nada. Si creas una Liga, puedes ponerle un logo, visible para cualquiera que
+      la encuentre. Mandamos notificaciones push (vía <strong>Firebase Cloud Messaging</strong>)
+      sobre tus Ligas —por ejemplo, si alguien te supera en el día, o el resumen del cierre
+      semanal— usando el token de notificaciones de tu dispositivo, asociado a tu cuenta mientras
+      la tengas activa.
+    </p>
+
+    <h3>2.9 Sugerencias y propuestas de competiciones</h3>
+    <p>
+      Si envías una sugerencia de funcionalidad desde el buzón de la app, guardamos el texto (junto a
+      tu identificador anónimo o tu cuenta, si tienes sesión iniciada) hasta 365 días, solo para
+      valorar mejoras futuras. Si propones una competición para el buscador (nombre, país, fechas,
+      precio...), esos datos son sobre el <strong>evento</strong>, no sobre ti, y se conservan hasta
+      que se publican o se descartan en la revisión manual, sin un plazo fijo.
+    </p>
+
+    <h3>2.10 Compras y suscripción</h3>
     <p>
       Las compras (quitar anuncios, suscripción Pro) se procesan íntegramente a través de
       <strong>Google Play Facturación</strong>; nosotros no vemos ni almacenamos tus datos de pago.
@@ -217,7 +271,7 @@
       datos bancarios) puede enviarse a nuestro servidor, que lo consulta contra la API de Google Play.
     </p>
 
-    <h3>2.7 Publicidad</h3>
+    <h3>2.11 Publicidad</h3>
     <p>
       La versión gratuita muestra anuncios a través de <strong>Google AdMob</strong>, incluyendo
       vídeos recompensados opcionales para conseguir usos extra de la IA por voz. AdMob puede
@@ -226,19 +280,28 @@
       ver anuncios.
     </p>
 
-    <h3>2.8 Permisos del dispositivo</h3>
+    <h3>2.12 Permisos del dispositivo</h3>
     <table>
       <tr><th>Permiso</th><th>Para qué se usa</th></tr>
       <tr><td>Micrófono</td><td>Solo mientras grabas activamente una petición por voz (no hay escucha en segundo plano).</td></tr>
-      <tr><td>Notificaciones</td><td>Mostrar el estado del temporizador mientras entrenas.</td></tr>
+      <tr><td>Cámara / galería</td><td>Solo cuando eliges o haces una foto para tu perfil, el feed, una Liga o su logo, o para que la IA la lea en "Escanear foto".</td></tr>
+      <tr><td>Ubicación aproximada</td><td>Solo si la concedes, para ordenar "Encuentra tu box" por cercanía (ver 2.7); no se envía a nuestros servidores.</td></tr>
+      <tr><td>Notificaciones</td><td>Estado del temporizador, y avisos de tus Ligas si tienes cuenta.</td></tr>
       <tr><td>Servicio en primer plano</td><td>Que el cronómetro siga funcionando con la pantalla apagada.</td></tr>
       <tr><td>Vibración</td><td>Avisos táctiles del temporizador.</td></tr>
     </table>
-    <p>La app no accede a tu ubicación, contactos, cámara, fotos ni archivos.</p>
+    <p>
+      La app no accede a tus contactos ni a archivos fuera de las fotos que tú eliges compartir
+      explícitamente; la cámara, la galería y la ubicación solo se usan en el momento y para lo
+      descrito en esta tabla, nunca en segundo plano.
+    </p>
 
     <h2>3. Con quién compartimos datos</h2>
     <ul>
-      <li><strong>Cloudflare</strong> (Workers AI) — transcripción e interpretación de voz.</li>
+      <li><strong>Cloudflare</strong> (Workers AI) — transcripción/interpretación de voz, y lectura de fotos de Ligas mediante un modelo de visión.</li>
+      <li><strong>Cloudflare</strong> (R2) — almacenamiento de las fotos que subes (perfil, feed, Ligas y sus logos).</li>
+      <li><strong>Firebase</strong> (Google) — autenticación de cuentas y notificaciones push (Cloud Messaging).</li>
+      <li><strong>Google Places API</strong> — horario y nivel de precio de los boxes del directorio.</li>
       <li><strong>Google AdMob</strong> — publicidad en la versión gratuita.</li>
       <li><strong>Google Play Facturación</strong> — procesamiento de compras y verificación de suscripción.</li>
     </ul>
@@ -249,6 +312,13 @@
       <li>Datos locales (PRs, historial, ajustes): hasta que los borres tú o desinstales la app.</li>
       <li>Valor comparable de PRs para el Ranking, y apodo/país/categoría/género/edad/box (si los
         pones): hasta que borres los datos locales, los cambies, o los borres tú.</li>
+      <li>Cuenta, @handle, amistades, publicaciones, comentarios y fotos de Comunidad: mientras la
+        cuenta esté activa; se borran de forma permanente al eliminarla.</li>
+      <li>Ligas (membresías, resultados diarios, notas, fotos y logo): mientras exista la
+        membresía/liga; se borran al eliminar tu cuenta, salir de la liga, o borrarla si eres su
+        creador.</li>
+      <li>Ubicación aproximada del directorio de boxes: no se guarda, se usa solo al momento en tu
+        propio dispositivo.</li>
       <li>Contadores de uso por voz (identificador anónimo): 35 días.</li>
       <li>Peticiones enviadas voluntariamente a revisión: hasta 180 días.</li>
       <li>Sugerencias de funcionalidad: hasta 365 días.</li>
@@ -259,12 +329,18 @@
     <h2 id="derechos">5. Tus derechos</h2>
     <p>
       Si resides en el Espacio Económico Europeo, el RGPD te reconoce derecho de acceso,
-      rectificación, supresión, limitación, portabilidad y oposición sobre tus datos. Como la app no
-      usa cuentas, la forma más directa de ejercerlos es Ajustes → Borrar datos locales, que borra
-      tanto lo guardado en el móvil como tu marca del Ranking y tu apodo en el servidor (desinstalar
-      la app sin usar antes ese botón NO borra lo ya enviado al servidor); para cualquier dato
-      asociado a tu identificador anónimo en nuestros
-      servidores, escríbenos a <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a> indicando el
+      rectificación, supresión, limitación, portabilidad y oposición sobre tus datos.
+    </p>
+    <p>
+      Si tienes una <strong>cuenta</strong>, la vía más directa es Perfil → Ajustes de cuenta →
+      Eliminar cuenta: borra de forma permanente tu email, @handle, amistades, publicaciones,
+      comentarios, fotos, Ligas y membresías de nuestros servidores (después de eso, tu sesión de
+      Google/Firebase también se cierra). Si usas la app como <strong>invitado</strong> (sin
+      cuenta), la vía es Ajustes → Borrar datos locales, que borra tanto lo guardado en el móvil
+      como tu marca del Ranking y tu apodo en el servidor (desinstalar la app sin usar antes ese
+      botón NO borra lo ya enviado al servidor). Para cualquier otro dato asociado a tu cuenta o a
+      tu identificador anónimo en nuestros servidores, escríbenos a
+      <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a> indicando tu email de cuenta o tu
       identificador de dispositivo (visible en Ajustes) y qué quieres solicitar. También puedes
       reclamar ante la <a href="https://www.aepd.es" target="_blank" rel="noopener">Agencia Española
       de Protección de Datos (AEPD)</a>.
@@ -296,8 +372,11 @@
     <p class="meta">WOD Voice Timer · Last updated: <span id="date-en">[date]</span></p>
 
     <div class="note">
-      This app works <strong>without accounts or sign-up</strong>. We don't ask for your name,
-      email, or anything that directly identifies you. What we do process is detailed below.
+      You can use most of the app <strong>without creating an account</strong> — the timer, WOD
+      generator, your PRs, and the anonymous Ranking all work as always, with no name or email
+      required. Creating a free account is optional and only needed for
+      <strong>Community</strong> and <strong>Leagues</strong> (finding and following athletes,
+      posting to the feed, competing as a group). What we process in each case is detailed below.
     </div>
 
     <h2>1. Data controller</h2>
@@ -356,14 +435,16 @@
       but not what's already been sent to the server.
     </p>
 
-    <h3>2.4 Ranking nickname, country, category, gender, age group, and box (optional)</h3>
+    <h3>2.4 Ranking nickname, country, category, gender, age group, and box</h3>
     <p>
       In Settings (or in the initial dialog you may see when opening the app) you can set, change,
-      or clear a nickname for the Ranking. It's entirely optional and not required to use the app
-      or to appear on the leaderboards (without a nickname, your position is shown anonymously). If
-      you set one, it's <strong>shown publicly</strong> next to your mark to anyone browsing that
-      Ranking — don't treat it as private data, it's content visible to other users. We apply a
-      basic filter to block offensive nicknames, though it's not exhaustive moderation.
+      or clear a nickname for the Ranking. It's not required to use the rest of the app — your PRs
+      still get saved to your local history either way — but it <strong>is required for your mark
+      to be compared against other users' on the Ranking</strong>: without a nickname, the mark
+      isn't published (to discourage anonymous spam). Once you set one, it's
+      <strong>shown publicly</strong> next to your mark to anyone browsing that Ranking — don't
+      treat it as private data, it's content visible to other users. We apply a basic filter to
+      block offensive nicknames, though it's not exhaustive moderation.
     </p>
     <p>
       If you also set your country or your box/gym, they're <strong>shown publicly</strong> too,
@@ -398,16 +479,65 @@
       solely to decide what the app shows you.
     </p>
 
-    <h3>2.5 Suggestions and competition proposals</h3>
+    <h3>2.5 Account (optional)</h3>
     <p>
-      If you send a feature suggestion through the app's feedback box, we store the text (together
-      with your anonymous identifier) for up to 365 days, solely to consider future improvements. If
-      you propose a competition for the finder (name, country, dates, price...), that data is about
-      the <strong>event</strong>, not about you, and is kept until it's published or discarded during
-      manual review, with no fixed deadline.
+      Community and Leagues need a free account (email and password, or your Google account, via
+      Google's <strong>Firebase Authentication</strong>) or, if you prefer, you can continue as a
+      guest. We store your email only to identify your account and let you sign in on another
+      device; we never show it to other users. You can delete your account anytime from Profile →
+      Account settings → Delete account (see section 5).
     </p>
 
-    <h3>2.6 Purchases and subscription</h3>
+    <h3>2.6 Community: @handle, friends, feed, and photos</h3>
+    <p>
+      With an account you can pick a public <strong>@handle</strong> — different from the anonymous
+      Ranking nickname described above — so other users can find you and add you as a friend
+      (a request the other person accepts). You can also: post your PRs, badges, or League results
+      to the community feed, with an optional photo; react and comment on other people's posts;
+      search for athletes by name, by your box, or among people you follow; and set an optional
+      public profile photo. All of this — your @handle, your friendships, your posts, your comments,
+      and your photos — is visible to other Community users while your account is active, and is
+      deleted when you delete it. Photos you upload (profile, feed, Leagues) are stored on our cloud
+      storage provider (Cloudflare R2) at a non-guessable address; we don't manually review them
+      unless reported.
+    </p>
+
+    <h3>2.7 Boxes and approximate location</h3>
+    <p>
+      The "Find your box" directory may ask for <strong>approximate location</strong> permission to
+      sort gyms by distance; if you grant it, that location is used only in the moment, on your own
+      device, and is <strong>never sent to our servers or stored</strong>. If you decline, the
+      directory still works, sorted alphabetically. To show each box's hours and price level (when
+      available), we query the <strong>Google Places API</strong> with the box's own name/address —
+      never with your location or identity. Any user can also rate a box or suggest missing details
+      (disciplines, hours), either anonymously or tied to your account if you're signed in.
+    </p>
+
+    <h3>2.8 Leagues: results, photos, and AI reading</h3>
+    <p>
+      With an account you can create or join Leagues (public or private groups) to compete with
+      your box or training group. Whatever you log each day in a League — the workout's blocks,
+      their values, a note, and an optional photo — is visible to the rest of that League's
+      members, together with your @handle. If you use "Scan photo" to have AI propose the blocks
+      from a photo of your whiteboard or notebook, that photo is sent to
+      <strong>Cloudflare Workers AI</strong> (a vision model) only to read it and propose the
+      blocks; you review and correct it before saving anything. If you create a League, you can set
+      a logo for it, visible to anyone who finds it. We send push notifications (via
+      <strong>Firebase Cloud Messaging</strong>) about your Leagues — for example, if someone
+      overtakes you that day, or the weekly closing summary — using your device's notification
+      token, tied to your account while it's active.
+    </p>
+
+    <h3>2.9 Suggestions and competition proposals</h3>
+    <p>
+      If you send a feature suggestion through the app's feedback box, we store the text (together
+      with your anonymous identifier, or your account if signed in) for up to 365 days, solely to
+      consider future improvements. If you propose a competition for the finder (name, country,
+      dates, price...), that data is about the <strong>event</strong>, not about you, and is kept
+      until it's published or discarded during manual review, with no fixed deadline.
+    </p>
+
+    <h3>2.10 Purchases and subscription</h3>
     <p>
       Purchases (remove ads, Pro subscription) are processed entirely through
       <strong>Google Play Billing</strong>; we never see or store your payment details. To verify an
@@ -415,7 +545,7 @@
       be sent to our server, which checks it against the Google Play API.
     </p>
 
-    <h3>2.7 Advertising</h3>
+    <h3>2.11 Advertising</h3>
     <p>
       The free version shows ads via <strong>Google AdMob</strong>, including optional rewarded
       videos to earn extra voice-AI uses. AdMob may collect advertising identifiers and technical
@@ -423,19 +553,28 @@
       ads from showing.
     </p>
 
-    <h3>2.8 Device permissions</h3>
+    <h3>2.12 Device permissions</h3>
     <table>
       <tr><th>Permission</th><th>What it's used for</th></tr>
       <tr><td>Microphone</td><td>Only while you're actively recording a voice request (no background listening).</td></tr>
-      <tr><td>Notifications</td><td>Showing the timer's status while you train.</td></tr>
+      <tr><td>Camera / gallery</td><td>Only when you pick or take a photo for your profile, the feed, a League or its logo, or for AI to read it in "Scan photo".</td></tr>
+      <tr><td>Approximate location</td><td>Only if granted, to sort "Find your box" by distance (see 2.7); never sent to our servers.</td></tr>
+      <tr><td>Notifications</td><td>Timer status, and League alerts if you have an account.</td></tr>
       <tr><td>Foreground service</td><td>Keeping the timer running with the screen off.</td></tr>
       <tr><td>Vibration</td><td>Timer haptic cues.</td></tr>
     </table>
-    <p>The app does not access your location, contacts, camera, photos, or files.</p>
+    <p>
+      The app does not access your contacts or files beyond the photos you explicitly choose to
+      share; the camera, gallery, and location are only used in the moment for what's described in
+      this table, never in the background.
+    </p>
 
     <h2>3. Who we share data with</h2>
     <ul>
-      <li><strong>Cloudflare</strong> (Workers AI) — voice transcription and interpretation.</li>
+      <li><strong>Cloudflare</strong> (Workers AI) — voice transcription/interpretation, and reading League photos via a vision model.</li>
+      <li><strong>Cloudflare</strong> (R2) — storage for photos you upload (profile, feed, Leagues, and their logos).</li>
+      <li><strong>Firebase</strong> (Google) — account authentication and push notifications (Cloud Messaging).</li>
+      <li><strong>Google Places API</strong> — hours and price level for boxes in the directory.</li>
       <li><strong>Google AdMob</strong> — advertising in the free version.</li>
       <li><strong>Google Play Billing</strong> — payment processing and subscription verification.</li>
     </ul>
@@ -446,6 +585,13 @@
       <li>Local data (PRs, history, settings): until you delete it or uninstall the app.</li>
       <li>Comparable PR value for the Ranking, and nickname/country/category/gender/age group/box
         (if set): until you delete local data, change them, or clear them yourself.</li>
+      <li>Account, @handle, friends, posts, comments, and Community photos: while the account is
+        active; permanently deleted when you delete it.</li>
+      <li>Leagues (memberships, daily results, notes, photos, and logo): while the
+        membership/league exists; deleted when you delete your account, leave the league, or
+        delete it if you're its creator.</li>
+      <li>Approximate location from the box directory: not stored, used only in the moment on your
+        own device.</li>
       <li>Voice usage counters (anonymous identifier): 35 days.</li>
       <li>Requests voluntarily sent for review: up to 180 days.</li>
       <li>Feature suggestions: up to 365 days.</li>
@@ -456,14 +602,20 @@
     <h2 id="rights">5. Your rights</h2>
     <p>
       If you're in the European Economic Area, the GDPR grants you rights of access, rectification,
-      erasure, restriction, portability, and objection over your data. Since the app has no accounts,
-      the most direct way to exercise them is Settings → Delete local data, which deletes both what's
-      stored on your phone and your Ranking mark and nickname on the server (uninstalling the app
-      without using that button first does NOT delete what's already been sent to the server); for
-      any data tied to your anonymous identifier on our servers, email us at
-      <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a> with your device identifier (visible
-      in Settings) and what you'd like to request. You can also file a complaint with your local data
-      protection authority (in Spain: the
+      erasure, restriction, portability, and objection over your data.
+    </p>
+    <p>
+      If you have an <strong>account</strong>, the most direct way is Profile → Account settings →
+      Delete account: it permanently deletes your email, @handle, friendships, posts, comments,
+      photos, Leagues, and memberships from our servers (your Google/Firebase session is also
+      closed afterwards). If you use the app as a <strong>guest</strong> (no account), the way is
+      Settings → Delete local data, which deletes both what's stored on your phone and your Ranking
+      mark and nickname on the server (uninstalling the app without using that button first does
+      NOT delete what's already been sent to the server). For any other data tied to your account or
+      your anonymous identifier on our servers, email us at
+      <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a> with your account email or device
+      identifier (visible in Settings) and what you'd like to request. You can also file a complaint
+      with your local data protection authority (in Spain: the
       <a href="https://www.aepd.es" target="_blank" rel="noopener">AEPD</a>).
     </p>
 
@@ -491,8 +643,11 @@
 <p class="meta">WOD Voice Timer · Ultimo aggiornamento: <span id="date-it">[data]</span></p>
 
 <div class="note">
-  Questa app funziona <strong>senza account né registrazione</strong>. Non ti chiediamo il nome, l'email
-  né alcun dato che ti identifichi direttamente. Ciò che effettivamente trattiamo è descritto qui sotto.
+  Puoi usare la maggior parte dell'app <strong>senza creare un account</strong> — il timer, il
+  generatore di WOD, i tuoi PR e il Ranking anonimo funzionano come sempre, senza chiederti nome
+  o email. Creare un account gratuito è facoltativo e serve solo per <strong>Community</strong> e
+  <strong>Leghe</strong> (trovare e seguire atleti, pubblicare nel feed, competere in gruppo).
+  Quanto trattiamo in ciascun caso è descritto qui sotto.
 </div>
 
 <h2>1. Titolare del trattamento</h2>
@@ -555,12 +710,13 @@
   pulsante cancella i dati dal telefono ma non quelli già inviati al server.
 </p>
 
-<h3>2.4 Nickname, paese, categoria, genere, età e box del Ranking (facoltativo)</h3>
+<h3>2.4 Nickname, paese, categoria, genere, età e box del Ranking</h3>
 <p>
   In Impostazioni (o nella finestra iniziale che può comparire quando apri l'app) puoi impostare,
-  cambiare o cancellare un nickname per il Ranking. È del tutto facoltativo e non serve per usare
-  l'app né per comparire nelle classifiche (senza nickname, la tua posizione viene mostrata in forma
-  anonima). Se lo imposti,
+  cambiare o cancellare un nickname per il Ranking. Non è necessario per usare il resto dell'app —
+  i tuoi PR continuano comunque a essere salvati nel tuo storico locale — ma <strong>è necessario
+  perché il tuo risultato venga confrontato con quelli degli altri utenti nel Ranking</strong>: senza
+  nickname, il risultato non viene pubblicato (per scoraggiare lo spam anonimo). Non appena ne imposti uno,
   <strong>viene mostrato pubblicamente</strong> accanto al tuo risultato a chiunque consulti quel
   Ranking — non trattarlo come un dato privato, è un contenuto visibile a terzi. Applichiamo un
   filtro di base per bloccare nickname offensivi, anche se non si tratta di una moderazione esaustiva.
@@ -601,16 +757,68 @@
   tuo dispositivo e viene usata esclusivamente per decidere cosa mostrarti nell'app.
 </p>
 
-<h3>2.5 Suggerimenti e proposte di competizioni</h3>
+<h3>2.5 Account (facoltativo)</h3>
 <p>
-  Se invii un suggerimento di funzionalità dall'apposita casella dell'app, conserviamo il testo
-  (insieme al tuo identificativo anonimo) fino a 365 giorni, solo per valutare miglioramenti futuri.
-  Se proponi una competizione per il motore di ricerca (nome, paese, date, prezzo...), questi dati
-  riguardano l'<strong>evento</strong>, non te, e vengono conservati finché non vengono pubblicati o
-  scartati nella revisione manuale, senza un termine prestabilito.
+  Community e Leghe richiedono un account gratuito (email e password, oppure il tuo account
+  Google, tramite <strong>Firebase Authentication</strong> di Google) oppure, se preferisci, puoi
+  continuare come ospite. Conserviamo la tua email solo per identificare il tuo account e farti
+  accedere da un altro dispositivo; non la mostriamo mai ad altri utenti. Puoi eliminare il tuo
+  account quando vuoi da Profilo → Impostazioni account → Elimina account (vedi sezione 5).
 </p>
 
-<h3>2.6 Acquisti e abbonamento</h3>
+<h3>2.6 Community: @handle, amicizie, feed e foto</h3>
+<p>
+  Con un account puoi scegliere un <strong>@handle</strong> pubblico — diverso dal nickname
+  anonimo del Ranking descritto sopra — così altri utenti possono trovarti e aggiungerti come
+  amico (richiesta che l'altra persona accetta). Puoi anche: pubblicare nel feed della community i
+  tuoi PR, badge o risultati delle Leghe, con una foto facoltativa; reagire e commentare i post
+  altrui; cercare atleti per nome, per il tuo box o tra le persone che segui; e impostare una foto
+  profilo pubblica facoltativa. Tutto questo — il tuo @handle, le tue amicizie, i tuoi post, i tuoi
+  commenti e le tue foto — è visibile agli altri utenti della Community finché il tuo account è
+  attivo, e viene cancellato quando lo elimini. Le foto che carichi (profilo, feed, Leghe) sono
+  salvate sul nostro fornitore di archiviazione cloud (Cloudflare R2) con un indirizzo non
+  indovinabile; non le esaminiamo manualmente salvo segnalazione.
+</p>
+
+<h3>2.7 Box e posizione approssimativa</h3>
+<p>
+  La directory "Trova il tuo box" può chiederti il permesso di <strong>posizione
+  approssimativa</strong> per ordinare le palestre per vicinanza; se lo concedi, quella posizione
+  viene usata solo al momento, sul tuo stesso dispositivo, e <strong>non viene mai inviata ai
+  nostri server né salvata</strong>. Se lo rifiuti, la directory funziona comunque, ordinata
+  alfabeticamente. Per mostrare orario e livello di prezzo di ogni box (quando disponibili),
+  interroghiamo l'<strong>API di Google Places</strong> con il nome/indirizzo del box stesso — mai
+  con la tua posizione o identità. Qualsiasi utente può inoltre valutare un box o suggerire dati
+  mancanti (discipline, orario), in modo anonimo o associato al tuo account se hai eseguito
+  l'accesso.
+</p>
+
+<h3>2.8 Leghe: risultati, foto e lettura tramite IA</h3>
+<p>
+  Con un account puoi creare o unirti a Leghe (gruppi pubblici o privati) per competere con il tuo
+  box o il tuo gruppo di allenamento. Ciò che registri ogni giorno in una Lega — i blocchi
+  dell'allenamento, i loro valori, una nota e una foto facoltativa — è visibile agli altri membri
+  di quella Lega, insieme al tuo @handle. Se usi "Scansiona foto" per far proporre i blocchi
+  all'IA a partire da una foto della tua lavagna o del tuo quaderno, quella foto viene inviata a
+  <strong>Cloudflare Workers AI</strong> (un modello di visione) solo per leggerla e proporti i
+  blocchi; sei tu a rivederli e correggerli prima di salvare qualsiasi cosa. Se crei una Lega,
+  puoi impostarle un logo, visibile a chiunque la trovi. Inviamo notifiche push (tramite
+  <strong>Firebase Cloud Messaging</strong>) sulle tue Leghe — ad esempio se qualcuno ti supera
+  nella giornata, o il riepilogo della chiusura settimanale — usando il token di notifica del tuo
+  dispositivo, associato al tuo account finché è attivo.
+</p>
+
+<h3>2.9 Suggerimenti e proposte di competizioni</h3>
+<p>
+  Se invii un suggerimento di funzionalità dall'apposita casella dell'app, conserviamo il testo
+  (insieme al tuo identificativo anonimo, o al tuo account se hai eseguito l'accesso) fino a 365
+  giorni, solo per valutare miglioramenti futuri. Se proponi una competizione per il motore di
+  ricerca (nome, paese, date, prezzo...), questi dati riguardano l'<strong>evento</strong>, non te,
+  e vengono conservati finché non vengono pubblicati o scartati nella revisione manuale, senza un
+  termine prestabilito.
+</p>
+
+<h3>2.10 Acquisti e abbonamento</h3>
 <p>
   Gli acquisti (rimozione degli annunci, abbonamento Pro) vengono elaborati interamente tramite
   <strong>Google Play Fatturazione</strong>; noi non vediamo né conserviamo i tuoi dati di pagamento.
@@ -619,7 +827,7 @@
   Play.
 </p>
 
-<h3>2.7 Pubblicità</h3>
+<h3>2.11 Pubblicità</h3>
 <p>
   La versione gratuita mostra annunci tramite <strong>Google AdMob</strong>, inclusi video con
   ricompensa opzionali per ottenere usi extra dell'IA vocale. AdMob può raccogliere identificativi
@@ -627,19 +835,28 @@
   acquisti la rimozione degli annunci o ti abboni a Pro, smetterai di vedere annunci.
 </p>
 
-<h3>2.8 Permessi del dispositivo</h3>
+<h3>2.12 Permessi del dispositivo</h3>
 <table>
   <tr><th>Permesso</th><th>A cosa serve</th></tr>
   <tr><td>Microfono</td><td>Solo mentre registri attivamente una richiesta vocale (nessun ascolto in background).</td></tr>
-  <tr><td>Notifiche</td><td>Mostrare lo stato del timer mentre ti alleni.</td></tr>
+  <tr><td>Fotocamera / galleria</td><td>Solo quando scegli o scatti una foto per il profilo, il feed, una Lega o il suo logo, o perché l'IA la legga in "Scansiona foto".</td></tr>
+  <tr><td>Posizione approssimativa</td><td>Solo se concessa, per ordinare "Trova il tuo box" per vicinanza (vedi 2.7); mai inviata ai nostri server.</td></tr>
+  <tr><td>Notifiche</td><td>Stato del timer, e avvisi delle tue Leghe se hai un account.</td></tr>
   <tr><td>Servizio in primo piano</td><td>Permettere al cronometro di continuare a funzionare a schermo spento.</td></tr>
   <tr><td>Vibrazione</td><td>Avvisi tattili del timer.</td></tr>
 </table>
-<p>L'app non accede alla tua posizione, ai contatti, alla fotocamera, alle foto né ai file.</p>
+<p>
+  L'app non accede ai tuoi contatti né a file al di fuori delle foto che scegli esplicitamente di
+  condividere; fotocamera, galleria e posizione vengono usate solo al momento e per quanto
+  descritto in questa tabella, mai in background.
+</p>
 
 <h2>3. Con chi condividiamo i dati</h2>
 <ul>
-  <li><strong>Cloudflare</strong> (Workers AI) — trascrizione e interpretazione vocale.</li>
+  <li><strong>Cloudflare</strong> (Workers AI) — trascrizione/interpretazione vocale, e lettura delle foto delle Leghe tramite un modello di visione.</li>
+  <li><strong>Cloudflare</strong> (R2) — archiviazione delle foto che carichi (profilo, feed, Leghe e i loro loghi).</li>
+  <li><strong>Firebase</strong> (Google) — autenticazione degli account e notifiche push (Cloud Messaging).</li>
+  <li><strong>API di Google Places</strong> — orario e livello di prezzo dei box nella directory.</li>
   <li><strong>Google AdMob</strong> — pubblicità nella versione gratuita.</li>
   <li><strong>Google Play Fatturazione</strong> — elaborazione degli acquisti e verifica dell'abbonamento.</li>
 </ul>
@@ -650,6 +867,13 @@
   <li>Dati locali (PR, storico, impostazioni): finché non li cancelli tu o disinstalli l'app.</li>
   <li>Valore comparabile dei PR per il Ranking, e nickname/paese/categoria/genere/età/box (se li
     imposti): finché non cancelli i dati locali, li cambi, o li cancelli tu.</li>
+  <li>Account, @handle, amicizie, post, commenti e foto della Community: finché l'account è
+    attivo; cancellati permanentemente quando lo elimini.</li>
+  <li>Leghe (iscrizioni, risultati giornalieri, note, foto e logo): finché esiste
+    l'iscrizione/lega; cancellati quando elimini il tuo account, lasci la lega, o la elimini se
+    ne sei il creatore.</li>
+  <li>Posizione approssimativa dalla directory dei box: non viene salvata, usata solo al momento
+    sul tuo dispositivo.</li>
   <li>Contatori di utilizzo vocale (identificativo anonimo): 35 giorni.</li>
   <li>Richieste inviate volontariamente per la revisione: fino a 180 giorni.</li>
   <li>Suggerimenti di funzionalità: fino a 365 giorni.</li>
@@ -660,13 +884,20 @@
 <h2 id="derechos">5. I tuoi diritti</h2>
 <p>
   Se risiedi nello Spazio Economico Europeo, il RGPD ti riconosce il diritto di accesso, rettifica,
-  cancellazione, limitazione, portabilità e opposizione riguardo ai tuoi dati. Poiché l'app non usa
-  account, il modo più diretto per esercitarli è Impostazioni → Cancella dati locali, che cancella
-  sia quanto salvato sul telefono sia la tua posizione nel Ranking e il tuo nickname sul server
-  (disinstallare l'app senza usare prima quel pulsante NON cancella quanto già inviato al server);
-  per qualsiasi dato associato al tuo identificativo anonimo sui nostri server, scrivici a
-  <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a> indicando l'identificativo del dispositivo
-  (visibile in Impostazioni) e cosa desideri richiedere. Puoi inoltre presentare reclamo presso il
+  cancellazione, limitazione, portabilità e opposizione riguardo ai tuoi dati.
+</p>
+<p>
+  Se hai un <strong>account</strong>, il modo più diretto è Profilo → Impostazioni account →
+  Elimina account: cancella in modo permanente la tua email, @handle, amicizie, post, commenti,
+  foto, Leghe e iscrizioni dai nostri server (dopodiché viene chiusa anche la tua sessione
+  Google/Firebase). Se usi l'app come <strong>ospite</strong> (senza account), il modo è
+  Impostazioni → Cancella dati locali, che cancella sia quanto salvato sul telefono sia la tua
+  posizione nel Ranking e il tuo nickname sul server (disinstallare l'app senza usare prima quel
+  pulsante NON cancella quanto già inviato al server). Per qualsiasi altro dato associato al tuo
+  account o al tuo identificativo anonimo sui nostri server, scrivici a
+  <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a> indicando la tua email account o
+  l'identificativo del dispositivo (visibile in Impostazioni) e cosa desideri richiedere. Puoi
+  inoltre presentare reclamo presso il
   <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">Garante per la protezione
   dei dati personali</a>.
 </p>
@@ -696,9 +927,11 @@
 <p class="meta">WOD Voice Timer · Letzte Aktualisierung: <span id="date-de">[Datum]</span></p>
 
 <div class="note">
-  Diese App funktioniert <strong>ohne Konten und ohne Registrierung</strong>. Wir fragen weder
-  deinen Namen noch deine E-Mail-Adresse noch andere Daten ab, die dich direkt identifizieren.
-  Was wir tatsächlich verarbeiten, ist unten beschrieben.
+  Du kannst den größten Teil der App <strong>ohne ein Konto zu erstellen</strong> nutzen — der
+  Timer, der WOD-Generator, deine PRs und das anonyme Ranking funktionieren wie gewohnt, ohne
+  Name oder E-Mail-Adresse. Ein kostenloses Konto zu erstellen ist optional und nur für
+  <strong>Community</strong> und <strong>Ligen</strong> nötig (Athleten finden und folgen, im
+  Feed posten, in der Gruppe antreten). Was wir dabei jeweils verarbeiten, ist unten beschrieben.
 </div>
 
 <h2>1. Verantwortlicher</h2>
@@ -764,12 +997,14 @@
   aber die bereits an den Server übermittelten Daten.
 </p>
 
-<h3>2.4 Spitzname, Land, Kategorie, Geschlecht, Altersgruppe und Box des Rankings (optional)</h3>
+<h3>2.4 Spitzname, Land, Kategorie, Geschlecht, Altersgruppe und Box des Rankings</h3>
 <p>
   In den Einstellungen (oder im Anfangsdialog, der beim Öffnen der App erscheinen kann) kannst
-  du einen Spitznamen für das Ranking festlegen, ändern oder löschen. Das ist vollständig
-  optional und weder für die Nutzung der App noch für das Erscheinen in den Ranglisten
-  erforderlich (ohne Spitznamen wird deine Position anonym angezeigt). Wenn du ihn festlegst,
+  du einen Spitznamen für das Ranking festlegen, ändern oder löschen. Er ist nicht erforderlich,
+  um den Rest der App zu nutzen — deine PRs werden trotzdem wie gewohnt in deinem lokalen
+  Verlauf gespeichert —, aber er ist erforderlich, damit deine Marke <strong>mit denen anderer
+  Nutzer im Ranking verglichen wird</strong>: Ohne Spitznamen wird die Marke nicht
+  veröffentlicht (um anonymen Spam zu verhindern). Sobald du einen festlegst,
   <strong>wird er öffentlich angezeigt</strong>, zusammen mit deiner Marke, für jede Person, die
   dieses Ranking einsieht — behandle ihn nicht als privates Datum, er ist für Dritte sichtbarer
   Inhalt. Wir wenden einen einfachen Filter an, um anstößige Spitznamen zu blockieren, auch wenn
@@ -813,17 +1048,71 @@
   dir die App anzeigt.
 </p>
 
-<h3>2.5 Vorschläge und Wettkampfvorschläge</h3>
+<h3>2.5 Konto (optional)</h3>
+<p>
+  Community und Ligen erfordern ein kostenloses Konto (E-Mail und Passwort oder dein
+  Google-Konto, über Googles <strong>Firebase Authentication</strong>) oder du kannst, wenn du
+  möchtest, als Gast fortfahren. Wir speichern deine E-Mail-Adresse nur, um dein Konto zu
+  identifizieren und dir die Anmeldung auf einem anderen Gerät zu ermöglichen; wir zeigen sie nie
+  anderen Nutzern. Du kannst dein Konto jederzeit über Profil → Kontoeinstellungen → Konto
+  löschen entfernen (siehe Abschnitt 5).
+</p>
+
+<h3>2.6 Community: @Handle, Freundschaften, Feed und Fotos</h3>
+<p>
+  Mit einem Konto kannst du einen öffentlichen <strong>@Handle</strong> wählen — anders als der
+  oben beschriebene anonyme Ranking-Spitzname —, damit dich andere Nutzer finden und als Freund
+  hinzufügen können (eine Anfrage, die die andere Person annimmt). Du kannst außerdem: deine PRs,
+  Abzeichen oder Liga-Ergebnisse mit optionalem Foto im Community-Feed posten; auf Beiträge
+  anderer reagieren und kommentieren; Athleten nach Namen, nach deiner Box oder unter Personen,
+  denen du folgst, suchen; und ein optionales öffentliches Profilfoto festlegen. All dies — dein
+  @Handle, deine Freundschaften, deine Beiträge, deine Kommentare und deine Fotos — ist für
+  andere Community-Nutzer sichtbar, solange dein Konto aktiv ist, und wird gelöscht, wenn du es
+  löschst. Fotos, die du hochlädst (Profil, Feed, Ligen), werden bei unserem Cloud-Speicheranbieter
+  (Cloudflare R2) unter einer nicht erratbaren Adresse gespeichert; wir prüfen sie nicht manuell,
+  außer bei einer Meldung.
+</p>
+
+<h3>2.7 Boxen und ungefährer Standort</h3>
+<p>
+  Das Verzeichnis "Finde deine Box" kann dich um die Berechtigung für den <strong>ungefähren
+  Standort</strong> bitten, um Boxen nach Entfernung zu sortieren; wenn du sie erteilst, wird
+  dieser Standort nur im Moment, auf deinem eigenen Gerät, verwendet und
+  <strong>niemals an unsere Server gesendet oder gespeichert</strong>. Wenn du ablehnst,
+  funktioniert das Verzeichnis trotzdem, alphabetisch sortiert. Um Öffnungszeiten und Preisniveau
+  jeder Box anzuzeigen (sofern verfügbar), fragen wir die <strong>Google Places API</strong> mit
+  dem Namen/der Adresse der Box selbst ab — niemals mit deinem Standort oder deiner Identität.
+  Jeder Nutzer kann außerdem eine Box bewerten oder fehlende Angaben (Disziplinen, Öffnungszeiten)
+  vorschlagen, entweder anonym oder mit deinem Konto verknüpft, wenn du angemeldet bist.
+</p>
+
+<h3>2.8 Ligen: Ergebnisse, Fotos und Auswertung per KI</h3>
+<p>
+  Mit einem Konto kannst du Ligen (öffentliche oder private Gruppen) erstellen oder ihnen
+  beitreten, um mit deiner Box oder Trainingsgruppe anzutreten. Was du täglich in einer Liga
+  einträgst — die Blöcke des Trainings, ihre Werte, eine Notiz und ein optionales Foto — ist für
+  die übrigen Mitglieder dieser Liga zusammen mit deinem @Handle sichtbar. Wenn du "Foto
+  scannen" nutzt, damit die KI die Blöcke anhand eines Fotos deiner Tafel oder deines Notizbuchs
+  vorschlägt, wird dieses Foto an <strong>Cloudflare Workers AI</strong> (ein Vision-Modell)
+  gesendet, nur um es zu lesen und dir die Blöcke vorzuschlagen; du überprüfst und korrigierst
+  sie, bevor irgendetwas gespeichert wird. Wenn du eine Liga erstellst, kannst du ihr ein Logo
+  geben, das für jeden sichtbar ist, der sie findet. Wir senden Push-Benachrichtigungen (über
+  <strong>Firebase Cloud Messaging</strong>) zu deinen Ligen — zum Beispiel, wenn dich jemand an
+  diesem Tag überholt, oder die Zusammenfassung des wöchentlichen Abschlusses — unter Verwendung
+  des Benachrichtigungs-Tokens deines Geräts, verknüpft mit deinem Konto, solange es aktiv ist.
+</p>
+
+<h3>2.9 Vorschläge und Wettkampfvorschläge</h3>
 <p>
   Wenn du über den Vorschlagsbriefkasten der App einen Funktionsvorschlag sendest, speichern wir
-  den Text (zusammen mit deiner anonymen Kennung) bis zu 365 Tage lang, ausschließlich um
-  zukünftige Verbesserungen zu bewerten. Wenn du einen Wettkampf für die Suchfunktion
-  vorschlägst (Name, Land, Termine, Preis usw.), beziehen sich diese Daten auf die
-  <strong>Veranstaltung</strong>, nicht auf dich, und werden bis zur Veröffentlichung oder
+  den Text (zusammen mit deiner anonymen Kennung oder deinem Konto, falls angemeldet) bis zu 365
+  Tage lang, ausschließlich um zukünftige Verbesserungen zu bewerten. Wenn du einen Wettkampf für
+  die Suchfunktion vorschlägst (Name, Land, Termine, Preis usw.), beziehen sich diese Daten auf
+  die <strong>Veranstaltung</strong>, nicht auf dich, und werden bis zur Veröffentlichung oder
   Ablehnung im Rahmen der manuellen Prüfung aufbewahrt, ohne feste Frist.
 </p>
 
-<h3>2.6 Käufe und Abonnement</h3>
+<h3>2.10 Käufe und Abonnement</h3>
 <p>
   Käufe (Werbung entfernen, Pro-Abonnement) werden vollständig über
   <strong>Google Play Abrechnung</strong> abgewickelt; wir sehen oder speichern deine
@@ -832,7 +1121,7 @@
   Google Play API abfragt.
 </p>
 
-<h3>2.7 Werbung</h3>
+<h3>2.11 Werbung</h3>
 <p>
   Die kostenlose Version zeigt Werbung über <strong>Google AdMob</strong> an, einschließlich
   optionaler Werbevideos mit Belohnung, um zusätzliche Nutzungen der Sprach-KI zu erhalten.
@@ -841,19 +1130,28 @@
   Werbung mehr.
 </p>
 
-<h3>2.8 Geräteberechtigungen</h3>
+<h3>2.12 Geräteberechtigungen</h3>
 <table>
   <tr><th>Berechtigung</th><th>Wofür sie verwendet wird</th></tr>
   <tr><td>Mikrofon</td><td>Nur während du aktiv eine Sprachanfrage aufnimmst (kein Mithören im Hintergrund).</td></tr>
-  <tr><td>Benachrichtigungen</td><td>Anzeige des Timer-Status während des Trainings.</td></tr>
+  <tr><td>Kamera / Galerie</td><td>Nur wenn du ein Foto für dein Profil, den Feed, eine Liga oder ihr Logo auswählst oder aufnimmst, oder damit die KI es bei "Foto scannen" liest.</td></tr>
+  <tr><td>Ungefährer Standort</td><td>Nur wenn erteilt, um "Finde deine Box" nach Entfernung zu sortieren (siehe 2.7); wird nie an unsere Server gesendet.</td></tr>
+  <tr><td>Benachrichtigungen</td><td>Timer-Status und Liga-Hinweise, wenn du ein Konto hast.</td></tr>
   <tr><td>Dienst im Vordergrund</td><td>Damit der Timer auch bei ausgeschaltetem Bildschirm weiterläuft.</td></tr>
   <tr><td>Vibration</td><td>Haptische Hinweise des Timers.</td></tr>
 </table>
-<p>Die App greift nicht auf deinen Standort, deine Kontakte, deine Kamera, deine Fotos oder deine Dateien zu.</p>
+<p>
+  Die App greift nicht auf deine Kontakte oder Dateien außerhalb der Fotos zu, die du
+  ausdrücklich zum Teilen auswählst; Kamera, Galerie und Standort werden nur im Moment und für
+  das in dieser Tabelle Beschriebene verwendet, nie im Hintergrund.
+</p>
 
 <h2>3. Mit wem wir Daten teilen</h2>
 <ul>
-  <li><strong>Cloudflare</strong> (Workers AI) — Transkription und Interpretation von Sprache.</li>
+  <li><strong>Cloudflare</strong> (Workers AI) — Transkription/Interpretation von Sprache, und Auswertung von Liga-Fotos über ein Vision-Modell.</li>
+  <li><strong>Cloudflare</strong> (R2) — Speicherung der Fotos, die du hochlädst (Profil, Feed, Ligen und deren Logos).</li>
+  <li><strong>Firebase</strong> (Google) — Konto-Authentifizierung und Push-Benachrichtigungen (Cloud Messaging).</li>
+  <li><strong>Google Places API</strong> — Öffnungszeiten und Preisniveau der Boxen im Verzeichnis.</li>
   <li><strong>Google AdMob</strong> — Werbung in der kostenlosen Version.</li>
   <li><strong>Google Play Abrechnung</strong> — Abwicklung von Käufen und Überprüfung des Abonnements.</li>
 </ul>
@@ -864,6 +1162,13 @@
   <li>Lokale Daten (PRs, Verlauf, Einstellungen): bis du sie selbst löschst oder die App deinstallierst.</li>
   <li>Vergleichbarer PR-Wert für das Ranking sowie Spitzname/Land/Kategorie/Geschlecht/Altersgruppe/Box
     (falls angegeben): bis du die lokalen Daten löschst, sie änderst oder selbst löschst.</li>
+  <li>Konto, @Handle, Freundschaften, Beiträge, Kommentare und Community-Fotos: solange das Konto
+    aktiv ist; werden beim Löschen dauerhaft entfernt.</li>
+  <li>Ligen (Mitgliedschaften, tägliche Ergebnisse, Notizen, Fotos und Logo): solange die
+    Mitgliedschaft/Liga besteht; werden gelöscht, wenn du dein Konto löschst, die Liga verlässt
+    oder sie als Ersteller löschst.</li>
+  <li>Ungefährer Standort aus dem Box-Verzeichnis: wird nicht gespeichert, nur im Moment auf
+    deinem eigenen Gerät verwendet.</li>
   <li>Nutzungszähler für Sprachbefehle (anonyme Kennung): 35 Tage.</li>
   <li>Freiwillig zur Überprüfung gesendete Anfragen: bis zu 180 Tage.</li>
   <li>Funktionsvorschläge: bis zu 365 Tage.</li>
@@ -875,16 +1180,22 @@
 <p>
   Wenn du im Europäischen Wirtschaftsraum wohnst, gewährt dir die DSGVO ein Recht auf Auskunft,
   Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch bezüglich deiner
-  Daten. Da die App keine Konten verwendet, ist der direkteste Weg, diese Rechte auszuüben,
-  Einstellungen → Lokale Daten löschen; damit werden sowohl die auf dem Handy gespeicherten
-  Daten als auch deine Marke im Ranking und dein Spitzname auf dem Server gelöscht (wenn du die
-  App deinstallierst, ohne vorher diese Schaltfläche zu verwenden, werden die bereits an den
-  Server übermittelten Daten NICHT gelöscht); für alle Daten, die mit deiner anonymen Kennung
-  auf unseren Servern verknüpft sind, schreib uns an
-  <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a> und gib deine Geräte-ID (sichtbar in
-  den Einstellungen) sowie dein Anliegen an. Du kannst dich außerdem bei der
-  <a href="https://www.bfdi.bund.de" target="_blank" rel="noopener">Bundesbeauftragten für den
-  Datenschutz und die Informationsfreiheit (BfDI)</a> beschweren.
+  Daten.
+</p>
+<p>
+  Wenn du ein <strong>Konto</strong> hast, ist der direkteste Weg Profil → Kontoeinstellungen →
+  Konto löschen: Damit werden deine E-Mail-Adresse, dein @Handle, deine Freundschaften, Beiträge,
+  Kommentare, Fotos, Ligen und Mitgliedschaften dauerhaft von unseren Servern gelöscht (danach
+  wird auch deine Google-/Firebase-Sitzung beendet). Wenn du die App als <strong>Gast</strong>
+  (ohne Konto) nutzt, ist der Weg Einstellungen → Lokale Daten löschen; damit werden sowohl die
+  auf dem Handy gespeicherten Daten als auch deine Marke im Ranking und dein Spitzname auf dem
+  Server gelöscht (wenn du die App deinstallierst, ohne vorher diese Schaltfläche zu verwenden,
+  werden die bereits an den Server übermittelten Daten NICHT gelöscht). Für alle anderen Daten,
+  die mit deinem Konto oder deiner anonymen Kennung auf unseren Servern verknüpft sind, schreib
+  uns an <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a> und gib deine Konto-E-Mail oder
+  Geräte-ID (sichtbar in den Einstellungen) sowie dein Anliegen an. Du kannst dich außerdem bei
+  der <a href="https://www.bfdi.bund.de" target="_blank" rel="noopener">Bundesbeauftragten für
+  den Datenschutz und die Informationsfreiheit (BfDI)</a> beschweren.
 </p>
 
 <h2>6. Minderjährige</h2>
@@ -915,8 +1226,11 @@
 <p class="meta">WOD Voice Timer · Dernière mise à jour : <span id="date-fr">[date]</span></p>
 
 <div class="note">
-  Cette app fonctionne <strong>sans compte ni inscription</strong>. On ne te demande ni ton nom,
-  ni ton email, ni aucune donnée qui t'identifie directement. Ce qu'on traite réellement est
+  Tu peux utiliser la majeure partie de l'app <strong>sans créer de compte</strong> — le
+  minuteur, le générateur de WOD, tes PR et le Ranking anonyme fonctionnent comme toujours, sans
+  nom ni email. Créer un compte gratuit est facultatif et n'est nécessaire que pour la
+  <strong>Communauté</strong> et les <strong>Ligues</strong> (trouver et suivre des athlètes,
+  publier dans le fil, être en compétition en groupe). Ce qu'on traite dans chaque cas est
   détaillé ci-dessous.
 </div>
 
@@ -981,12 +1295,14 @@
   ce bouton au préalable efface les données du mobile mais pas celles déjà envoyées au serveur.
 </p>
 
-<h3>2.4 Pseudo, pays, catégorie, genre, âge et box du Ranking (optionnel)</h3>
+<h3>2.4 Pseudo, pays, catégorie, genre, âge et box du Ranking</h3>
 <p>
   Dans Paramètres (ou dans le dialogue initial qui peut apparaître à l'ouverture de l'app), tu
-  peux définir, modifier ou effacer un pseudo pour le Ranking. C'est totalement optionnel et ce
-  n'est pas nécessaire pour utiliser l'app ni pour apparaître dans les classements (sans pseudo,
-  ta position s'affiche de façon anonyme). Si tu en définis un,
+  peux définir, modifier ou effacer un pseudo pour le Ranking. Ce n'est pas nécessaire pour
+  utiliser le reste de l'app — tes PR continuent d'être enregistrés dans ton historique local
+  dans tous les cas — mais c'est <strong>nécessaire pour que ta marque soit comparée à celles des
+  autres utilisateurs sur le Ranking</strong> : sans pseudo, la marque n'est pas publiée (pour
+  limiter le spam anonyme). Dès que tu en définis un,
   <strong>il s'affiche publiquement</strong> à côté de ta marque pour toute personne consultant ce
   Ranking — ne le traite pas comme une donnée privée, c'est un contenu visible par des tiers. On
   applique un filtre basique pour bloquer les pseudos offensants, même si ce n'est pas une
@@ -1028,16 +1344,71 @@
   uniquement sur ton appareil et sert exclusivement à décider ce que l'app t'affiche.
 </p>
 
-<h3>2.5 Suggestions et propositions de compétitions</h3>
+<h3>2.5 Compte (facultatif)</h3>
 <p>
-  Si tu envoies une suggestion de fonctionnalité depuis la boîte à idées de l'app, on conserve le
-  texte (avec ton identifiant anonyme) jusqu'à 365 jours, uniquement pour évaluer de futures
-  améliorations. Si tu proposes une compétition pour le moteur de recherche (nom, pays, dates,
-  prix...), ces données concernent l'<strong>événement</strong>, pas toi, et sont conservées jusqu'à
-  leur publication ou leur rejet lors de la révision manuelle, sans délai fixe.
+  La Communauté et les Ligues demandent un compte gratuit (email et mot de passe, ou ton compte
+  Google, via <strong>Firebase Authentication</strong> de Google) ou, si tu préfères, tu peux
+  continuer en tant qu'invité. On conserve ton email uniquement pour identifier ton compte et te
+  permettre de te connecter sur un autre appareil ; on ne le montre jamais à d'autres
+  utilisateurs. Tu peux supprimer ton compte à tout moment depuis Profil → Paramètres du compte →
+  Supprimer le compte (voir section 5).
 </p>
 
-<h3>2.6 Achats et abonnement</h3>
+<h3>2.6 Communauté : @handle, amitiés, fil et photos</h3>
+<p>
+  Avec un compte, tu peux choisir un <strong>@handle</strong> public — différent du pseudo
+  anonyme du Ranking décrit ci-dessus — pour que d'autres utilisateurs te trouvent et t'ajoutent
+  comme ami (demande que l'autre personne accepte). Tu peux aussi : publier tes PR, badges ou
+  résultats de Ligues sur le fil communautaire, avec une photo facultative ; réagir et commenter
+  les publications des autres ; chercher des athlètes par nom, par ton box, ou parmi les personnes
+  que tu suis ; et définir une photo de profil publique facultative. Tout cela — ton @handle, tes
+  amitiés, tes publications, tes commentaires et tes photos — est visible par les autres
+  utilisateurs de la Communauté tant que ton compte est actif, et est effacé quand tu le
+  supprimes. Les photos que tu télécharges (profil, fil, Ligues) sont stockées chez notre
+  fournisseur de stockage cloud (Cloudflare R2) à une adresse non devinable ; on ne les examine
+  pas manuellement, sauf en cas de signalement.
+</p>
+
+<h3>2.7 Box et localisation approximative</h3>
+<p>
+  L'annuaire "Trouve ton box" peut te demander la permission de <strong>localisation
+  approximative</strong> pour trier les salles par proximité ; si tu l'accordes, cette
+  localisation est utilisée uniquement sur le moment, sur ton propre appareil, et
+  <strong>n'est jamais envoyée à nos serveurs ni stockée</strong>. Si tu la refuses, l'annuaire
+  fonctionne quand même, trié par ordre alphabétique. Pour afficher les horaires et le niveau de
+  prix de chaque box (quand disponibles), on interroge l'<strong>API Google Places</strong> avec
+  le nom/l'adresse du box lui-même — jamais avec ta localisation ou ton identité. N'importe quel
+  utilisateur peut aussi noter un box ou suggérer des informations manquantes (disciplines,
+  horaires), de façon anonyme ou associée à ton compte si tu es connecté.
+</p>
+
+<h3>2.8 Ligues : résultats, photos et lecture par IA</h3>
+<p>
+  Avec un compte, tu peux créer des Ligues (groupes publics ou privés) ou les rejoindre pour être
+  en compétition avec ton box ou ton groupe d'entraînement. Ce que tu enregistres chaque jour
+  dans une Ligue — les blocs de l'entraînement, leurs valeurs, une note et une photo facultative —
+  est visible par les autres membres de cette Ligue, avec ton @handle. Si tu utilises "Scanner
+  une photo" pour que l'IA propose les blocs à partir d'une photo de ton tableau ou de ton
+  carnet, cette photo est envoyée à <strong>Cloudflare Workers AI</strong> (un modèle de vision)
+  uniquement pour la lire et te proposer les blocs ; tu les relis et les corriges avant
+  d'enregistrer quoi que ce soit. Si tu crées une Ligue, tu peux lui donner un logo, visible par
+  quiconque la trouve. On envoie des notifications push (via <strong>Firebase Cloud
+  Messaging</strong>) à propos de tes Ligues — par exemple, si quelqu'un te dépasse dans la
+  journée, ou le résumé de la clôture hebdomadaire — en utilisant le jeton de notification de ton
+  appareil, associé à ton compte tant qu'il est actif.
+</p>
+
+<h3>2.9 Suggestions et propositions de compétitions</h3>
+<p>
+  Si tu envoies une suggestion de fonctionnalité depuis la boîte à idées de l'app, on conserve le
+  texte (avec ton identifiant anonyme, ou ton compte si tu es connecté) jusqu'à 365 jours,
+  uniquement pour évaluer de futures améliorations. Si tu proposes une compétition pour le moteur
+  de recherche (nom, pays, dates, prix...), ces données concernent l'<strong>événement</strong>,
+  pas toi, et sont conservées jusqu'à leur publication ou leur rejet lors de la révision manuelle,
+  sans délai fixe.
+</p>
+
+<h3>2.10 Achats et abonnement</h3>
 <p>
   Les achats (suppression des publicités, abonnement Pro) sont traités intégralement via
   <strong>Google Play Facturation</strong> ; nous ne voyons ni ne stockons tes données de paiement.
@@ -1045,7 +1416,7 @@
   bancaires) peut être envoyé à notre serveur, qui le vérifie auprès de l'API de Google Play.
 </p>
 
-<h3>2.7 Publicité</h3>
+<h3>2.11 Publicité</h3>
 <p>
   La version gratuite affiche des publicités via <strong>Google AdMob</strong>, y compris des
   vidéos récompensées optionnelles pour obtenir des utilisations supplémentaires de l'IA vocale.
@@ -1054,19 +1425,28 @@
   des publicités ou t'abonnes à Pro, tu ne vois plus de publicités.
 </p>
 
-<h3>2.8 Autorisations de l'appareil</h3>
+<h3>2.12 Autorisations de l'appareil</h3>
 <table>
   <tr><th>Autorisation</th><th>À quoi elle sert</th></tr>
   <tr><td>Micro</td><td>Uniquement pendant l'enregistrement actif d'une demande vocale (pas d'écoute en arrière-plan).</td></tr>
-  <tr><td>Notifications</td><td>Afficher l'état du minuteur pendant ton entraînement.</td></tr>
+  <tr><td>Appareil photo / galerie</td><td>Uniquement quand tu choisis ou prends une photo pour ton profil, le fil, une Ligue ou son logo, ou pour que l'IA la lise dans "Scanner une photo".</td></tr>
+  <tr><td>Localisation approximative</td><td>Uniquement si accordée, pour trier "Trouve ton box" par proximité (voir 2.7) ; jamais envoyée à nos serveurs.</td></tr>
+  <tr><td>Notifications</td><td>État du minuteur, et alertes de tes Ligues si tu as un compte.</td></tr>
   <tr><td>Service en premier plan</td><td>Permettre au chronomètre de continuer à fonctionner écran éteint.</td></tr>
   <tr><td>Vibration</td><td>Alertes tactiles du minuteur.</td></tr>
 </table>
-<p>L'app n'accède ni à ta localisation, ni à tes contacts, ni à ta caméra, ni à tes photos, ni à tes fichiers.</p>
+<p>
+  L'app n'accède ni à tes contacts ni à des fichiers en dehors des photos que tu choisis
+  explicitement de partager ; l'appareil photo, la galerie et la localisation ne sont utilisés
+  que sur le moment et pour ce qui est décrit dans ce tableau, jamais en arrière-plan.
+</p>
 
 <h2>3. Avec qui on partage des données</h2>
 <ul>
-  <li><strong>Cloudflare</strong> (Workers AI) — transcription et interprétation vocale.</li>
+  <li><strong>Cloudflare</strong> (Workers AI) — transcription/interprétation vocale, et lecture des photos de Ligues via un modèle de vision.</li>
+  <li><strong>Cloudflare</strong> (R2) — stockage des photos que tu télécharges (profil, fil, Ligues et leurs logos).</li>
+  <li><strong>Firebase</strong> (Google) — authentification des comptes et notifications push (Cloud Messaging).</li>
+  <li><strong>API Google Places</strong> — horaires et niveau de prix des box de l'annuaire.</li>
   <li><strong>Google AdMob</strong> — publicité dans la version gratuite.</li>
   <li><strong>Google Play Facturation</strong> — traitement des achats et vérification de l'abonnement.</li>
 </ul>
@@ -1077,6 +1457,13 @@
   <li>Données locales (PRs, historique, réglages) : jusqu'à ce que tu les effaces ou que tu désinstalles l'app.</li>
   <li>Valeur comparable des PRs pour le Ranking, et pseudo/pays/catégorie/genre/âge/box (si
     renseignés) : jusqu'à ce que tu effaces les données locales, les modifies, ou les effaces.</li>
+  <li>Compte, @handle, amitiés, publications, commentaires et photos de la Communauté : tant que
+    le compte est actif ; effacés définitivement quand tu le supprimes.</li>
+  <li>Ligues (adhésions, résultats quotidiens, notes, photos et logo) : tant que
+    l'adhésion/la ligue existe ; effacés quand tu supprimes ton compte, quittes la ligue, ou la
+    supprimes si tu en es le créateur.</li>
+  <li>Localisation approximative de l'annuaire des box : non stockée, utilisée uniquement sur le
+    moment sur ton propre appareil.</li>
   <li>Compteurs d'usage vocal (identifiant anonyme) : 35 jours.</li>
   <li>Demandes envoyées volontairement en révision : jusqu'à 180 jours.</li>
   <li>Suggestions de fonctionnalités : jusqu'à 365 jours.</li>
@@ -1088,15 +1475,22 @@
 <p>
   Si tu résides dans l'Espace Économique Européen, le RGPD te reconnaît un droit d'accès, de
   rectification, d'effacement, de limitation, de portabilité et d'opposition sur tes données.
-  Comme l'app ne repose pas sur des comptes, le moyen le plus direct de les exercer est
-  Paramètres → Effacer les données locales, qui efface aussi bien ce qui est sauvegardé sur le
-  mobile que ta marque du Ranking et ton pseudo sur le serveur (désinstaller l'app sans utiliser
-  ce bouton au préalable N'efface PAS ce qui a déjà été envoyé au serveur) ; pour toute donnée
-  associée à ton identifiant anonyme sur nos serveurs, écris-nous à
-  <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a> en indiquant l'identifiant d'appareil
-  (visible dans Paramètres) et ce que tu souhaites demander. Tu peux également déposer une
-  réclamation auprès de la <a href="https://www.cnil.fr" target="_blank" rel="noopener">Commission
-  Nationale de l'Informatique et des Libertés (CNIL)</a>.
+</p>
+<p>
+  Si tu as un <strong>compte</strong>, le moyen le plus direct est Profil → Paramètres du compte
+  → Supprimer le compte : cela efface définitivement ton email, ton @handle, tes amitiés, tes
+  publications, tes commentaires, tes photos, tes Ligues et tes adhésions de nos serveurs (ta
+  session Google/Firebase est aussi fermée ensuite). Si tu utilises l'app en tant
+  qu'<strong>invité</strong> (sans compte), le moyen est Paramètres → Effacer les données
+  locales, qui efface aussi bien ce qui est sauvegardé sur le mobile que ta marque du Ranking et
+  ton pseudo sur le serveur (désinstaller l'app sans utiliser ce bouton au préalable N'efface PAS
+  ce qui a déjà été envoyé au serveur). Pour toute autre donnée associée à ton compte ou à ton
+  identifiant anonyme sur nos serveurs, écris-nous à
+  <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a> en indiquant ton email de compte ou
+  l'identifiant d'appareil (visible dans Paramètres) et ce que tu souhaites demander. Tu peux
+  également déposer une réclamation auprès de la
+  <a href="https://www.cnil.fr" target="_blank" rel="noopener">Commission Nationale de
+  l'Informatique et des Libertés (CNIL)</a>.
 </p>
 
 <h2>6. Mineurs</h2>
@@ -1127,8 +1521,11 @@
 <p class="meta">WOD Voice Timer · Última atualização: <span id="date-pt">[data]</span></p>
 
 <div class="note">
-  Esta app funciona <strong>sem contas nem registo</strong>. Não pedimos o teu nome, e-mail
-  nem nenhum dado que te identifique diretamente. O que efetivamente processamos está detalhado abaixo.
+  Podes usar a maior parte da app <strong>sem criares conta</strong> — o temporizador, o
+  gerador de WODs, os teus PRs e o Ranking anónimo funcionam como sempre, sem pedir nome nem
+  e-mail. Criar uma conta gratuita é opcional e só é necessária para <strong>Comunidade</strong>
+  e <strong>Ligas</strong> (encontrar e seguir atletas, publicar no feed, competir em grupo). O
+  que processamos em cada caso está detalhado abaixo.
 </div>
 
 <h2>1. Responsável pelo tratamento</h2>
@@ -1190,12 +1587,14 @@
   botão apaga os dados do telemóvel mas não os que já foram enviados para o servidor.
 </p>
 
-<h3>2.4 Alcunha, país, categoria, género, idade e box do Ranking (opcional)</h3>
+<h3>2.4 Alcunha, país, categoria, género, idade e box do Ranking</h3>
 <p>
   Em Definições (ou na caixa de diálogo inicial que pode aparecer-te ao abrires a app) podes
-  definir, alterar ou apagar uma alcunha para o Ranking. É totalmente opcional e não é necessária
-  para usar a app nem para apareceres nas classificações (sem alcunha, a tua posição é mostrada de
-  forma anónima). Se a definires,
+  definir, alterar ou apagar uma alcunha para o Ranking. Não é necessária para usar o resto da
+  app — os teus PRs continuam a ser guardados no teu histórico local da mesma forma — mas
+  <strong>é necessária para que a tua marca seja comparada com as de outros utilizadores no
+  Ranking</strong>: sem alcunha, a marca não é publicada (para travar o spam anónimo). Assim que
+  definires uma alcunha,
   <strong>é mostrada publicamente</strong> junto à tua marca a qualquer pessoa que consulte esse
   Ranking — não a trates como um dado privado, é conteúdo visível para terceiros. Aplicamos um
   filtro básico para bloquear alcunhas ofensivas, embora não seja uma moderação exaustiva.
@@ -1236,16 +1635,70 @@
   no teu dispositivo e é usada exclusivamente para decidir o que a app te mostra.
 </p>
 
-<h3>2.5 Sugestões e propostas de competições</h3>
+<h3>2.5 Conta (opcional)</h3>
 <p>
-  Se enviares uma sugestão de funcionalidade a partir da caixa de sugestões da app, guardamos o
-  texto (junto com o teu identificador anónimo) durante até 365 dias, apenas para avaliar
-  melhorias futuras. Se propuseres uma competição para o motor de busca (nome, país, datas,
-  preço...), esses dados são sobre o <strong>evento</strong>, não sobre ti, e são conservados até
-  serem publicados ou descartados na revisão manual, sem um prazo fixo.
+  Comunidade e Ligas pedem uma conta gratuita (e-mail e palavra-passe, ou a tua conta Google,
+  através do <strong>Firebase Authentication</strong> da Google) ou, se preferires, podes
+  continuar como convidado. Guardamos o teu e-mail apenas para identificar a tua conta e
+  permitir-te iniciar sessão noutro dispositivo; nunca o mostramos a outros utilizadores. Podes
+  eliminar a tua conta quando quiseres em Perfil → Definições de conta → Eliminar conta (ver
+  secção 5).
 </p>
 
-<h3>2.6 Compras e subscrição</h3>
+<h3>2.6 Comunidade: @handle, amizades, feed e fotos</h3>
+<p>
+  Com uma conta podes escolher um <strong>@handle</strong> público — diferente da alcunha
+  anónima do Ranking descrita acima — para que outros utilizadores te encontrem e te adicionem
+  como amigo (pedido que a outra pessoa aceita). Também podes: publicar os teus PRs, distintivos
+  ou resultados de Ligas no feed da comunidade, com uma foto opcional; reagir e comentar
+  publicações de outras pessoas; procurar atletas por nome, pelo teu box ou entre pessoas que
+  segues; e definir uma foto de perfil pública opcional. Tudo isto — o teu @handle, as tuas
+  amizades, as tuas publicações, os teus comentários e as tuas fotos — é visível para outros
+  utilizadores da Comunidade enquanto a tua conta estiver ativa, e é apagado quando a eliminas.
+  As fotos que carregas (perfil, feed, Ligas) ficam guardadas no nosso fornecedor de
+  armazenamento na nuvem (Cloudflare R2) num endereço não adivinhável; não as revemos
+  manualmente, exceto se forem denunciadas.
+</p>
+
+<h3>2.7 Boxes e localização aproximada</h3>
+<p>
+  O diretório "Encontra o teu box" pode pedir-te permissão de <strong>localização
+  aproximada</strong> para ordenar os ginásios por proximidade; se a concederes, essa localização
+  é usada apenas no momento, no teu próprio dispositivo, e <strong>nunca é enviada para os nossos
+  servidores nem guardada</strong>. Se a recusares, o diretório continua a funcionar na mesma,
+  ordenado alfabeticamente. Para mostrar o horário e o nível de preço de cada box (quando
+  disponíveis), consultamos a <strong>API do Google Places</strong> com o nome/morada do próprio
+  box — nunca com a tua localização ou identidade. Qualquer utilizador pode também avaliar um box
+  ou sugerir dados em falta (disciplinas, horário), de forma anónima ou associada à tua conta se
+  tiveres sessão iniciada.
+</p>
+
+<h3>2.8 Ligas: resultados, fotos e leitura por IA</h3>
+<p>
+  Com uma conta podes criar Ligas (grupos públicos ou privados) ou juntar-te a elas para competir
+  com o teu box ou grupo de treino. O que registas todos os dias numa Liga — os blocos do treino,
+  os seus valores, uma nota e uma foto opcional — é visível para os restantes membros dessa Liga,
+  junto com o teu @handle. Se usares "Ler foto" para que a IA proponha os blocos a partir de uma
+  foto do teu quadro ou caderno, essa foto é enviada para o <strong>Cloudflare Workers AI</strong>
+  (um modelo de visão) apenas para a ler e propor-te os blocos; tu revés e corriges antes de
+  guardares o que quer que seja. Se criares uma Liga, podes definir-lhe um logótipo, visível para
+  quem a encontrar. Enviamos notificações push (via <strong>Firebase Cloud Messaging</strong>)
+  sobre as tuas Ligas — por exemplo, se alguém te ultrapassar no dia, ou o resumo do fecho
+  semanal — usando o token de notificações do teu dispositivo, associado à tua conta enquanto
+  estiver ativa.
+</p>
+
+<h3>2.9 Sugestões e propostas de competições</h3>
+<p>
+  Se enviares uma sugestão de funcionalidade a partir da caixa de sugestões da app, guardamos o
+  texto (junto com o teu identificador anónimo, ou a tua conta se tiveres sessão iniciada)
+  durante até 365 dias, apenas para avaliar melhorias futuras. Se propuseres uma competição para
+  o motor de busca (nome, país, datas, preço...), esses dados são sobre o
+  <strong>evento</strong>, não sobre ti, e são conservados até serem publicados ou descartados na
+  revisão manual, sem um prazo fixo.
+</p>
+
+<h3>2.10 Compras e subscrição</h3>
 <p>
   As compras (remover anúncios, subscrição Pro) são processadas integralmente através da
   <strong>Faturação do Google Play</strong>; nós não vemos nem armazenamos os teus dados de
@@ -1254,7 +1707,7 @@
   junto da API do Google Play.
 </p>
 
-<h3>2.7 Publicidade</h3>
+<h3>2.11 Publicidade</h3>
 <p>
   A versão gratuita mostra anúncios através do <strong>Google AdMob</strong>, incluindo
   vídeos recompensados opcionais para obteres utilizações extra da IA por voz. O AdMob pode
@@ -1263,19 +1716,28 @@
   Pro, deixas de ver anúncios.
 </p>
 
-<h3>2.8 Permissões do dispositivo</h3>
+<h3>2.12 Permissões do dispositivo</h3>
 <table>
   <tr><th>Permissão</th><th>Para que é usada</th></tr>
   <tr><td>Microfone</td><td>Apenas enquanto estás a gravar ativamente um pedido por voz (não há escuta em segundo plano).</td></tr>
-  <tr><td>Notificações</td><td>Mostrar o estado do temporizador enquanto treinas.</td></tr>
+  <tr><td>Câmara / galeria</td><td>Apenas quando escolhes ou tiras uma foto para o teu perfil, o feed, uma Liga ou o seu logótipo, ou para a IA a ler em "Ler foto".</td></tr>
+  <tr><td>Localização aproximada</td><td>Apenas se a concederes, para ordenar "Encontra o teu box" por proximidade (ver 2.7); nunca é enviada para os nossos servidores.</td></tr>
+  <tr><td>Notificações</td><td>Estado do temporizador, e avisos das tuas Ligas se tiveres conta.</td></tr>
   <tr><td>Serviço em primeiro plano</td><td>Permitir que o cronómetro continue a funcionar com o ecrã desligado.</td></tr>
   <tr><td>Vibração</td><td>Avisos táteis do temporizador.</td></tr>
 </table>
-<p>A app não acede à tua localização, contactos, câmara, fotos nem ficheiros.</p>
+<p>
+  A app não acede aos teus contactos nem a ficheiros fora das fotos que escolhes explicitamente
+  partilhar; a câmara, a galeria e a localização só são usadas no momento e para o descrito nesta
+  tabela, nunca em segundo plano.
+</p>
 
 <h2>3. Com quem partilhamos dados</h2>
 <ul>
-  <li><strong>Cloudflare</strong> (Workers AI) — transcrição e interpretação de voz.</li>
+  <li><strong>Cloudflare</strong> (Workers AI) — transcrição/interpretação de voz, e leitura de fotos de Ligas através de um modelo de visão.</li>
+  <li><strong>Cloudflare</strong> (R2) — armazenamento das fotos que carregas (perfil, feed, Ligas e os seus logótipos).</li>
+  <li><strong>Firebase</strong> (Google) — autenticação de contas e notificações push (Cloud Messaging).</li>
+  <li><strong>API do Google Places</strong> — horário e nível de preço dos boxes do diretório.</li>
   <li><strong>Google AdMob</strong> — publicidade na versão gratuita.</li>
   <li><strong>Faturação do Google Play</strong> — processamento de compras e verificação de subscrição.</li>
 </ul>
@@ -1286,6 +1748,13 @@
   <li>Dados locais (PRs, histórico, definições): até que os apagues ou desinstales a app.</li>
   <li>Valor comparável de PRs para o Ranking, e alcunha/país/categoria/género/idade/box (se os
     definires): até apagares os dados locais, os alterares, ou os apagares.</li>
+  <li>Conta, @handle, amizades, publicações, comentários e fotos da Comunidade: enquanto a conta
+    estiver ativa; apagados permanentemente quando a eliminas.</li>
+  <li>Ligas (participações, resultados diários, notas, fotos e logótipo): enquanto existir a
+    participação/liga; apagados quando eliminas a tua conta, sais da liga, ou a apagas se fores o
+    seu criador.</li>
+  <li>Localização aproximada do diretório de boxes: não é guardada, usada apenas no momento no
+    teu próprio dispositivo.</li>
   <li>Contadores de utilização por voz (identificador anónimo): 35 dias.</li>
   <li>Pedidos enviados voluntariamente para revisão: até 180 dias.</li>
   <li>Sugestões de funcionalidade: até 365 dias.</li>
@@ -1296,14 +1765,20 @@
 <h2 id="direitos">5. Os teus direitos</h2>
 <p>
   Se residires no Espaço Económico Europeu, o RGPD reconhece-te o direito de acesso,
-  retificação, apagamento, limitação, portabilidade e oposição sobre os teus dados. Como a app
-  não usa contas, a forma mais direta de os exercer é em Definições → Apagar dados locais, que
-  apaga tanto o que está guardado no telemóvel como a tua marca do Ranking e a tua alcunha no
-  servidor (desinstalar a app sem usares antes esse botão NÃO apaga o que já foi enviado para o
-  servidor); para qualquer dado associado ao teu identificador anónimo nos nossos
-  servidores, escreve-nos para <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a> indicando
-  o identificador de dispositivo (visível em Definições) e o que pretendes solicitar. Também
-  podes apresentar reclamação junto da <a href="https://www.cnpd.pt" target="_blank"
+  retificação, apagamento, limitação, portabilidade e oposição sobre os teus dados.
+</p>
+<p>
+  Se tiveres <strong>conta</strong>, a forma mais direta é Perfil → Definições de conta →
+  Eliminar conta: apaga permanentemente o teu e-mail, @handle, amizades, publicações,
+  comentários, fotos, Ligas e participações dos nossos servidores (a tua sessão Google/Firebase
+  também é encerrada a seguir). Se usares a app como <strong>convidado</strong> (sem conta), a
+  forma é Definições → Apagar dados locais, que apaga tanto o que está guardado no telemóvel
+  como a tua marca do Ranking e a tua alcunha no servidor (desinstalar a app sem usares antes
+  esse botão NÃO apaga o que já foi enviado para o servidor). Para qualquer outro dado associado
+  à tua conta ou ao teu identificador anónimo nos nossos servidores, escreve-nos para
+  <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a> indicando o teu e-mail de conta ou o
+  identificador de dispositivo (visível em Definições) e o que pretendes solicitar. Também podes
+  apresentar reclamação junto da <a href="https://www.cnpd.pt" target="_blank"
   rel="noopener">Comissão Nacional de Proteção de Dados (CNPD)</a>.
 </p>
 
