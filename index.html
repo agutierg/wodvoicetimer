@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Política de Privacidad — WOD Voice Timer</title>
+<title>Política de Privacidad — AI WOD Coach</title>
 <style>
   :root {
     --bg: #ffffff;
@@ -89,7 +89,7 @@
 
   <!-- ============================= ESPAÑOL ============================= -->
   <div class="lang-block" id="lang-es">
-    <p class="meta">WOD Voice Timer · Última actualización: <span id="date-es">[fecha]</span></p>
+    <p class="meta">AI WOD Coach · Última actualización: <span id="date-es">16 de octubre de 2026</span></p>
 
     <div class="note">
       Puedes usar la mayor parte de la app <strong>sin crear cuenta ni registrarte</strong> —el
@@ -101,7 +101,7 @@
 
     <h2>1. Responsable del tratamiento</h2>
     <p>
-      <strong>GutsApps</strong>, desarrollador de la app <strong>WOD Voice Timer</strong>
+      <strong>GutsApps</strong>, desarrollador de la app <strong>AI WOD Coach</strong> (antes «AI WOD Coach»)
       (paquete <code>com.agutierg.kineticvolt</code>), es responsable de los datos descritos en esta
       política. Puedes contactar en: <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a>.
     </p>
@@ -119,16 +119,18 @@
     <h3>2.2 Voz y transcripciones (configuración por voz)</h3>
     <p>
       Cuando usas el micrófono para configurar un WOD, registrar un PR o pedir un cálculo, el audio
-      se envía de forma cifrada a nuestro servidor (alojado en Cloudflare) para transcribirlo e
-      interpretarlo mediante modelos de inteligencia artificial. El audio se procesa al vuelo y
-      <strong>no se guarda</strong> de forma permanente; el texto transcrito puede conservarse
-      brevemente junto con tu identificador anónimo solo para aplicar el límite de uso mensual
-      (caduca automáticamente a los 35 días).
+      se envía de forma cifrada a nuestro servidor (alojado en Google Cloud / Firebase, en la Unión
+      Europea) y de ahí a la <strong>API de Gemini de Google</strong>, que lo transcribe e interpreta
+      mediante modelos de inteligencia artificial. Nosotros <strong>no guardamos el audio</strong> ni
+      la transcripción para ese uso: solo contamos cuántas interpretaciones haces al mes, asociadas a
+      tu identificador anónimo, para aplicar el límite de uso. Lo mismo ocurre si tocas un ejemplo o
+      escribes la frase en vez de hablar.
     </p>
     <p>
       Si una petición por voz no se entiende bien, puedes elegir voluntariamente "Enviar a revisión".
       En ese caso guardamos el texto transcrito y la respuesta de la IA (asociados a tu identificador
-      anónimo, nunca a tu identidad) hasta 180 días, únicamente para mejorar la interpretación por voz.
+      anónimo, nunca a tu identidad) únicamente para mejorar la interpretación por voz. Puedes pedir
+      que los borremos escribiéndonos (ver sección 5).
     </p>
 
     <h3>2.3 Entrenamientos, PRs e historial</h3>
@@ -206,9 +208,10 @@
 
     <h3>2.5 Cuenta (opcional)</h3>
     <p>
-      Comunidad y Ligas piden una cuenta gratuita (email y contraseña, o tu cuenta de Google, a
-      través de <strong>Firebase Authentication</strong> de Google) o, si lo prefieres, seguir como
-      invitado. Guardamos tu email solo para identificar tu cuenta y dejarte iniciar sesión en otro
+      Comunidad y Ligas piden una cuenta gratuita (email y contraseña, tu cuenta de Google o Inicio de
+      sesión con Apple, a través de <strong>Firebase Authentication</strong> de Google) o, si lo
+      prefieres, seguir como invitado. Guardamos tu email (con Apple puede ser la dirección privada
+      que Apple genera) solo para identificar tu cuenta y dejarte iniciar sesión en otro
       dispositivo; nunca lo mostramos a otros usuarios. Puedes eliminar tu cuenta cuando quieras
       desde Perfil → Ajustes de cuenta → Eliminar cuenta (ver sección 5).
     </p>
@@ -223,8 +226,9 @@
       poner una foto de perfil pública opcional. Todo esto —tu @handle, tus amistades, tus
       publicaciones, tus comentarios y tus fotos— es visible para otros usuarios de la Comunidad
       mientras tu cuenta esté activa, y se borra al eliminarla. Las fotos que subes (perfil, feed,
-      Ligas) se guardan en nuestro proveedor de almacenamiento en la nube (Cloudflare R2) con una
-      dirección no adivinable; no las revisamos manualmente salvo que se reporten.
+      Ligas) se guardan en <strong>Google Cloud Storage</strong> (Firebase) con una dirección no
+      adivinable. Pasan un filtro automático de seguridad (Google Cloud Vision) y las del feed pueden
+      revisarse manualmente antes de mostrarse.
     </p>
 
     <h3>2.7 Boxes y ubicación aproximada</h3>
@@ -245,30 +249,31 @@
       box o tu grupo de entreno. Lo que subas cada día a una Liga —los bloques del entreno, sus
       valores, una nota y una foto opcional— es visible para el resto de miembros de esa Liga,
       junto a tu @handle. Si usas "Escanear foto" para que la IA proponga los bloques a partir de
-      una foto de tu pizarra o cuaderno, esa foto se envía a <strong>Cloudflare Workers AI</strong>
-      (un modelo de visión) solo para leerla y proponerte los bloques; tú la revisas y corriges
-      antes de guardar nada. Si creas una Liga, puedes ponerle un logo, visible para cualquiera que
-      la encuentre. Mandamos notificaciones push (vía <strong>Firebase Cloud Messaging</strong>)
-      sobre tus Ligas —por ejemplo, si alguien te supera en el día, o el resumen del cierre
-      semanal— usando el token de notificaciones de tu dispositivo, asociado a tu cuenta mientras
-      la tengas activa.
+      una foto de tu pizarra o cuaderno, esa foto se envía a la <strong>API de Gemini de
+      Google</strong> (un modelo de visión) solo para leerla y proponerte los bloques; tú la revisas y
+      corriges antes de guardar nada. Si creas una Liga, puedes ponerle un logo, visible para
+      cualquiera que la encuentre. Mandamos notificaciones push (vía <strong>Firebase Cloud
+      Messaging</strong>) sobre tus Ligas —por ejemplo, si alguien te supera en el día, o el resumen
+      del cierre semanal— usando el token de notificaciones de tu dispositivo, asociado a tu cuenta
+      mientras la tengas activa.
     </p>
 
     <h3>2.9 Sugerencias y propuestas de competiciones</h3>
     <p>
       Si envías una sugerencia de funcionalidad desde el buzón de la app, guardamos el texto (junto a
-      tu identificador anónimo o tu cuenta, si tienes sesión iniciada) hasta 365 días, solo para
-      valorar mejoras futuras. Si propones una competición para el buscador (nombre, país, fechas,
-      precio...), esos datos son sobre el <strong>evento</strong>, no sobre ti, y se conservan hasta
-      que se publican o se descartan en la revisión manual, sin un plazo fijo.
+      tu identificador anónimo o tu cuenta, si tienes sesión iniciada) solo para valorar mejoras
+      futuras; puedes pedir que lo borremos. Si propones una competición para el buscador (nombre,
+      país, fechas, precio...), esos datos son sobre el <strong>evento</strong>, no sobre ti, y se
+      conservan hasta que se publican o se descartan en la revisión manual.
     </p>
 
     <h3>2.10 Compras y suscripción</h3>
     <p>
-      Las compras (quitar anuncios, suscripción Pro) se procesan íntegramente a través de
-      <strong>Google Play Facturación</strong>; nosotros no vemos ni almacenamos tus datos de pago.
-      Para verificar una suscripción activa, tu token de compra (un identificador técnico, no tus
-      datos bancarios) puede enviarse a nuestro servidor, que lo consulta contra la API de Google Play.
+      Las compras (quitar anuncios, suscripción Kinetic Pro) se procesan íntegramente a través de
+      <strong>Google Play Facturación</strong> (Android) o de la <strong>App Store</strong> de Apple
+      (iOS); nosotros no vemos ni almacenamos tus datos de pago. Para aplicar tus límites de uso, la
+      app informa a nuestro servidor de si tienes una suscripción activa (un simple indicador, no
+      tus datos bancarios).
     </p>
 
     <h3>2.11 Publicidad</h3>
@@ -276,19 +281,20 @@
       La versión gratuita muestra anuncios a través de <strong>Google AdMob</strong>, incluyendo
       vídeos recompensados opcionales para conseguir usos extra de la IA por voz. AdMob puede
       recopilar identificadores de publicidad y datos técnicos del dispositivo conforme a la propia
-      política de privacidad de Google. Si compras "quitar anuncios" o te suscribes a Pro, dejas de
-      ver anuncios.
+      política de privacidad de Google. En iOS no solicitamos el permiso de seguimiento de Apple
+      (ATT), por lo que no se accede al identificador de publicidad (IDFA). Si compras "quitar
+      anuncios" o te suscribes a Pro, dejas de ver anuncios.
     </p>
 
     <h3>2.12 Permisos del dispositivo</h3>
     <table>
       <tr><th>Permiso</th><th>Para qué se usa</th></tr>
-      <tr><td>Micrófono</td><td>Solo mientras grabas activamente una petición por voz (no hay escucha en segundo plano).</td></tr>
-      <tr><td>Cámara / galería</td><td>Solo cuando eliges o haces una foto para tu perfil, el feed, una Liga o su logo, o para que la IA la lea en "Escanear foto".</td></tr>
+      <tr><td>Micrófono</td><td>Solo mientras grabas activamente una petición por voz o un mensaje al chat de planes (no hay escucha en segundo plano).</td></tr>
+      <tr><td>Cámara / galería</td><td>Solo cuando eliges o haces una foto para tu perfil, el feed, una Liga, su logo o el resultado de una carrera, para escanear el QR de una Liga, o para que la IA la lea en "Escanear foto".</td></tr>
       <tr><td>Ubicación aproximada</td><td>Solo si la concedes, para ordenar "Encuentra tu box" por cercanía (ver 2.7); no se envía a nuestros servidores.</td></tr>
-      <tr><td>Notificaciones</td><td>Estado del temporizador, y avisos de tus Ligas si tienes cuenta.</td></tr>
-      <tr><td>Servicio en primer plano</td><td>Que el cronómetro siga funcionando con la pantalla apagada.</td></tr>
-      <tr><td>Vibración</td><td>Avisos táctiles del temporizador.</td></tr>
+      <tr><td>Notificaciones</td><td>Estado del temporizador, avisos de tus Ligas si tienes cuenta, y los recordatorios de carrera que programes (se crean en tu propio dispositivo).</td></tr>
+      <tr><td>Servicio en primer plano (Android)</td><td>Que el cronómetro siga funcionando con la pantalla apagada.</td></tr>
+      <tr><td>Vibración y avisos hablados</td><td>Avisos del temporizador y del simulacro Hyrox; la voz es la del propio sistema y se genera en tu dispositivo.</td></tr>
     </table>
     <p>
       La app no accede a tus contactos ni a archivos fuera de las fotos que tú eliges compartir
@@ -296,34 +302,73 @@
       descrito en esta tabla, nunca en segundo plano.
     </p>
 
+    <h3>2.13 Planes de entreno con IA</h3>
+    <p>
+      Cuando creas un plan con IA, lo que escribes o dices en el chat (tu objetivo, tus días, tu
+      nivel, lesiones o limitaciones si las cuentas) se envía a nuestro servidor y a la <strong>API de
+      Gemini de Google</strong> para diseñar el plan. La app añade como contexto tu disciplina
+      elegida y, si entrenas Hyrox, el nombre, la fecha y el tiempo objetivo de tu próxima carrera.
+      <strong>No escribas datos que no quieras compartir</strong>, por ejemplo información médica
+      detallada. El plan generado (nombre, resumen del objetivo y los días con calentamiento, fuerza
+      y metcon) se guarda en nuestro servidor con un identificador aleatorio y tu identificador
+      anónimo de dispositivo, y una copia completa en tu móvil. Puedes pedirnos que borremos un plan
+      escribiéndonos (ver sección 5). El plan con IA es orientativo y no sustituye el consejo de un
+      profesional.
+    </p>
+
+    <h3>2.14 Carreras y Hyrox</h3>
+    <p>
+      Tu calendario de carreras, los objetivos de tiempo, los simulacros de Hyrox y su historial, los
+      resultados, el modo día de carrera y los recordatorios se guardan <strong>solo en tu
+      dispositivo</strong>; los recordatorios son notificaciones locales. Si registras una carrera en
+      "Mis carreras" con una cuenta, guardamos su país, ciudad, fecha, tiempo, nombre del evento y
+      una foto opcional en tu cuenta; solo tú puedes verlas, salvo que decidas publicar el resultado
+      en el feed. Si envías tu tiempo al Ranking, se trata como el resto de marcas del Ranking
+      (ver 2.3 y 2.4).
+    </p>
+
+    <h3>2.15 Informes de errores</h3>
+    <p>
+      En las versiones publicadas, <strong>Firebase Crashlytics</strong> (Google) recibe un informe
+      cuando la app se cierra de forma inesperada: datos técnicos del dispositivo (modelo, versión
+      del sistema, estado de la app) y un identificador de instalación de Firebase. No incluye tu
+      audio, tus fotos ni el contenido de tus entrenos. Se usa solo para detectar y corregir fallos.
+    </p>
+
     <h2>3. Con quién compartimos datos</h2>
     <ul>
-      <li><strong>Cloudflare</strong> (Workers AI) — transcripción/interpretación de voz, y lectura de fotos de Ligas mediante un modelo de visión.</li>
-      <li><strong>Cloudflare</strong> (R2) — almacenamiento de las fotos que subes (perfil, feed, Ligas y sus logos).</li>
-      <li><strong>Firebase</strong> (Google) — autenticación de cuentas y notificaciones push (Cloud Messaging).</li>
+      <li><strong>Google</strong> (Firebase, Google Cloud) — alojamiento de nuestro servidor y base de datos (funciones y base de datos en la UE), autenticación de cuentas, almacenamiento de las fotos que subes, notificaciones push (Cloud Messaging) e informes de errores (Crashlytics).</li>
+      <li><strong>Google</strong> (API de Gemini) — interpretación de voz, planes de entreno con IA y lectura de fotos de Ligas.</li>
+      <li><strong>Google</strong> (Cloud Vision) — filtro automático de seguridad de las fotos que subes.</li>
       <li><strong>Google Places API</strong> — horario y nivel de precio de los boxes del directorio.</li>
       <li><strong>Google AdMob</strong> — publicidad en la versión gratuita.</li>
-      <li><strong>Google Play Facturación</strong> — procesamiento de compras y verificación de suscripción.</li>
+      <li><strong>Google Play Facturación</strong> y <strong>App Store (Apple)</strong> — procesamiento de compras y suscripciones.</li>
+      <li><strong>Apple</strong> y <strong>Google</strong> — inicio de sesión, si eliges ese método.</li>
     </ul>
     <p>No vendemos tus datos a terceros ni los usamos con fines distintos a los descritos aquí.</p>
+    <p>
+      Hasta hace poco, parte de estos datos se alojaban en Cloudflare. Los hemos migrado a Firebase y
+      esa infraestructura se retirará.
+    </p>
 
     <h2>4. Cuánto tiempo conservamos los datos</h2>
     <ul>
-      <li>Datos locales (PRs, historial, ajustes): hasta que los borres tú o desinstales la app.</li>
+      <li>Datos locales (PRs, historial, carreras, simulacros, ajustes): hasta que los borres tú o desinstales la app.</li>
       <li>Valor comparable de PRs para el Ranking, y apodo/país/categoría/género/edad/box (si los
         pones): hasta que borres los datos locales, los cambies, o los borres tú.</li>
-      <li>Cuenta, @handle, amistades, publicaciones, comentarios y fotos de Comunidad: mientras la
-        cuenta esté activa; se borran de forma permanente al eliminarla.</li>
+      <li>Cuenta, @handle, amistades, publicaciones, comentarios, carreras y fotos de Comunidad:
+        mientras la cuenta esté activa; se borran de forma permanente al eliminarla.</li>
       <li>Ligas (membresías, resultados diarios, notas, fotos y logo): mientras exista la
         membresía/liga; se borran al eliminar tu cuenta, salir de la liga, o borrarla si eres su
         creador.</li>
       <li>Ubicación aproximada del directorio de boxes: no se guarda, se usa solo al momento en tu
         propio dispositivo.</li>
-      <li>Contadores de uso por voz (identificador anónimo): 35 días.</li>
-      <li>Peticiones enviadas voluntariamente a revisión: hasta 180 días.</li>
-      <li>Sugerencias de funcionalidad: hasta 365 días.</li>
-      <li>Propuestas de competiciones: sin plazo fijo, hasta que se publican o se descartan.</li>
-      <li>Audio de voz: no se almacena de forma persistente.</li>
+      <li>Contadores de uso (voz y planes con IA, por identificador anónimo): mientras uses la app,
+        solo para aplicar los límites; no contienen lo que dices.</li>
+      <li>Planes con IA generados, peticiones enviadas voluntariamente a revisión y sugerencias:
+        los conservamos mientras sirvan para el fin descrito; puedes pedir su borrado.</li>
+      <li>Propuestas de competiciones: hasta que se publican o se descartan.</li>
+      <li>Audio de voz: no lo almacenamos.</li>
     </ul>
 
     <h2 id="derechos">5. Tus derechos</h2>
@@ -369,7 +414,7 @@
 
   <!-- ============================= ENGLISH ============================= -->
   <div class="lang-block" id="lang-en" hidden>
-    <p class="meta">WOD Voice Timer · Last updated: <span id="date-en">[date]</span></p>
+    <p class="meta">AI WOD Coach · Last updated: <span id="date-en">October 16, 2026</span></p>
 
     <div class="note">
       You can use most of the app <strong>without creating an account</strong> — the timer, WOD
@@ -381,7 +426,7 @@
 
     <h2>1. Data controller</h2>
     <p>
-      <strong>GutsApps</strong>, developer of the <strong>WOD Voice Timer</strong>
+      <strong>GutsApps</strong>, developer of the <strong>AI WOD Coach</strong> (formerly “AI WOD Coach”)
       app (package <code>com.agutierg.kineticvolt</code>), is responsible for the data described
       in this policy. Contact: <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a>.
     </p>
@@ -398,15 +443,18 @@
     <h3>2.2 Voice and transcripts (voice setup)</h3>
     <p>
       When you use the microphone to set up a WOD, log a PR, or ask for a calculation, the audio is
-      sent securely to our server (hosted on Cloudflare) to be transcribed and interpreted using AI
-      models. Audio is processed on the fly and <strong>is not stored permanently</strong>; the
-      transcribed text may be kept briefly together with your anonymous identifier only to enforce
-      the monthly usage limit (it expires automatically after 35 days).
+      sent encrypted to our server (hosted on Google Cloud / Firebase, in the European Union) and from
+      there to <strong>Google's Gemini API</strong>, which transcribes and interprets it using
+      artificial intelligence models. We <strong>do not store the audio</strong> or the transcript for
+      that use: we only count how many interpretations you make per month, tied to your anonymous
+      identifier, to apply the usage limit. The same applies if you tap an example or type the phrase
+      instead of speaking.
     </p>
     <p>
-      If a voice request isn't understood correctly, you can optionally choose "Send for review". In
-      that case we store the transcribed text and the AI's response (tied to your anonymous
-      identifier, never your identity) for up to 180 days, solely to improve voice interpretation.
+      If a voice request isn't understood well, you can voluntarily choose "Send for review". In that
+      case we store the transcribed text and the AI's response (tied to your anonymous identifier,
+      never to your identity) only to improve voice interpretation. You can ask us to delete them by
+      writing to us (see section 5).
     </p>
 
     <h3>2.3 Workouts, PRs, and history</h3>
@@ -481,25 +529,26 @@
 
     <h3>2.5 Account (optional)</h3>
     <p>
-      Community and Leagues need a free account (email and password, or your Google account, via
-      Google's <strong>Firebase Authentication</strong>) or, if you prefer, you can continue as a
-      guest. We store your email only to identify your account and let you sign in on another
-      device; we never show it to other users. You can delete your account anytime from Profile →
-      Account settings → Delete account (see section 5).
+      Community and Leagues ask for a free account (email and password, your Google account or Sign in
+      with Apple, through Google's <strong>Firebase Authentication</strong>) or, if you prefer, to
+      continue as a guest. We store your email (with Apple it may be the private address Apple
+      generates) only to identify your account and let you sign in on another device; we never show
+      it to other users. You can delete your account at any time from Profile → Account settings →
+      Delete account (see section 5).
     </p>
 
     <h3>2.6 Community: @handle, friends, feed, and photos</h3>
     <p>
-      With an account you can pick a public <strong>@handle</strong> — different from the anonymous
-      Ranking nickname described above — so other users can find you and add you as a friend
-      (a request the other person accepts). You can also: post your PRs, badges, or League results
-      to the community feed, with an optional photo; react and comment on other people's posts;
-      search for athletes by name, by your box, or among people you follow; and set an optional
-      public profile photo. All of this — your @handle, your friendships, your posts, your comments,
-      and your photos — is visible to other Community users while your account is active, and is
-      deleted when you delete it. Photos you upload (profile, feed, Leagues) are stored on our cloud
-      storage provider (Cloudflare R2) at a non-guessable address; we don't manually review them
-      unless reported.
+      With an account you can choose a public <strong>@handle</strong> —different from the anonymous
+      Ranking nickname described above— so other users can find you and add you as a friend (a
+      request the other person accepts). You can also: post your PRs, badges, or League results to
+      the community feed, with an optional photo; react and comment on others' posts; search for
+      athletes by name, by your box, or among people you follow; and set an optional public profile
+      photo. All of this —your @handle, friendships, posts, comments, and photos— is visible to other
+      Community users while your account is active, and is deleted when you delete it. Photos you
+      upload (profile, feed, Leagues) are stored in <strong>Google Cloud Storage</strong> (Firebase)
+      at an unguessable address. They go through an automatic safety filter (Google Cloud Vision) and
+      feed photos may be reviewed manually before being shown.
     </p>
 
     <h3>2.7 Boxes and approximate location</h3>
@@ -515,88 +564,124 @@
 
     <h3>2.8 Leagues: results, photos, and AI reading</h3>
     <p>
-      With an account you can create or join Leagues (public or private groups) to compete with
-      your box or training group. Whatever you log each day in a League — the workout's blocks,
-      their values, a note, and an optional photo — is visible to the rest of that League's
-      members, together with your @handle. If you use "Scan photo" to have AI propose the blocks
-      from a photo of your whiteboard or notebook, that photo is sent to
-      <strong>Cloudflare Workers AI</strong> (a vision model) only to read it and propose the
-      blocks; you review and correct it before saving anything. If you create a League, you can set
-      a logo for it, visible to anyone who finds it. We send push notifications (via
-      <strong>Firebase Cloud Messaging</strong>) about your Leagues — for example, if someone
-      overtakes you that day, or the weekly closing summary — using your device's notification
-      token, tied to your account while it's active.
+      With an account you can create or join Leagues (public or private groups) to compete with your
+      box or training group. What you upload each day to a League —the workout blocks, their values,
+      a note, and an optional photo— is visible to the other members of that League, next to your
+      @handle. If you use "Scan photo" so the AI proposes the blocks from a photo of your whiteboard
+      or notebook, that photo is sent to <strong>Google's Gemini API</strong> (a vision model) only to
+      read it and propose the blocks; you review and correct it before anything is saved. If you
+      create a League, you can give it a logo, visible to anyone who finds it. We send push
+      notifications (via <strong>Firebase Cloud Messaging</strong>) about your Leagues —for example,
+      if someone overtakes you for the day, or the weekly closing summary— using your device's
+      notification token, tied to your account while it is active.
     </p>
 
     <h3>2.9 Suggestions and competition proposals</h3>
     <p>
-      If you send a feature suggestion through the app's feedback box, we store the text (together
-      with your anonymous identifier, or your account if signed in) for up to 365 days, solely to
-      consider future improvements. If you propose a competition for the finder (name, country,
-      dates, price...), that data is about the <strong>event</strong>, not about you, and is kept
-      until it's published or discarded during manual review, with no fixed deadline.
+      If you send a feature suggestion from the app's mailbox, we store the text (together with your
+      anonymous identifier or your account, if you're signed in) only to evaluate future improvements;
+      you can ask us to delete it. If you propose a competition for the finder (name, country, dates,
+      price...), that data is about the <strong>event</strong>, not about you, and is kept until it is
+      published or discarded in manual review.
     </p>
 
     <h3>2.10 Purchases and subscription</h3>
     <p>
-      Purchases (remove ads, Pro subscription) are processed entirely through
-      <strong>Google Play Billing</strong>; we never see or store your payment details. To verify an
-      active subscription, your purchase token (a technical identifier, not your banking details) may
-      be sent to our server, which checks it against the Google Play API.
+      Purchases (remove ads, Kinetic Pro subscription) are processed entirely through <strong>Google
+      Play Billing</strong> (Android) or Apple's <strong>App Store</strong> (iOS); we neither see nor
+      store your payment details. To apply your usage limits, the app tells our server whether you
+      have an active subscription (a simple flag, not your banking details).
     </p>
 
     <h3>2.11 Advertising</h3>
     <p>
-      The free version shows ads via <strong>Google AdMob</strong>, including optional rewarded
-      videos to earn extra voice-AI uses. AdMob may collect advertising identifiers and technical
-      device data under Google's own privacy policy. Buying "remove ads" or subscribing to Pro stops
-      ads from showing.
+      The free version shows ads through <strong>Google AdMob</strong>, including optional rewarded
+      videos to get extra voice-AI uses. AdMob may collect advertising identifiers and technical
+      device data under Google's own privacy policy. On iOS we do not request Apple's tracking
+      permission (ATT), so the advertising identifier (IDFA) is not accessed. If you buy "remove ads"
+      or subscribe to Pro, you stop seeing ads.
     </p>
 
     <h3>2.12 Device permissions</h3>
     <table>
-      <tr><th>Permission</th><th>What it's used for</th></tr>
-      <tr><td>Microphone</td><td>Only while you're actively recording a voice request (no background listening).</td></tr>
-      <tr><td>Camera / gallery</td><td>Only when you pick or take a photo for your profile, the feed, a League or its logo, or for AI to read it in "Scan photo".</td></tr>
-      <tr><td>Approximate location</td><td>Only if granted, to sort "Find your box" by distance (see 2.7); never sent to our servers.</td></tr>
-      <tr><td>Notifications</td><td>Timer status, and League alerts if you have an account.</td></tr>
-      <tr><td>Foreground service</td><td>Keeping the timer running with the screen off.</td></tr>
-      <tr><td>Vibration</td><td>Timer haptic cues.</td></tr>
+      <tr><th>Permission</th><th>What it is used for</th></tr>
+      <tr><td>Microphone</td><td>Only while you actively record a voice request or a message to the plans chat (no background listening).</td></tr>
+      <tr><td>Camera / gallery</td><td>Only when you pick or take a photo for your profile, the feed, a League, its logo, or a race result, to scan a League's QR code, or for the AI to read it in "Scan photo".</td></tr>
+      <tr><td>Approximate location</td><td>Only if you grant it, to sort "Find your box" by proximity (see 2.7); it is not sent to our servers.</td></tr>
+      <tr><td>Notifications</td><td>Timer status, League alerts if you have an account, and the race reminders you schedule (created on your own device).</td></tr>
+      <tr><td>Foreground service (Android)</td><td>So the timer keeps running with the screen off.</td></tr>
+      <tr><td>Vibration and spoken prompts</td><td>Timer and Hyrox simulation prompts; the voice is the system's own and is generated on your device.</td></tr>
     </table>
     <p>
-      The app does not access your contacts or files beyond the photos you explicitly choose to
-      share; the camera, gallery, and location are only used in the moment for what's described in
-      this table, never in the background.
+      The app does not access your contacts or any files other than the photos you explicitly choose
+      to share; the camera, gallery, and location are only used at that moment and for what is
+      described in this table, never in the background.
+    </p>
+
+    <h3>2.13 AI training plans</h3>
+    <p>
+      When you create an AI plan, what you write or say in the chat (your goal, your days, your level,
+      injuries or limitations if you mention them) is sent to our server and to <strong>Google's Gemini
+      API</strong> to design the plan. The app adds as context your chosen discipline and, if you
+      train for Hyrox, the name, date and target time of your next race. <strong>Don't write data you
+      don't want to share</strong>, such as detailed medical information. The generated plan (name,
+      goal summary, and the days with warm-up, strength and metcon) is stored on our server under a
+      random identifier together with your anonymous device identifier, and a full copy on your phone.
+      You can ask us to delete a plan by writing to us (see section 5). The AI plan is indicative and
+      does not replace professional advice.
+    </p>
+
+    <h3>2.14 Races and Hyrox</h3>
+    <p>
+      Your race calendar, time targets, Hyrox simulations and their history, results, race day mode
+      and reminders are stored <strong>only on your device</strong>; the reminders are local
+      notifications. If you register a race in "My races" with an account, we store its country, city,
+      date, time, event name and an optional photo in your account; only you can see them, unless you
+      choose to post the result to the feed. If you send your time to the Ranking, it is handled like
+      the other Ranking entries (see 2.3 and 2.4).
+    </p>
+
+    <h3>2.15 Crash reports</h3>
+    <p>
+      In published versions, <strong>Firebase Crashlytics</strong> (Google) receives a report when the
+      app closes unexpectedly: technical device data (model, system version, app state) and a Firebase
+      installation identifier. It does not include your audio, photos or workout content. It is used
+      only to detect and fix bugs.
     </p>
 
     <h2>3. Who we share data with</h2>
     <ul>
-      <li><strong>Cloudflare</strong> (Workers AI) — voice transcription/interpretation, and reading League photos via a vision model.</li>
-      <li><strong>Cloudflare</strong> (R2) — storage for photos you upload (profile, feed, Leagues, and their logos).</li>
-      <li><strong>Firebase</strong> (Google) — account authentication and push notifications (Cloud Messaging).</li>
-      <li><strong>Google Places API</strong> — hours and price level for boxes in the directory.</li>
+      <li><strong>Google</strong> (Firebase, Google Cloud) — hosting of our server and database (functions and database in the EU), account authentication, storage of the photos you upload, push notifications (Cloud Messaging) and crash reports (Crashlytics).</li>
+      <li><strong>Google</strong> (Gemini API) — voice interpretation, AI training plans and reading League photos.</li>
+      <li><strong>Google</strong> (Cloud Vision) — automatic safety filter for the photos you upload.</li>
+      <li><strong>Google Places API</strong> — opening hours and price level of the boxes in the directory.</li>
       <li><strong>Google AdMob</strong> — advertising in the free version.</li>
-      <li><strong>Google Play Billing</strong> — payment processing and subscription verification.</li>
+      <li><strong>Google Play Billing</strong> and <strong>App Store (Apple)</strong> — processing of purchases and subscriptions.</li>
+      <li><strong>Apple</strong> and <strong>Google</strong> — sign-in, if you choose that method.</li>
     </ul>
     <p>We do not sell your data to third parties or use it for purposes other than those described here.</p>
+    <p>
+      Until recently, part of this data was hosted on Cloudflare. We have migrated it to Firebase and
+      that infrastructure will be retired.
+    </p>
 
     <h2>4. How long we keep data</h2>
     <ul>
-      <li>Local data (PRs, history, settings): until you delete it or uninstall the app.</li>
-      <li>Comparable PR value for the Ranking, and nickname/country/category/gender/age group/box
-        (if set): until you delete local data, change them, or clear them yourself.</li>
-      <li>Account, @handle, friends, posts, comments, and Community photos: while the account is
-        active; permanently deleted when you delete it.</li>
-      <li>Leagues (memberships, daily results, notes, photos, and logo): while the
-        membership/league exists; deleted when you delete your account, leave the league, or
-        delete it if you're its creator.</li>
-      <li>Approximate location from the box directory: not stored, used only in the moment on your
+      <li>Local data (PRs, history, races, simulations, settings): until you delete it or uninstall the app.</li>
+      <li>Comparable PR value for the Ranking, and nickname/country/category/gender/age/box (if you
+        set them): until you delete local data, change them, or delete them yourself.</li>
+      <li>Account, @handle, friendships, posts, comments, races and Community photos: while the
+        account is active; permanently deleted when you delete it.</li>
+      <li>Leagues (memberships, daily results, notes, photos and logo): while the membership/league
+        exists; deleted when you delete your account, leave the league, or delete it if you created it.</li>
+      <li>Approximate location for the box directory: not stored, used only at that moment on your
         own device.</li>
-      <li>Voice usage counters (anonymous identifier): 35 days.</li>
-      <li>Requests voluntarily sent for review: up to 180 days.</li>
-      <li>Feature suggestions: up to 365 days.</li>
-      <li>Competition proposals: no fixed deadline, until published or discarded.</li>
-      <li>Voice audio: not stored persistently.</li>
+      <li>Usage counters (voice and AI plans, by anonymous identifier): while you use the app, only to
+        apply the limits; they do not contain what you say.</li>
+      <li>Generated AI plans, requests you voluntarily send for review, and suggestions: we keep them
+        as long as they serve the purpose described; you can ask for their deletion.</li>
+      <li>Competition proposals: until they are published or discarded.</li>
+      <li>Voice audio: we do not store it.</li>
     </ul>
 
     <h2 id="rights">5. Your rights</h2>
@@ -640,7 +725,7 @@
 
 
   <div class="lang-block" id="lang-it" hidden>
-<p class="meta">WOD Voice Timer · Ultimo aggiornamento: <span id="date-it">[data]</span></p>
+<p class="meta">AI WOD Coach · Ultimo aggiornamento: <span id="date-it">16 ottobre 2026</span></p>
 
 <div class="note">
   Puoi usare la maggior parte dell'app <strong>senza creare un account</strong> — il timer, il
@@ -652,7 +737,7 @@
 
 <h2>1. Titolare del trattamento</h2>
 <p>
-  <strong>GutsApps</strong>, sviluppatore dell'app <strong>WOD Voice Timer</strong> (pacchetto
+  <strong>GutsApps</strong>, sviluppatore dell'app <strong>AI WOD Coach</strong> (in precedenza «AI WOD Coach») (pacchetto
   <code>com.agutierg.kineticvolt</code>), è responsabile dei dati descritti in questa informativa.
   Contatto: <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a>.
 </p>
@@ -668,22 +753,23 @@
 </p>
 
 <h3>2.2 Voce e trascrizioni (configurazione vocale)</h3>
-<p>
-  Quando usi il microfono per configurare un WOD, registrare un PR o richiedere un calcolo, l'audio
-  viene inviato in modo cifrato al nostro server (ospitato su Cloudflare) per essere trascritto e
-  interpretato mediante modelli di intelligenza artificiale. L'audio viene elaborato al volo e
-  <strong>non viene salvato</strong> in modo permanente; il testo trascritto può essere conservato
-  brevemente insieme al tuo identificativo anonimo solo per applicare il limite di utilizzo mensile
-  (scade automaticamente dopo 35 giorni).
-</p>
-<p>
-  Se una richiesta vocale non viene compresa correttamente, puoi scegliere volontariamente "Invia per
-  revisione". In questo caso conserviamo il testo trascritto e la risposta dell'IA (associati al tuo
-  identificativo anonimo, mai alla tua identità) fino a 180 giorni, unicamente per migliorare
-  l'interpretazione vocale.
-</p>
+    <p>
+      Quando usi il microfono per impostare un WOD, registrare un PR o chiedere un calcolo, l'audio
+      viene inviato in forma cifrata al nostro server (ospitato su Google Cloud / Firebase, nell'Unione
+      Europea) e da lì alla <strong>API Gemini di Google</strong>, che lo trascrive e lo interpreta con
+      modelli di intelligenza artificiale. Noi <strong>non conserviamo l'audio</strong> né la
+      trascrizione per questo uso: contiamo solo quante interpretazioni fai al mese, associate al tuo
+      identificativo anonimo, per applicare il limite di utilizzo. Lo stesso vale se tocchi un esempio
+      o scrivi la frase invece di parlare.
+    </p>
+    <p>
+      Se una richiesta vocale non viene capita bene, puoi scegliere volontariamente "Invia in
+      revisione". In tal caso conserviamo il testo trascritto e la risposta dell'IA (associati al tuo
+      identificativo anonimo, mai alla tua identità) solo per migliorare l'interpretazione vocale.
+      Puoi chiederci di cancellarli scrivendoci (vedi sezione 5).
+    </p>
 
-<h3>2.3 Allenamenti, PR e storico</h3>
+    <h3>2.3 Allenamenti, PR e storico</h3>
 <p>
   I tuoi record personali (PR), lo storico degli allenamenti e le impostazioni sono salvati
   <strong>sul tuo dispositivo</strong> (database locale); questa è la copia completa ed è quella che
@@ -758,29 +844,31 @@
 </p>
 
 <h3>2.5 Account (facoltativo)</h3>
-<p>
-  Community e Leghe richiedono un account gratuito (email e password, oppure il tuo account
-  Google, tramite <strong>Firebase Authentication</strong> di Google) oppure, se preferisci, puoi
-  continuare come ospite. Conserviamo la tua email solo per identificare il tuo account e farti
-  accedere da un altro dispositivo; non la mostriamo mai ad altri utenti. Puoi eliminare il tuo
-  account quando vuoi da Profilo → Impostazioni account → Elimina account (vedi sezione 5).
-</p>
+    <p>
+      Community e Leghe richiedono un account gratuito (email e password, il tuo account Google o
+      Accedi con Apple, tramite <strong>Firebase Authentication</strong> di Google) oppure, se
+      preferisci, di continuare come ospite. Conserviamo la tua email (con Apple può essere
+      l'indirizzo privato generato da Apple) solo per identificare il tuo account e farti accedere da
+      un altro dispositivo; non la mostriamo mai ad altri utenti. Puoi eliminare il tuo account quando
+      vuoi da Profilo → Impostazioni account → Elimina account (vedi sezione 5).
+    </p>
 
-<h3>2.6 Community: @handle, amicizie, feed e foto</h3>
-<p>
-  Con un account puoi scegliere un <strong>@handle</strong> pubblico — diverso dal nickname
-  anonimo del Ranking descritto sopra — così altri utenti possono trovarti e aggiungerti come
-  amico (richiesta che l'altra persona accetta). Puoi anche: pubblicare nel feed della community i
-  tuoi PR, badge o risultati delle Leghe, con una foto facoltativa; reagire e commentare i post
-  altrui; cercare atleti per nome, per il tuo box o tra le persone che segui; e impostare una foto
-  profilo pubblica facoltativa. Tutto questo — il tuo @handle, le tue amicizie, i tuoi post, i tuoi
-  commenti e le tue foto — è visibile agli altri utenti della Community finché il tuo account è
-  attivo, e viene cancellato quando lo elimini. Le foto che carichi (profilo, feed, Leghe) sono
-  salvate sul nostro fornitore di archiviazione cloud (Cloudflare R2) con un indirizzo non
-  indovinabile; non le esaminiamo manualmente salvo segnalazione.
-</p>
+    <h3>2.6 Community: @handle, amicizie, feed e foto</h3>
+    <p>
+      Con un account puoi scegliere un <strong>@handle</strong> pubblico —diverso dal soprannome anonimo
+      della Classifica descritto sopra— in modo che altri utenti ti trovino e ti aggiungano come amico
+      (richiesta che l'altra persona accetta). Puoi anche: pubblicare nel feed della community i tuoi
+      PR, badge o risultati delle Leghe, con una foto facoltativa; reagire e commentare i post degli
+      altri; cercare atleti per nome, per il tuo box o tra le persone che segui; e impostare una foto
+      profilo pubblica facoltativa. Tutto questo —@handle, amicizie, post, commenti e foto— è visibile
+      agli altri utenti della Community finché il tuo account è attivo e viene cancellato quando lo
+      elimini. Le foto che carichi (profilo, feed, Leghe) sono conservate in <strong>Google Cloud
+      Storage</strong> (Firebase) con un indirizzo non indovinabile. Passano un filtro automatico di
+      sicurezza (Google Cloud Vision) e quelle del feed possono essere riviste manualmente prima di
+      essere mostrate.
+    </p>
 
-<h3>2.7 Box e posizione approssimativa</h3>
+    <h3>2.7 Box e posizione approssimativa</h3>
 <p>
   La directory "Trova il tuo box" può chiederti il permesso di <strong>posizione
   approssimativa</strong> per ordinare le palestre per vicinanza; se lo concedi, quella posizione
@@ -793,93 +881,133 @@
   l'accesso.
 </p>
 
-<h3>2.8 Leghe: risultati, foto e lettura tramite IA</h3>
-<p>
-  Con un account puoi creare o unirti a Leghe (gruppi pubblici o privati) per competere con il tuo
-  box o il tuo gruppo di allenamento. Ciò che registri ogni giorno in una Lega — i blocchi
-  dell'allenamento, i loro valori, una nota e una foto facoltativa — è visibile agli altri membri
-  di quella Lega, insieme al tuo @handle. Se usi "Scansiona foto" per far proporre i blocchi
-  all'IA a partire da una foto della tua lavagna o del tuo quaderno, quella foto viene inviata a
-  <strong>Cloudflare Workers AI</strong> (un modello di visione) solo per leggerla e proporti i
-  blocchi; sei tu a rivederli e correggerli prima di salvare qualsiasi cosa. Se crei una Lega,
-  puoi impostarle un logo, visibile a chiunque la trovi. Inviamo notifiche push (tramite
-  <strong>Firebase Cloud Messaging</strong>) sulle tue Leghe — ad esempio se qualcuno ti supera
-  nella giornata, o il riepilogo della chiusura settimanale — usando il token di notifica del tuo
-  dispositivo, associato al tuo account finché è attivo.
-</p>
+<h3>2.8 Leghe: risultati, foto e lettura con IA</h3>
+    <p>
+      Con un account puoi creare o unirti a Leghe (gruppi pubblici o privati) per competere con il tuo
+      box o il tuo gruppo di allenamento. Ciò che carichi ogni giorno in una Lega —i blocchi
+      dell'allenamento, i loro valori, una nota e una foto facoltativa— è visibile agli altri membri di
+      quella Lega, insieme al tuo @handle. Se usi "Scansiona foto" perché l'IA proponga i blocchi a
+      partire da una foto della tua lavagna o del tuo quaderno, quella foto viene inviata alla
+      <strong>API Gemini di Google</strong> (un modello di visione) solo per leggerla e proporti i
+      blocchi; la rivedi e la correggi prima di salvare qualsiasi cosa. Se crei una Lega puoi darle un
+      logo, visibile a chiunque la trovi. Inviamo notifiche push (tramite <strong>Firebase Cloud
+      Messaging</strong>) sulle tue Leghe —ad esempio se qualcuno ti supera nella giornata, o il
+      riepilogo della chiusura settimanale— usando il token di notifica del tuo dispositivo,
+      associato al tuo account finché è attivo.
+    </p>
 
-<h3>2.9 Suggerimenti e proposte di competizioni</h3>
-<p>
-  Se invii un suggerimento di funzionalità dall'apposita casella dell'app, conserviamo il testo
-  (insieme al tuo identificativo anonimo, o al tuo account se hai eseguito l'accesso) fino a 365
-  giorni, solo per valutare miglioramenti futuri. Se proponi una competizione per il motore di
-  ricerca (nome, paese, date, prezzo...), questi dati riguardano l'<strong>evento</strong>, non te,
-  e vengono conservati finché non vengono pubblicati o scartati nella revisione manuale, senza un
-  termine prestabilito.
-</p>
+    <h3>2.9 Suggerimenti e proposte di competizioni</h3>
+    <p>
+      Se invii un suggerimento di funzionalità dalla casella dell'app, conserviamo il testo (insieme
+      al tuo identificativo anonimo o al tuo account, se hai effettuato l'accesso) solo per valutare
+      miglioramenti futuri; puoi chiederci di cancellarlo. Se proponi una competizione per il
+      motore di ricerca (nome, paese, date, prezzo...), quei dati riguardano l'<strong>evento</strong>,
+      non te, e vengono conservati fino alla pubblicazione o allo scarto nella revisione manuale.
+    </p>
 
-<h3>2.10 Acquisti e abbonamento</h3>
-<p>
-  Gli acquisti (rimozione degli annunci, abbonamento Pro) vengono elaborati interamente tramite
-  <strong>Google Play Fatturazione</strong>; noi non vediamo né conserviamo i tuoi dati di pagamento.
-  Per verificare un abbonamento attivo, il tuo token di acquisto (un identificativo tecnico, non i
-  tuoi dati bancari) può essere inviato al nostro server, che lo verifica tramite l'API di Google
-  Play.
-</p>
+    <h3>2.10 Acquisti e abbonamento</h3>
+    <p>
+      Gli acquisti (rimozione pubblicità, abbonamento Kinetic Pro) sono elaborati interamente tramite
+      <strong>Google Play Billing</strong> (Android) o l'<strong>App Store</strong> di Apple (iOS); noi
+      non vediamo né conserviamo i tuoi dati di pagamento. Per applicare i tuoi limiti di utilizzo,
+      l'app comunica al nostro server se hai un abbonamento attivo (un semplice indicatore, non i tuoi
+      dati bancari).
+    </p>
 
-<h3>2.11 Pubblicità</h3>
-<p>
-  La versione gratuita mostra annunci tramite <strong>Google AdMob</strong>, inclusi video con
-  ricompensa opzionali per ottenere usi extra dell'IA vocale. AdMob può raccogliere identificativi
-  pubblicitari e dati tecnici del dispositivo in base alla informativa sulla privacy di Google. Se
-  acquisti la rimozione degli annunci o ti abboni a Pro, smetterai di vedere annunci.
-</p>
+    <h3>2.11 Pubblicità</h3>
+    <p>
+      La versione gratuita mostra annunci tramite <strong>Google AdMob</strong>, inclusi video con
+      premio facoltativi per ottenere usi extra dell'IA vocale. AdMob può raccogliere identificativi
+      pubblicitari e dati tecnici del dispositivo secondo la politica sulla privacy di Google. Su iOS
+      non richiediamo il permesso di tracciamento di Apple (ATT), quindi non si accede
+      all'identificativo pubblicitario (IDFA). Se acquisti "rimuovi pubblicità" o ti abboni a Pro,
+      non vedi più annunci.
+    </p>
 
-<h3>2.12 Permessi del dispositivo</h3>
-<table>
-  <tr><th>Permesso</th><th>A cosa serve</th></tr>
-  <tr><td>Microfono</td><td>Solo mentre registri attivamente una richiesta vocale (nessun ascolto in background).</td></tr>
-  <tr><td>Fotocamera / galleria</td><td>Solo quando scegli o scatti una foto per il profilo, il feed, una Lega o il suo logo, o perché l'IA la legga in "Scansiona foto".</td></tr>
-  <tr><td>Posizione approssimativa</td><td>Solo se concessa, per ordinare "Trova il tuo box" per vicinanza (vedi 2.7); mai inviata ai nostri server.</td></tr>
-  <tr><td>Notifiche</td><td>Stato del timer, e avvisi delle tue Leghe se hai un account.</td></tr>
-  <tr><td>Servizio in primo piano</td><td>Permettere al cronometro di continuare a funzionare a schermo spento.</td></tr>
-  <tr><td>Vibrazione</td><td>Avvisi tattili del timer.</td></tr>
-</table>
-<p>
-  L'app non accede ai tuoi contatti né a file al di fuori delle foto che scegli esplicitamente di
-  condividere; fotocamera, galleria e posizione vengono usate solo al momento e per quanto
-  descritto in questa tabella, mai in background.
-</p>
+    <h3>2.12 Permessi del dispositivo</h3>
+    <table>
+      <tr><th>Permesso</th><th>A cosa serve</th></tr>
+      <tr><td>Microfono</td><td>Solo mentre registri attivamente una richiesta vocale o un messaggio alla chat dei piani (nessun ascolto in background).</td></tr>
+      <tr><td>Fotocamera / galleria</td><td>Solo quando scegli o scatti una foto per il tuo profilo, il feed, una Lega, il suo logo o il risultato di una gara, per scansionare il QR di una Lega, o perché l'IA la legga in "Scansiona foto".</td></tr>
+      <tr><td>Posizione approssimativa</td><td>Solo se la concedi, per ordinare "Trova il tuo box" per vicinanza (vedi 2.7); non viene inviata ai nostri server.</td></tr>
+      <tr><td>Notifiche</td><td>Stato del timer, avvisi delle tue Leghe se hai un account e i promemoria di gara che programmi (creati sul tuo dispositivo).</td></tr>
+      <tr><td>Servizio in primo piano (Android)</td><td>Perché il cronometro continui a funzionare a schermo spento.</td></tr>
+      <tr><td>Vibrazione e avvisi vocali</td><td>Avvisi del timer e della simulazione Hyrox; la voce è quella del sistema e viene generata sul tuo dispositivo.</td></tr>
+    </table>
+    <p>
+      L'app non accede ai tuoi contatti né a file diversi dalle foto che scegli esplicitamente di
+      condividere; fotocamera, galleria e posizione sono usate solo in quel momento e per quanto
+      descritto in questa tabella, mai in background.
+    </p>
 
-<h2>3. Con chi condividiamo i dati</h2>
+    <h3>2.13 Piani di allenamento con IA</h3>
+    <p>
+      Quando crei un piano con IA, ciò che scrivi o dici nella chat (obiettivo, giorni, livello,
+      infortuni o limitazioni se li indichi) viene inviato al nostro server e alla <strong>API Gemini
+      di Google</strong> per progettare il piano. L'app aggiunge come contesto la disciplina scelta e,
+      se ti alleni per Hyrox, nome, data e tempo obiettivo della tua prossima gara. <strong>Non
+      scrivere dati che non vuoi condividere</strong>, ad esempio informazioni mediche dettagliate. Il
+      piano generato (nome, riepilogo dell'obiettivo e giorni con riscaldamento, forza e metcon) è
+      conservato sul nostro server con un identificativo casuale e il tuo identificativo anonimo di
+      dispositivo, e una copia completa sul tuo telefono. Puoi chiederci di cancellare un piano
+      scrivendoci (vedi sezione 5). Il piano con IA è orientativo e non sostituisce il parere di un
+      professionista.
+    </p>
+
+    <h3>2.14 Gare e Hyrox</h3>
+    <p>
+      Il tuo calendario gare, gli obiettivi di tempo, le simulazioni Hyrox e la loro cronologia, i
+      risultati, la modalità giorno di gara e i promemoria sono conservati <strong>solo sul tuo
+      dispositivo</strong>; i promemoria sono notifiche locali. Se registri una gara in "Le mie gare"
+      con un account, conserviamo nel tuo account paese, città, data, tempo, nome dell'evento e una
+      foto facoltativa; solo tu puoi vederli, a meno che tu decida di pubblicare il risultato nel
+      feed. Se invii il tuo tempo alla Classifica, viene trattato come le altre marche della
+      Classifica (vedi 2.3 e 2.4).
+    </p>
+
+    <h3>2.15 Segnalazioni di errori</h3>
+    <p>
+      Nelle versioni pubblicate, <strong>Firebase Crashlytics</strong> (Google) riceve una segnalazione
+      quando l'app si chiude in modo imprevisto: dati tecnici del dispositivo (modello, versione del
+      sistema, stato dell'app) e un identificativo di installazione di Firebase. Non include il tuo
+      audio, le tue foto né il contenuto dei tuoi allenamenti. Serve solo a rilevare e correggere
+      errori.
+    </p>
+
+    <h2>3. Con chi condividiamo i dati</h2>
+    <ul>
+      <li><strong>Google</strong> (Firebase, Google Cloud) — hosting del nostro server e database (funzioni e database nell'UE), autenticazione degli account, archiviazione delle foto che carichi, notifiche push (Cloud Messaging) e segnalazioni di errori (Crashlytics).</li>
+      <li><strong>Google</strong> (API Gemini) — interpretazione vocale, piani di allenamento con IA e lettura delle foto delle Leghe.</li>
+      <li><strong>Google</strong> (Cloud Vision) — filtro automatico di sicurezza delle foto che carichi.</li>
+      <li><strong>Google Places API</strong> — orari e fascia di prezzo dei box della directory.</li>
+      <li><strong>Google AdMob</strong> — pubblicità nella versione gratuita.</li>
+      <li><strong>Google Play Billing</strong> e <strong>App Store (Apple)</strong> — elaborazione di acquisti e abbonamenti.</li>
+      <li><strong>Apple</strong> e <strong>Google</strong> — accesso, se scegli quel metodo.</li>
+    </ul>
+    <p>Non vendiamo i tuoi dati a terzi né li usiamo per scopi diversi da quelli descritti qui.</p>
+    <p>
+      Fino a poco tempo fa, parte di questi dati era ospitata su Cloudflare. Li abbiamo migrati su
+      Firebase e quell'infrastruttura verrà dismessa.
+    </p>
+
+    <h2>4. Per quanto tempo conserviamo i dati</h2>
 <ul>
-  <li><strong>Cloudflare</strong> (Workers AI) — trascrizione/interpretazione vocale, e lettura delle foto delle Leghe tramite un modello di visione.</li>
-  <li><strong>Cloudflare</strong> (R2) — archiviazione delle foto che carichi (profilo, feed, Leghe e i loro loghi).</li>
-  <li><strong>Firebase</strong> (Google) — autenticazione degli account e notifiche push (Cloud Messaging).</li>
-  <li><strong>API di Google Places</strong> — orario e livello di prezzo dei box nella directory.</li>
-  <li><strong>Google AdMob</strong> — pubblicità nella versione gratuita.</li>
-  <li><strong>Google Play Fatturazione</strong> — elaborazione degli acquisti e verifica dell'abbonamento.</li>
-</ul>
-<p>Non vendiamo i tuoi dati a terzi né li usiamo per finalità diverse da quelle descritte qui.</p>
-
-<h2>4. Per quanto tempo conserviamo i dati</h2>
-<ul>
-  <li>Dati locali (PR, storico, impostazioni): finché non li cancelli tu o disinstalli l'app.</li>
-  <li>Valore comparabile dei PR per il Ranking, e nickname/paese/categoria/genere/età/box (se li
-    imposti): finché non cancelli i dati locali, li cambi, o li cancelli tu.</li>
-  <li>Account, @handle, amicizie, post, commenti e foto della Community: finché l'account è
-    attivo; cancellati permanentemente quando lo elimini.</li>
-  <li>Leghe (iscrizioni, risultati giornalieri, note, foto e logo): finché esiste
-    l'iscrizione/lega; cancellati quando elimini il tuo account, lasci la lega, o la elimini se
-    ne sei il creatore.</li>
-  <li>Posizione approssimativa dalla directory dei box: non viene salvata, usata solo al momento
-    sul tuo dispositivo.</li>
-  <li>Contatori di utilizzo vocale (identificativo anonimo): 35 giorni.</li>
-  <li>Richieste inviate volontariamente per la revisione: fino a 180 giorni.</li>
-  <li>Suggerimenti di funzionalità: fino a 365 giorni.</li>
-  <li>Proposte di competizioni: senza termine prestabilito, finché non vengono pubblicate o scartate.</li>
-  <li>Audio vocale: non viene archiviato in modo permanente.</li>
-</ul>
+      <li>Dati locali (PR, cronologia, gare, simulazioni, impostazioni): finché non li cancelli o disinstalli l'app.</li>
+      <li>Valore confrontabile dei PR per la Classifica e soprannome/paese/categoria/genere/età/box
+        (se li imposti): finché non cancelli i dati locali, li cambi o li cancelli tu.</li>
+      <li>Account, @handle, amicizie, post, commenti, gare e foto della Community: finché l'account è
+        attivo; cancellati definitivamente quando lo elimini.</li>
+      <li>Leghe (iscrizioni, risultati giornalieri, note, foto e logo): finché esiste l'iscrizione/la
+        lega; cancellati quando elimini il tuo account, lasci la lega o la elimini se ne sei il creatore.</li>
+      <li>Posizione approssimativa della directory dei box: non viene conservata, usata solo al
+        momento sul tuo dispositivo.</li>
+      <li>Contatori di utilizzo (voce e piani con IA, per identificativo anonimo): finché usi l'app,
+        solo per applicare i limiti; non contengono ciò che dici.</li>
+      <li>Piani con IA generati, richieste inviate volontariamente in revisione e suggerimenti: li
+        conserviamo finché servono allo scopo descritto; puoi chiederne la cancellazione.</li>
+      <li>Proposte di competizioni: fino alla pubblicazione o allo scarto.</li>
+      <li>Audio vocale: non lo conserviamo.</li>
+    </ul>
 
 <h2 id="derechos">5. I tuoi diritti</h2>
 <p>
@@ -924,7 +1052,7 @@
 </div>
 
   <div class="lang-block" id="lang-de" hidden>
-<p class="meta">WOD Voice Timer · Letzte Aktualisierung: <span id="date-de">[Datum]</span></p>
+<p class="meta">AI WOD Coach · Letzte Aktualisierung: <span id="date-de">16. Oktober 2026</span></p>
 
 <div class="note">
   Du kannst den größten Teil der App <strong>ohne ein Konto zu erstellen</strong> nutzen — der
@@ -936,7 +1064,7 @@
 
 <h2>1. Verantwortlicher</h2>
 <p>
-  <strong>GutsApps</strong>, Entwickler der App <strong>WOD Voice Timer</strong>
+  <strong>GutsApps</strong>, Entwickler der App <strong>AI WOD Coach</strong> (früher „AI WOD Coach“)
   (Paket <code>com.agutierg.kineticvolt</code>), ist verantwortlich für die in dieser Richtlinie
   beschriebenen Daten. Kontakt: <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a>.
 </p>
@@ -952,23 +1080,23 @@
 </p>
 
 <h3>2.2 Sprache und Transkriptionen (Konfiguration per Sprachbefehl)</h3>
-<p>
-  Wenn du das Mikrofon nutzt, um ein WOD zu konfigurieren, einen PR einzutragen oder eine
-  Berechnung anzufordern, wird das Audio verschlüsselt an unseren Server (gehostet bei
-  Cloudflare) übertragen, um es mithilfe von KI-Modellen zu transkribieren und zu
-  interpretieren. Das Audio wird in Echtzeit verarbeitet und
-  <strong>nicht dauerhaft gespeichert</strong>; der transkribierte Text kann zusammen mit deiner
-  anonymen Kennung kurzzeitig aufbewahrt werden, ausschließlich um das monatliche Nutzungslimit
-  durchzusetzen (läuft automatisch nach 35 Tagen ab).
-</p>
-<p>
-  Wenn eine Sprachanfrage nicht richtig verstanden wird, kannst du freiwillig
-  "Zur Überprüfung senden" wählen. In diesem Fall speichern wir den transkribierten Text und die
-  Antwort der KI (verknüpft mit deiner anonymen Kennung, niemals mit deiner Identität) bis zu
-  180 Tage lang, ausschließlich um die Spracherkennung zu verbessern.
-</p>
+    <p>
+      Wenn du das Mikrofon nutzt, um einen WOD einzurichten, einen PR einzutragen oder eine Berechnung
+      anzufragen, wird das Audio verschlüsselt an unseren Server (gehostet bei Google Cloud /
+      Firebase, in der Europäischen Union) und von dort an die <strong>Gemini-API von Google</strong>
+      gesendet, die es mit KI-Modellen transkribiert und auswertet. Wir <strong>speichern weder das
+      Audio</strong> noch die Transkription für diese Nutzung: Wir zählen nur, wie viele Auswertungen
+      du pro Monat machst, verknüpft mit deiner anonymen Kennung, um das Nutzungslimit anzuwenden.
+      Dasselbe gilt, wenn du ein Beispiel antippst oder den Satz tippst, statt zu sprechen.
+    </p>
+    <p>
+      Wird eine Sprachanfrage nicht gut verstanden, kannst du freiwillig „Zur Prüfung senden“ wählen.
+      Dann speichern wir den transkribierten Text und die Antwort der KI (verknüpft mit deiner
+      anonymen Kennung, nie mit deiner Identität) nur, um die Sprachauswertung zu verbessern. Du kannst
+      verlangen, dass wir sie löschen, indem du uns schreibst (siehe Abschnitt 5).
+    </p>
 
-<h3>2.3 Trainings, PRs und Verlauf</h3>
+    <h3>2.3 Trainings, PRs und Verlauf</h3>
 <p>
   Deine persönlichen Rekorde (PRs), dein Trainingsverlauf und deine Einstellungen werden
   <strong>auf deinem Gerät</strong> gespeichert (lokale Datenbank); das ist die vollständige
@@ -1049,31 +1177,31 @@
 </p>
 
 <h3>2.5 Konto (optional)</h3>
-<p>
-  Community und Ligen erfordern ein kostenloses Konto (E-Mail und Passwort oder dein
-  Google-Konto, über Googles <strong>Firebase Authentication</strong>) oder du kannst, wenn du
-  möchtest, als Gast fortfahren. Wir speichern deine E-Mail-Adresse nur, um dein Konto zu
-  identifizieren und dir die Anmeldung auf einem anderen Gerät zu ermöglichen; wir zeigen sie nie
-  anderen Nutzern. Du kannst dein Konto jederzeit über Profil → Kontoeinstellungen → Konto
-  löschen entfernen (siehe Abschnitt 5).
-</p>
+    <p>
+      Community und Ligen verlangen ein kostenloses Konto (E-Mail und Passwort, dein Google-Konto oder
+      „Mit Apple anmelden“, über <strong>Firebase Authentication</strong> von Google) oder, wenn du
+      willst, die Nutzung als Gast. Wir speichern deine E-Mail (bei Apple kann es die private Adresse
+      sein, die Apple erzeugt) nur, um dein Konto zu identifizieren und dir die Anmeldung auf einem
+      anderen Gerät zu ermöglichen; wir zeigen sie nie anderen Nutzern. Du kannst dein Konto jederzeit
+      unter Profil → Kontoeinstellungen → Konto löschen entfernen (siehe Abschnitt 5).
+    </p>
 
-<h3>2.6 Community: @Handle, Freundschaften, Feed und Fotos</h3>
-<p>
-  Mit einem Konto kannst du einen öffentlichen <strong>@Handle</strong> wählen — anders als der
-  oben beschriebene anonyme Ranking-Spitzname —, damit dich andere Nutzer finden und als Freund
-  hinzufügen können (eine Anfrage, die die andere Person annimmt). Du kannst außerdem: deine PRs,
-  Abzeichen oder Liga-Ergebnisse mit optionalem Foto im Community-Feed posten; auf Beiträge
-  anderer reagieren und kommentieren; Athleten nach Namen, nach deiner Box oder unter Personen,
-  denen du folgst, suchen; und ein optionales öffentliches Profilfoto festlegen. All dies — dein
-  @Handle, deine Freundschaften, deine Beiträge, deine Kommentare und deine Fotos — ist für
-  andere Community-Nutzer sichtbar, solange dein Konto aktiv ist, und wird gelöscht, wenn du es
-  löschst. Fotos, die du hochlädst (Profil, Feed, Ligen), werden bei unserem Cloud-Speicheranbieter
-  (Cloudflare R2) unter einer nicht erratbaren Adresse gespeichert; wir prüfen sie nicht manuell,
-  außer bei einer Meldung.
-</p>
+    <h3>2.6 Community: @Handle, Freundschaften, Feed und Fotos</h3>
+    <p>
+      Mit einem Konto kannst du einen öffentlichen <strong>@Handle</strong> wählen —verschieden vom
+      anonymen Ranking-Spitznamen oben—, damit andere Nutzer dich finden und als Freund hinzufügen
+      (eine Anfrage, die die andere Person annimmt). Außerdem kannst du: deine PRs, Abzeichen oder
+      Liga-Ergebnisse im Community-Feed veröffentlichen, mit optionalem Foto; auf Beiträge anderer
+      reagieren und sie kommentieren; Athleten nach Name, nach deiner Box oder unter Leuten suchen,
+      denen du folgst; und ein optionales öffentliches Profilfoto festlegen. All das —dein @Handle,
+      Freundschaften, Beiträge, Kommentare und Fotos— ist für andere Community-Nutzer sichtbar,
+      solange dein Konto aktiv ist, und wird beim Löschen entfernt. Fotos, die du hochlädst (Profil,
+      Feed, Ligen), werden in <strong>Google Cloud Storage</strong> (Firebase) unter einer nicht
+      erratbaren Adresse gespeichert. Sie durchlaufen einen automatischen Sicherheitsfilter (Google
+      Cloud Vision), und Feed-Fotos können vor der Anzeige manuell geprüft werden.
+    </p>
 
-<h3>2.7 Boxen und ungefährer Standort</h3>
+    <h3>2.7 Boxen und ungefährer Standort</h3>
 <p>
   Das Verzeichnis "Finde deine Box" kann dich um die Berechtigung für den <strong>ungefähren
   Standort</strong> bitten, um Boxen nach Entfernung zu sortieren; wenn du sie erteilst, wird
@@ -1087,94 +1215,132 @@
 </p>
 
 <h3>2.8 Ligen: Ergebnisse, Fotos und Auswertung per KI</h3>
-<p>
-  Mit einem Konto kannst du Ligen (öffentliche oder private Gruppen) erstellen oder ihnen
-  beitreten, um mit deiner Box oder Trainingsgruppe anzutreten. Was du täglich in einer Liga
-  einträgst — die Blöcke des Trainings, ihre Werte, eine Notiz und ein optionales Foto — ist für
-  die übrigen Mitglieder dieser Liga zusammen mit deinem @Handle sichtbar. Wenn du "Foto
-  scannen" nutzt, damit die KI die Blöcke anhand eines Fotos deiner Tafel oder deines Notizbuchs
-  vorschlägt, wird dieses Foto an <strong>Cloudflare Workers AI</strong> (ein Vision-Modell)
-  gesendet, nur um es zu lesen und dir die Blöcke vorzuschlagen; du überprüfst und korrigierst
-  sie, bevor irgendetwas gespeichert wird. Wenn du eine Liga erstellst, kannst du ihr ein Logo
-  geben, das für jeden sichtbar ist, der sie findet. Wir senden Push-Benachrichtigungen (über
-  <strong>Firebase Cloud Messaging</strong>) zu deinen Ligen — zum Beispiel, wenn dich jemand an
-  diesem Tag überholt, oder die Zusammenfassung des wöchentlichen Abschlusses — unter Verwendung
-  des Benachrichtigungs-Tokens deines Geräts, verknüpft mit deinem Konto, solange es aktiv ist.
-</p>
+    <p>
+      Mit einem Konto kannst du Ligen (öffentliche oder private Gruppen) erstellen oder ihnen beitreten,
+      um mit deiner Box oder Trainingsgruppe zu konkurrieren. Was du täglich in eine Liga hochlädst
+      —die Trainingsblöcke, ihre Werte, eine Notiz und ein optionales Foto— ist für die übrigen
+      Mitglieder dieser Liga sichtbar, neben deinem @Handle. Wenn du „Foto scannen“ nutzt, damit die KI
+      die Blöcke aus einem Foto deines Whiteboards oder Notizbuchs vorschlägt, wird dieses Foto an die
+      <strong>Gemini-API von Google</strong> (ein Bildmodell) gesendet, nur um es zu lesen und dir die
+      Blöcke vorzuschlagen; du prüfst und korrigierst sie, bevor etwas gespeichert wird. Wenn du eine
+      Liga erstellst, kannst du ihr ein Logo geben, das für jeden sichtbar ist, der sie findet. Wir
+      senden Push-Benachrichtigungen (über <strong>Firebase Cloud Messaging</strong>) zu deinen Ligen
+      —zum Beispiel, wenn dich jemand am Tag überholt, oder die Zusammenfassung zum Wochenabschluss—
+      mit dem Benachrichtigungs-Token deines Geräts, verknüpft mit deinem Konto, solange es aktiv ist.
+    </p>
 
-<h3>2.9 Vorschläge und Wettkampfvorschläge</h3>
-<p>
-  Wenn du über den Vorschlagsbriefkasten der App einen Funktionsvorschlag sendest, speichern wir
-  den Text (zusammen mit deiner anonymen Kennung oder deinem Konto, falls angemeldet) bis zu 365
-  Tage lang, ausschließlich um zukünftige Verbesserungen zu bewerten. Wenn du einen Wettkampf für
-  die Suchfunktion vorschlägst (Name, Land, Termine, Preis usw.), beziehen sich diese Daten auf
-  die <strong>Veranstaltung</strong>, nicht auf dich, und werden bis zur Veröffentlichung oder
-  Ablehnung im Rahmen der manuellen Prüfung aufbewahrt, ohne feste Frist.
-</p>
+    <h3>2.9 Vorschläge und Wettkampfvorschläge</h3>
+    <p>
+      Wenn du über den Briefkasten der App einen Funktionsvorschlag sendest, speichern wir den Text
+      (zusammen mit deiner anonymen Kennung oder deinem Konto, falls du angemeldet bist) nur, um
+      künftige Verbesserungen zu bewerten; du kannst verlangen, dass wir ihn löschen. Wenn du einen
+      Wettkampf für die Suche vorschlägst (Name, Land, Daten, Preis ...), betreffen diese Daten die
+      <strong>Veranstaltung</strong>, nicht dich, und werden aufbewahrt, bis sie veröffentlicht oder
+      in der manuellen Prüfung verworfen werden.
+    </p>
 
-<h3>2.10 Käufe und Abonnement</h3>
-<p>
-  Käufe (Werbung entfernen, Pro-Abonnement) werden vollständig über
-  <strong>Google Play Abrechnung</strong> abgewickelt; wir sehen oder speichern deine
-  Zahlungsdaten nicht. Um ein aktives Abonnement zu überprüfen, kann dein Kauf-Token (eine
-  technische Kennung, nicht deine Bankdaten) an unseren Server gesendet werden, der ihn bei der
-  Google Play API abfragt.
-</p>
+    <h3>2.10 Käufe und Abonnement</h3>
+    <p>
+      Käufe (Werbung entfernen, Kinetic-Pro-Abonnement) werden vollständig über <strong>Google Play
+      Billing</strong> (Android) oder den <strong>App Store</strong> von Apple (iOS) abgewickelt; wir
+      sehen und speichern deine Zahlungsdaten nicht. Um deine Nutzungslimits anzuwenden, teilt die App
+      unserem Server mit, ob du ein aktives Abonnement hast (ein einfacher Indikator, nicht deine
+      Bankdaten).
+    </p>
 
-<h3>2.11 Werbung</h3>
-<p>
-  Die kostenlose Version zeigt Werbung über <strong>Google AdMob</strong> an, einschließlich
-  optionaler Werbevideos mit Belohnung, um zusätzliche Nutzungen der Sprach-KI zu erhalten.
-  AdMob kann gemäß der eigenen Datenschutzrichtlinie von Google Werbekennungen und technische
-  Gerätedaten erfassen. Wenn du "Werbung entfernen" kaufst oder Pro abonnierst, siehst du keine
-  Werbung mehr.
-</p>
+    <h3>2.11 Werbung</h3>
+    <p>
+      Die kostenlose Version zeigt Werbung über <strong>Google AdMob</strong>, einschließlich optionaler
+      Belohnungsvideos für zusätzliche Nutzungen der Sprach-KI. AdMob kann Werbekennungen und technische
+      Gerätedaten gemäß der Datenschutzerklärung von Google erfassen. Unter iOS fragen wir die
+      Tracking-Erlaubnis von Apple (ATT) nicht an, daher wird nicht auf die Werbe-ID (IDFA) zugegriffen.
+      Wenn du „Werbung entfernen“ kaufst oder Pro abonnierst, siehst du keine Werbung mehr.
+    </p>
 
-<h3>2.12 Geräteberechtigungen</h3>
-<table>
-  <tr><th>Berechtigung</th><th>Wofür sie verwendet wird</th></tr>
-  <tr><td>Mikrofon</td><td>Nur während du aktiv eine Sprachanfrage aufnimmst (kein Mithören im Hintergrund).</td></tr>
-  <tr><td>Kamera / Galerie</td><td>Nur wenn du ein Foto für dein Profil, den Feed, eine Liga oder ihr Logo auswählst oder aufnimmst, oder damit die KI es bei "Foto scannen" liest.</td></tr>
-  <tr><td>Ungefährer Standort</td><td>Nur wenn erteilt, um "Finde deine Box" nach Entfernung zu sortieren (siehe 2.7); wird nie an unsere Server gesendet.</td></tr>
-  <tr><td>Benachrichtigungen</td><td>Timer-Status und Liga-Hinweise, wenn du ein Konto hast.</td></tr>
-  <tr><td>Dienst im Vordergrund</td><td>Damit der Timer auch bei ausgeschaltetem Bildschirm weiterläuft.</td></tr>
-  <tr><td>Vibration</td><td>Haptische Hinweise des Timers.</td></tr>
-</table>
-<p>
-  Die App greift nicht auf deine Kontakte oder Dateien außerhalb der Fotos zu, die du
-  ausdrücklich zum Teilen auswählst; Kamera, Galerie und Standort werden nur im Moment und für
-  das in dieser Tabelle Beschriebene verwendet, nie im Hintergrund.
-</p>
+    <h3>2.12 Geräteberechtigungen</h3>
+    <table>
+      <tr><th>Berechtigung</th><th>Wofür sie verwendet wird</th></tr>
+      <tr><td>Mikrofon</td><td>Nur während du aktiv eine Sprachanfrage oder eine Nachricht an den Plan-Chat aufnimmst (kein Zuhören im Hintergrund).</td></tr>
+      <tr><td>Kamera / Galerie</td><td>Nur wenn du ein Foto für dein Profil, den Feed, eine Liga, deren Logo oder ein Rennergebnis auswählst oder aufnimmst, den QR-Code einer Liga scannst oder die KI es bei „Foto scannen“ lesen soll.</td></tr>
+      <tr><td>Ungefährer Standort</td><td>Nur wenn du ihn erlaubst, um „Finde deine Box“ nach Nähe zu sortieren (siehe 2.7); er wird nicht an unsere Server gesendet.</td></tr>
+      <tr><td>Benachrichtigungen</td><td>Timer-Status, Liga-Hinweise, wenn du ein Konto hast, und die Rennerinnerungen, die du planst (auf deinem eigenen Gerät erstellt).</td></tr>
+      <tr><td>Vordergrunddienst (Android)</td><td>Damit der Timer bei ausgeschaltetem Bildschirm weiterläuft.</td></tr>
+      <tr><td>Vibration und Sprachansagen</td><td>Hinweise von Timer und Hyrox-Simulation; die Stimme ist die des Systems und wird auf deinem Gerät erzeugt.</td></tr>
+    </table>
+    <p>
+      Die App greift weder auf deine Kontakte noch auf Dateien außer den Fotos zu, die du ausdrücklich
+      teilen möchtest; Kamera, Galerie und Standort werden nur in diesem Moment und für den in dieser
+      Tabelle beschriebenen Zweck genutzt, nie im Hintergrund.
+    </p>
 
-<h2>3. Mit wem wir Daten teilen</h2>
+    <h3>2.13 KI-Trainingspläne</h3>
+    <p>
+      Wenn du einen KI-Plan erstellst, werden deine Eingaben im Chat (Ziel, Tage, Niveau, Verletzungen
+      oder Einschränkungen, falls du sie nennst) an unseren Server und an die <strong>Gemini-API von
+      Google</strong> gesendet, um den Plan zu entwerfen. Die App fügt als Kontext deine gewählte
+      Disziplin hinzu und, wenn du für Hyrox trainierst, Name, Datum und Zielzeit deines nächsten
+      Rennens. <strong>Schreibe keine Daten, die du nicht teilen möchtest</strong>, etwa detaillierte
+      medizinische Informationen. Der erzeugte Plan (Name, Zielzusammenfassung und die Tage mit
+      Aufwärmen, Kraft und Metcon) wird auf unserem Server unter einer zufälligen Kennung zusammen mit
+      deiner anonymen Gerätekennung gespeichert, eine vollständige Kopie auf deinem Handy. Du kannst
+      verlangen, dass wir einen Plan löschen, indem du uns schreibst (siehe Abschnitt 5). Der KI-Plan
+      ist ein Richtwert und ersetzt keine fachliche Beratung.
+    </p>
+
+    <h3>2.14 Rennen und Hyrox</h3>
+    <p>
+      Dein Rennkalender, Zeitziele, Hyrox-Simulationen und ihr Verlauf, Ergebnisse, der Renntag-Modus
+      und die Erinnerungen werden <strong>nur auf deinem Gerät</strong> gespeichert; die Erinnerungen
+      sind lokale Benachrichtigungen. Wenn du mit einem Konto ein Rennen unter „Meine Rennen“
+      einträgst, speichern wir Land, Stadt, Datum, Zeit, Veranstaltungsnamen und ein optionales Foto in
+      deinem Konto; nur du kannst sie sehen, es sei denn, du veröffentlichst das Ergebnis im Feed. Wenn
+      du deine Zeit ans Ranking sendest, wird sie wie die übrigen Ranking-Einträge behandelt (siehe 2.3
+      und 2.4).
+    </p>
+
+    <h3>2.15 Absturzberichte</h3>
+    <p>
+      In veröffentlichten Versionen erhält <strong>Firebase Crashlytics</strong> (Google) einen Bericht,
+      wenn die App unerwartet schließt: technische Gerätedaten (Modell, Systemversion, App-Zustand) und
+      eine Firebase-Installationskennung. Er enthält weder dein Audio noch deine Fotos oder
+      Trainingsinhalte. Er dient nur dazu, Fehler zu erkennen und zu beheben.
+    </p>
+
+    <h2>3. Mit wem wir Daten teilen</h2>
+    <ul>
+      <li><strong>Google</strong> (Firebase, Google Cloud) — Hosting unseres Servers und der Datenbank (Funktionen und Datenbank in der EU), Kontoauthentifizierung, Speicherung der hochgeladenen Fotos, Push-Benachrichtigungen (Cloud Messaging) und Absturzberichte (Crashlytics).</li>
+      <li><strong>Google</strong> (Gemini-API) — Sprachauswertung, KI-Trainingspläne und Auswertung von Liga-Fotos.</li>
+      <li><strong>Google</strong> (Cloud Vision) — automatischer Sicherheitsfilter für hochgeladene Fotos.</li>
+      <li><strong>Google Places API</strong> — Öffnungszeiten und Preisniveau der Boxen im Verzeichnis.</li>
+      <li><strong>Google AdMob</strong> — Werbung in der kostenlosen Version.</li>
+      <li><strong>Google Play Billing</strong> und <strong>App Store (Apple)</strong> — Abwicklung von Käufen und Abonnements.</li>
+      <li><strong>Apple</strong> und <strong>Google</strong> — Anmeldung, wenn du diese Methode wählst.</li>
+    </ul>
+    <p>Wir verkaufen deine Daten nicht an Dritte und nutzen sie nicht für andere als die hier beschriebenen Zwecke.</p>
+    <p>
+      Bis vor Kurzem wurde ein Teil dieser Daten bei Cloudflare gehostet. Wir haben sie zu Firebase
+      migriert, und diese Infrastruktur wird abgeschaltet.
+    </p>
+
+    <h2>4. Wie lange wir die Daten aufbewahren</h2>
 <ul>
-  <li><strong>Cloudflare</strong> (Workers AI) — Transkription/Interpretation von Sprache, und Auswertung von Liga-Fotos über ein Vision-Modell.</li>
-  <li><strong>Cloudflare</strong> (R2) — Speicherung der Fotos, die du hochlädst (Profil, Feed, Ligen und deren Logos).</li>
-  <li><strong>Firebase</strong> (Google) — Konto-Authentifizierung und Push-Benachrichtigungen (Cloud Messaging).</li>
-  <li><strong>Google Places API</strong> — Öffnungszeiten und Preisniveau der Boxen im Verzeichnis.</li>
-  <li><strong>Google AdMob</strong> — Werbung in der kostenlosen Version.</li>
-  <li><strong>Google Play Abrechnung</strong> — Abwicklung von Käufen und Überprüfung des Abonnements.</li>
-</ul>
-<p>Wir verkaufen deine Daten nicht an Dritte und verwenden sie nicht für andere als die hier beschriebenen Zwecke.</p>
-
-<h2>4. Wie lange wir die Daten aufbewahren</h2>
-<ul>
-  <li>Lokale Daten (PRs, Verlauf, Einstellungen): bis du sie selbst löschst oder die App deinstallierst.</li>
-  <li>Vergleichbarer PR-Wert für das Ranking sowie Spitzname/Land/Kategorie/Geschlecht/Altersgruppe/Box
-    (falls angegeben): bis du die lokalen Daten löschst, sie änderst oder selbst löschst.</li>
-  <li>Konto, @Handle, Freundschaften, Beiträge, Kommentare und Community-Fotos: solange das Konto
-    aktiv ist; werden beim Löschen dauerhaft entfernt.</li>
-  <li>Ligen (Mitgliedschaften, tägliche Ergebnisse, Notizen, Fotos und Logo): solange die
-    Mitgliedschaft/Liga besteht; werden gelöscht, wenn du dein Konto löschst, die Liga verlässt
-    oder sie als Ersteller löschst.</li>
-  <li>Ungefährer Standort aus dem Box-Verzeichnis: wird nicht gespeichert, nur im Moment auf
-    deinem eigenen Gerät verwendet.</li>
-  <li>Nutzungszähler für Sprachbefehle (anonyme Kennung): 35 Tage.</li>
-  <li>Freiwillig zur Überprüfung gesendete Anfragen: bis zu 180 Tage.</li>
-  <li>Funktionsvorschläge: bis zu 365 Tage.</li>
-  <li>Wettkampfvorschläge: ohne feste Frist, bis zur Veröffentlichung oder Ablehnung.</li>
-  <li>Sprachaudio: wird nicht dauerhaft gespeichert.</li>
-</ul>
+      <li>Lokale Daten (PRs, Verlauf, Rennen, Simulationen, Einstellungen): bis du sie löschst oder die App deinstallierst.</li>
+      <li>Vergleichbarer PR-Wert für das Ranking sowie Spitzname/Land/Kategorie/Geschlecht/Alter/Box
+        (falls angegeben): bis du lokale Daten löschst, sie änderst oder selbst löschst.</li>
+      <li>Konto, @Handle, Freundschaften, Beiträge, Kommentare, Rennen und Community-Fotos: solange
+        das Konto aktiv ist; beim Löschen dauerhaft entfernt.</li>
+      <li>Ligen (Mitgliedschaften, Tagesergebnisse, Notizen, Fotos und Logo): solange die
+        Mitgliedschaft/Liga besteht; gelöscht, wenn du dein Konto löschst, die Liga verlässt oder sie
+        löschst, falls du ihr Ersteller bist.</li>
+      <li>Ungefährer Standort des Box-Verzeichnisses: wird nicht gespeichert, nur im Moment auf deinem
+        eigenen Gerät genutzt.</li>
+      <li>Nutzungszähler (Sprache und KI-Pläne, nach anonymer Kennung): solange du die App nutzt,
+        nur zur Anwendung der Limits; sie enthalten nicht, was du sagst.</li>
+      <li>Erzeugte KI-Pläne, freiwillig zur Prüfung gesendete Anfragen und Vorschläge: Wir bewahren
+        sie auf, solange sie dem beschriebenen Zweck dienen; du kannst ihre Löschung verlangen.</li>
+      <li>Wettkampfvorschläge: bis sie veröffentlicht oder verworfen werden.</li>
+      <li>Sprach-Audio: wird von uns nicht gespeichert.</li>
+    </ul>
 
 <h2 id="derechos">5. Deine Rechte</h2>
 <p>
@@ -1223,7 +1389,7 @@
 
   <div class="lang-block" id="lang-fr" hidden>
 
-<p class="meta">WOD Voice Timer · Dernière mise à jour : <span id="date-fr">[date]</span></p>
+<p class="meta">AI WOD Coach · Dernière mise à jour : <span id="date-fr">16 octobre 2026</span></p>
 
 <div class="note">
   Tu peux utiliser la majeure partie de l'app <strong>sans créer de compte</strong> — le
@@ -1236,7 +1402,7 @@
 
 <h2>1. Responsable du traitement</h2>
 <p>
-  <strong>GutsApps</strong>, développeur de l'app <strong>WOD Voice Timer</strong>
+  <strong>GutsApps</strong>, développeur de l'app <strong>AI WOD Coach</strong> (anciennement « AI WOD Coach »)
   (paquet <code>com.agutierg.kineticvolt</code>), est responsable des données décrites dans cette
   politique. Contact : <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a>.
 </p>
@@ -1252,22 +1418,24 @@
 </p>
 
 <h3>2.2 Voix et transcriptions (configuration vocale)</h3>
-<p>
-  Quand tu utilises le micro pour configurer un WOD, enregistrer un PR ou demander un calcul,
-  l'audio est envoyé de façon chiffrée à notre serveur (hébergé sur Cloudflare) pour le
-  transcrire et l'interpréter via des modèles d'intelligence artificielle. L'audio est traité à
-  la volée et <strong>n'est pas conservé</strong> de façon permanente ; le texte transcrit peut
-  être conservé brièvement avec ton identifiant anonyme, uniquement pour appliquer la limite
-  d'usage mensuelle (expire automatiquement au bout de 35 jours).
-</p>
-<p>
-  Si une demande vocale n'est pas bien comprise, tu peux choisir volontairement "Envoyer en
-  révision". Dans ce cas, on conserve le texte transcrit et la réponse de l'IA (associés à ton
-  identifiant anonyme, jamais à ton identité) jusqu'à 180 jours, uniquement pour améliorer
-  l'interprétation vocale.
-</p>
+    <p>
+      Quand tu utilises le micro pour configurer un WOD, enregistrer un PR ou demander un calcul,
+      l'audio est envoyé de façon chiffrée à notre serveur (hébergé sur Google Cloud / Firebase, dans
+      l'Union européenne) puis à l'<strong>API Gemini de Google</strong>, qui le transcrit et
+      l'interprète avec des modèles d'intelligence artificielle. Nous <strong>ne conservons ni
+      l'audio</strong> ni la transcription pour cet usage : nous comptons seulement combien
+      d'interprétations tu fais par mois, associées à ton identifiant anonyme, pour appliquer la
+      limite d'utilisation. Il en va de même si tu touches un exemple ou si tu écris la phrase au lieu
+      de parler.
+    </p>
+    <p>
+      Si une demande vocale n'est pas bien comprise, tu peux choisir volontairement « Envoyer pour
+      révision ». Dans ce cas, nous conservons le texte transcrit et la réponse de l'IA (associés à ton
+      identifiant anonyme, jamais à ton identité) uniquement pour améliorer l'interprétation vocale.
+      Tu peux demander leur suppression en nous écrivant (voir section 5).
+    </p>
 
-<h3>2.3 Entraînements, PRs et historique</h3>
+    <h3>2.3 Entraînements, PRs et historique</h3>
 <p>
   Tes records personnels (PRs), ton historique d'entraînements et tes réglages sont sauvegardés
   <strong>sur ton appareil</strong> (base de données locale) ; c'est la copie complète, celle que
@@ -1345,31 +1513,31 @@
 </p>
 
 <h3>2.5 Compte (facultatif)</h3>
-<p>
-  La Communauté et les Ligues demandent un compte gratuit (email et mot de passe, ou ton compte
-  Google, via <strong>Firebase Authentication</strong> de Google) ou, si tu préfères, tu peux
-  continuer en tant qu'invité. On conserve ton email uniquement pour identifier ton compte et te
-  permettre de te connecter sur un autre appareil ; on ne le montre jamais à d'autres
-  utilisateurs. Tu peux supprimer ton compte à tout moment depuis Profil → Paramètres du compte →
-  Supprimer le compte (voir section 5).
-</p>
+    <p>
+      Communauté et Ligues demandent un compte gratuit (e-mail et mot de passe, ton compte Google ou
+      Se connecter avec Apple, via <strong>Firebase Authentication</strong> de Google) ou, si tu
+      préfères, de continuer en invité. Nous conservons ton e-mail (avec Apple, ce peut être l'adresse
+      privée générée par Apple) uniquement pour identifier ton compte et te laisser te connecter sur un
+      autre appareil ; nous ne l'affichons jamais aux autres utilisateurs. Tu peux supprimer ton compte
+      quand tu veux depuis Profil → Paramètres du compte → Supprimer le compte (voir section 5).
+    </p>
 
-<h3>2.6 Communauté : @handle, amitiés, fil et photos</h3>
-<p>
-  Avec un compte, tu peux choisir un <strong>@handle</strong> public — différent du pseudo
-  anonyme du Ranking décrit ci-dessus — pour que d'autres utilisateurs te trouvent et t'ajoutent
-  comme ami (demande que l'autre personne accepte). Tu peux aussi : publier tes PR, badges ou
-  résultats de Ligues sur le fil communautaire, avec une photo facultative ; réagir et commenter
-  les publications des autres ; chercher des athlètes par nom, par ton box, ou parmi les personnes
-  que tu suis ; et définir une photo de profil publique facultative. Tout cela — ton @handle, tes
-  amitiés, tes publications, tes commentaires et tes photos — est visible par les autres
-  utilisateurs de la Communauté tant que ton compte est actif, et est effacé quand tu le
-  supprimes. Les photos que tu télécharges (profil, fil, Ligues) sont stockées chez notre
-  fournisseur de stockage cloud (Cloudflare R2) à une adresse non devinable ; on ne les examine
-  pas manuellement, sauf en cas de signalement.
-</p>
+    <h3>2.6 Communauté : @handle, amitiés, fil et photos</h3>
+    <p>
+      Avec un compte, tu peux choisir un <strong>@handle</strong> public —différent du pseudo anonyme du
+      Classement décrit plus haut— pour que d'autres utilisateurs te trouvent et t'ajoutent comme ami
+      (demande que l'autre personne accepte). Tu peux aussi : publier dans le fil communautaire tes PR,
+      badges ou résultats de Ligues, avec une photo facultative ; réagir et commenter les publications
+      des autres ; chercher des athlètes par nom, par ton box ou parmi les personnes que tu suis ; et
+      définir une photo de profil publique facultative. Tout cela —ton @handle, tes amitiés, tes
+      publications, tes commentaires et tes photos— est visible des autres utilisateurs de la
+      Communauté tant que ton compte est actif, et supprimé quand tu le supprimes. Les photos que tu
+      envoies (profil, fil, Ligues) sont stockées dans <strong>Google Cloud Storage</strong> (Firebase)
+      à une adresse impossible à deviner. Elles passent par un filtre de sécurité automatique (Google
+      Cloud Vision) et celles du fil peuvent être vérifiées manuellement avant d'être affichées.
+    </p>
 
-<h3>2.7 Box et localisation approximative</h3>
+    <h3>2.7 Box et localisation approximative</h3>
 <p>
   L'annuaire "Trouve ton box" peut te demander la permission de <strong>localisation
   approximative</strong> pour trier les salles par proximité ; si tu l'accordes, cette
@@ -1383,93 +1551,133 @@
 </p>
 
 <h3>2.8 Ligues : résultats, photos et lecture par IA</h3>
-<p>
-  Avec un compte, tu peux créer des Ligues (groupes publics ou privés) ou les rejoindre pour être
-  en compétition avec ton box ou ton groupe d'entraînement. Ce que tu enregistres chaque jour
-  dans une Ligue — les blocs de l'entraînement, leurs valeurs, une note et une photo facultative —
-  est visible par les autres membres de cette Ligue, avec ton @handle. Si tu utilises "Scanner
-  une photo" pour que l'IA propose les blocs à partir d'une photo de ton tableau ou de ton
-  carnet, cette photo est envoyée à <strong>Cloudflare Workers AI</strong> (un modèle de vision)
-  uniquement pour la lire et te proposer les blocs ; tu les relis et les corriges avant
-  d'enregistrer quoi que ce soit. Si tu crées une Ligue, tu peux lui donner un logo, visible par
-  quiconque la trouve. On envoie des notifications push (via <strong>Firebase Cloud
-  Messaging</strong>) à propos de tes Ligues — par exemple, si quelqu'un te dépasse dans la
-  journée, ou le résumé de la clôture hebdomadaire — en utilisant le jeton de notification de ton
-  appareil, associé à ton compte tant qu'il est actif.
-</p>
+    <p>
+      Avec un compte, tu peux créer ou rejoindre des Ligues (groupes publics ou privés) pour te mesurer
+      à ton box ou à ton groupe d'entraînement. Ce que tu envoies chaque jour à une Ligue —les blocs de
+      l'entraînement, leurs valeurs, une note et une photo facultative— est visible des autres membres
+      de cette Ligue, avec ton @handle. Si tu utilises « Scanner une photo » pour que l'IA propose les
+      blocs à partir d'une photo de ton tableau ou de ton carnet, cette photo est envoyée à l'<strong>API
+      Gemini de Google</strong> (un modèle de vision) uniquement pour la lire et te proposer les blocs ;
+      tu la relis et la corriges avant d'enregistrer quoi que ce soit. Si tu crées une Ligue, tu peux lui
+      mettre un logo, visible de toute personne qui la trouve. Nous envoyons des notifications push (via
+      <strong>Firebase Cloud Messaging</strong>) sur tes Ligues —par exemple si quelqu'un te dépasse dans
+      la journée, ou le récapitulatif de clôture hebdomadaire— avec le jeton de notification de ton
+      appareil, associé à ton compte tant qu'il est actif.
+    </p>
 
-<h3>2.9 Suggestions et propositions de compétitions</h3>
-<p>
-  Si tu envoies une suggestion de fonctionnalité depuis la boîte à idées de l'app, on conserve le
-  texte (avec ton identifiant anonyme, ou ton compte si tu es connecté) jusqu'à 365 jours,
-  uniquement pour évaluer de futures améliorations. Si tu proposes une compétition pour le moteur
-  de recherche (nom, pays, dates, prix...), ces données concernent l'<strong>événement</strong>,
-  pas toi, et sont conservées jusqu'à leur publication ou leur rejet lors de la révision manuelle,
-  sans délai fixe.
-</p>
+    <h3>2.9 Suggestions et propositions de compétitions</h3>
+    <p>
+      Si tu envoies une suggestion de fonctionnalité depuis la boîte de l'appli, nous conservons le
+      texte (avec ton identifiant anonyme ou ton compte, si tu es connecté) uniquement pour évaluer de
+      futures améliorations ; tu peux demander sa suppression. Si tu proposes une compétition pour le
+      moteur de recherche (nom, pays, dates, prix...), ces données concernent l'<strong>événement</strong>,
+      pas toi, et sont conservées jusqu'à leur publication ou leur rejet lors de la révision manuelle.
+    </p>
 
-<h3>2.10 Achats et abonnement</h3>
-<p>
-  Les achats (suppression des publicités, abonnement Pro) sont traités intégralement via
-  <strong>Google Play Facturation</strong> ; nous ne voyons ni ne stockons tes données de paiement.
-  Pour vérifier un abonnement actif, ton jeton d'achat (un identifiant technique, pas tes données
-  bancaires) peut être envoyé à notre serveur, qui le vérifie auprès de l'API de Google Play.
-</p>
+    <h3>2.10 Achats et abonnement</h3>
+    <p>
+      Les achats (retrait des publicités, abonnement Kinetic Pro) sont traités entièrement par
+      <strong>Google Play Billing</strong> (Android) ou l'<strong>App Store</strong> d'Apple (iOS) ;
+      nous ne voyons ni ne conservons tes données de paiement. Pour appliquer tes limites d'utilisation,
+      l'appli indique à notre serveur si tu as un abonnement actif (un simple indicateur, pas tes
+      données bancaires).
+    </p>
 
-<h3>2.11 Publicité</h3>
-<p>
-  La version gratuite affiche des publicités via <strong>Google AdMob</strong>, y compris des
-  vidéos récompensées optionnelles pour obtenir des utilisations supplémentaires de l'IA vocale.
-  AdMob peut collecter des identifiants publicitaires et des données techniques de l'appareil,
-  conformément à la propre politique de confidentialité de Google. Si tu achètes la suppression
-  des publicités ou t'abonnes à Pro, tu ne vois plus de publicités.
-</p>
+    <h3>2.11 Publicité</h3>
+    <p>
+      La version gratuite affiche des publicités via <strong>Google AdMob</strong>, y compris des
+      vidéos avec récompense facultatives pour obtenir des utilisations supplémentaires de l'IA vocale.
+      AdMob peut collecter des identifiants publicitaires et des données techniques de l'appareil selon
+      la politique de confidentialité de Google. Sur iOS, nous ne demandons pas l'autorisation de suivi
+      d'Apple (ATT) : l'identifiant publicitaire (IDFA) n'est donc pas utilisé. Si tu achètes « retirer
+      les publicités » ou t'abonnes à Pro, tu ne vois plus de publicités.
+    </p>
 
-<h3>2.12 Autorisations de l'appareil</h3>
-<table>
-  <tr><th>Autorisation</th><th>À quoi elle sert</th></tr>
-  <tr><td>Micro</td><td>Uniquement pendant l'enregistrement actif d'une demande vocale (pas d'écoute en arrière-plan).</td></tr>
-  <tr><td>Appareil photo / galerie</td><td>Uniquement quand tu choisis ou prends une photo pour ton profil, le fil, une Ligue ou son logo, ou pour que l'IA la lise dans "Scanner une photo".</td></tr>
-  <tr><td>Localisation approximative</td><td>Uniquement si accordée, pour trier "Trouve ton box" par proximité (voir 2.7) ; jamais envoyée à nos serveurs.</td></tr>
-  <tr><td>Notifications</td><td>État du minuteur, et alertes de tes Ligues si tu as un compte.</td></tr>
-  <tr><td>Service en premier plan</td><td>Permettre au chronomètre de continuer à fonctionner écran éteint.</td></tr>
-  <tr><td>Vibration</td><td>Alertes tactiles du minuteur.</td></tr>
-</table>
-<p>
-  L'app n'accède ni à tes contacts ni à des fichiers en dehors des photos que tu choisis
-  explicitement de partager ; l'appareil photo, la galerie et la localisation ne sont utilisés
-  que sur le moment et pour ce qui est décrit dans ce tableau, jamais en arrière-plan.
-</p>
+    <h3>2.12 Autorisations de l'appareil</h3>
+    <table>
+      <tr><th>Autorisation</th><th>À quoi elle sert</th></tr>
+      <tr><td>Micro</td><td>Uniquement pendant que tu enregistres activement une demande vocale ou un message au chat des plans (aucune écoute en arrière-plan).</td></tr>
+      <tr><td>Appareil photo / galerie</td><td>Uniquement quand tu choisis ou prends une photo pour ton profil, le fil, une Ligue, son logo ou le résultat d'une course, pour scanner le QR d'une Ligue, ou pour que l'IA la lise dans « Scanner une photo ».</td></tr>
+      <tr><td>Position approximative</td><td>Uniquement si tu l'accordes, pour trier « Trouve ton box » par proximité (voir 2.7) ; elle n'est pas envoyée à nos serveurs.</td></tr>
+      <tr><td>Notifications</td><td>État du minuteur, alertes de tes Ligues si tu as un compte, et les rappels de course que tu programmes (créés sur ton propre appareil).</td></tr>
+      <tr><td>Service au premier plan (Android)</td><td>Pour que le chrono continue écran éteint.</td></tr>
+      <tr><td>Vibration et annonces vocales</td><td>Alertes du minuteur et de la simulation Hyrox ; la voix est celle du système et est générée sur ton appareil.</td></tr>
+    </table>
+    <p>
+      L'appli n'accède ni à tes contacts ni à des fichiers autres que les photos que tu choisis
+      explicitement de partager ; l'appareil photo, la galerie et la position ne sont utilisés qu'à ce
+      moment-là et pour ce qui est décrit dans ce tableau, jamais en arrière-plan.
+    </p>
 
-<h2>3. Avec qui on partage des données</h2>
+    <h3>2.13 Plans d'entraînement par IA</h3>
+    <p>
+      Quand tu crées un plan par IA, ce que tu écris ou dis dans le chat (ton objectif, tes jours, ton
+      niveau, blessures ou limitations si tu les mentionnes) est envoyé à notre serveur et à l'<strong>API
+      Gemini de Google</strong> pour concevoir le plan. L'appli ajoute comme contexte ta discipline
+      choisie et, si tu t'entraînes pour Hyrox, le nom, la date et le temps cible de ta prochaine course.
+      <strong>N'écris pas de données que tu ne veux pas partager</strong>, par exemple des informations
+      médicales détaillées. Le plan généré (nom, résumé de l'objectif et jours avec échauffement, force
+      et metcon) est conservé sur notre serveur avec un identifiant aléatoire et ton identifiant anonyme
+      d'appareil, et une copie complète sur ton téléphone. Tu peux demander la suppression d'un plan en
+      nous écrivant (voir section 5). Le plan par IA est indicatif et ne remplace pas l'avis d'un
+      professionnel.
+    </p>
+
+    <h3>2.14 Courses et Hyrox</h3>
+    <p>
+      Ton calendrier de courses, tes objectifs de temps, tes simulations Hyrox et leur historique, les
+      résultats, le mode jour de course et les rappels sont conservés <strong>uniquement sur ton
+      appareil</strong> ; les rappels sont des notifications locales. Si tu enregistres une course dans
+      « Mes courses » avec un compte, nous conservons dans ton compte son pays, sa ville, sa date, ton
+      temps, le nom de l'événement et une photo facultative ; toi seul peux les voir, sauf si tu choisis
+      de publier le résultat dans le fil. Si tu envoies ton temps au Classement, il est traité comme les
+      autres marques du Classement (voir 2.3 et 2.4).
+    </p>
+
+    <h3>2.15 Rapports d'erreurs</h3>
+    <p>
+      Dans les versions publiées, <strong>Firebase Crashlytics</strong> (Google) reçoit un rapport quand
+      l'appli se ferme de façon inattendue : données techniques de l'appareil (modèle, version du
+      système, état de l'appli) et un identifiant d'installation Firebase. Il n'inclut ni ton audio, ni
+      tes photos, ni le contenu de tes entraînements. Il sert uniquement à détecter et corriger les
+      bogues.
+    </p>
+
+    <h2>3. Avec qui nous partageons les données</h2>
+    <ul>
+      <li><strong>Google</strong> (Firebase, Google Cloud) — hébergement de notre serveur et de notre base de données (fonctions et base de données dans l'UE), authentification des comptes, stockage des photos que tu envoies, notifications push (Cloud Messaging) et rapports d'erreurs (Crashlytics).</li>
+      <li><strong>Google</strong> (API Gemini) — interprétation vocale, plans d'entraînement par IA et lecture des photos de Ligues.</li>
+      <li><strong>Google</strong> (Cloud Vision) — filtre de sécurité automatique des photos que tu envoies.</li>
+      <li><strong>Google Places API</strong> — horaires et niveau de prix des boxes de l'annuaire.</li>
+      <li><strong>Google AdMob</strong> — publicité dans la version gratuite.</li>
+      <li><strong>Google Play Billing</strong> et <strong>App Store (Apple)</strong> — traitement des achats et abonnements.</li>
+      <li><strong>Apple</strong> et <strong>Google</strong> — connexion, si tu choisis cette méthode.</li>
+    </ul>
+    <p>Nous ne vendons pas tes données à des tiers et ne les utilisons pas à des fins autres que celles décrites ici.</p>
+    <p>
+      Jusqu'à récemment, une partie de ces données était hébergée chez Cloudflare. Nous les avons
+      migrées vers Firebase et cette infrastructure sera retirée.
+    </p>
+
+    <h2>4. Combien de temps on conserve les données</h2>
 <ul>
-  <li><strong>Cloudflare</strong> (Workers AI) — transcription/interprétation vocale, et lecture des photos de Ligues via un modèle de vision.</li>
-  <li><strong>Cloudflare</strong> (R2) — stockage des photos que tu télécharges (profil, fil, Ligues et leurs logos).</li>
-  <li><strong>Firebase</strong> (Google) — authentification des comptes et notifications push (Cloud Messaging).</li>
-  <li><strong>API Google Places</strong> — horaires et niveau de prix des box de l'annuaire.</li>
-  <li><strong>Google AdMob</strong> — publicité dans la version gratuite.</li>
-  <li><strong>Google Play Facturation</strong> — traitement des achats et vérification de l'abonnement.</li>
-</ul>
-<p>On ne vend pas tes données à des tiers et on ne les utilise pas à des fins autres que celles décrites ici.</p>
-
-<h2>4. Combien de temps on conserve les données</h2>
-<ul>
-  <li>Données locales (PRs, historique, réglages) : jusqu'à ce que tu les effaces ou que tu désinstalles l'app.</li>
-  <li>Valeur comparable des PRs pour le Ranking, et pseudo/pays/catégorie/genre/âge/box (si
-    renseignés) : jusqu'à ce que tu effaces les données locales, les modifies, ou les effaces.</li>
-  <li>Compte, @handle, amitiés, publications, commentaires et photos de la Communauté : tant que
-    le compte est actif ; effacés définitivement quand tu le supprimes.</li>
-  <li>Ligues (adhésions, résultats quotidiens, notes, photos et logo) : tant que
-    l'adhésion/la ligue existe ; effacés quand tu supprimes ton compte, quittes la ligue, ou la
-    supprimes si tu en es le créateur.</li>
-  <li>Localisation approximative de l'annuaire des box : non stockée, utilisée uniquement sur le
-    moment sur ton propre appareil.</li>
-  <li>Compteurs d'usage vocal (identifiant anonyme) : 35 jours.</li>
-  <li>Demandes envoyées volontairement en révision : jusqu'à 180 jours.</li>
-  <li>Suggestions de fonctionnalités : jusqu'à 365 jours.</li>
-  <li>Propositions de compétitions : sans délai fixe, jusqu'à leur publication ou leur rejet.</li>
-  <li>Audio vocal : non stocké de façon persistante.</li>
-</ul>
+      <li>Données locales (PR, historique, courses, simulations, réglages) : jusqu'à ce que tu les supprimes ou désinstalles l'appli.</li>
+      <li>Valeur comparable des PR pour le Classement, et pseudo/pays/catégorie/genre/âge/box (si tu
+        les renseignes) : jusqu'à ce que tu supprimes les données locales, les modifies ou les supprimes toi-même.</li>
+      <li>Compte, @handle, amitiés, publications, commentaires, courses et photos de la Communauté :
+        tant que le compte est actif ; supprimés définitivement à sa suppression.</li>
+      <li>Ligues (adhésions, résultats quotidiens, notes, photos et logo) : tant que l'adhésion/la
+        ligue existe ; supprimés quand tu supprimes ton compte, quittes la ligue ou la supprimes si tu
+        en es le créateur.</li>
+      <li>Position approximative de l'annuaire des boxes : non conservée, utilisée uniquement sur le
+        moment sur ton propre appareil.</li>
+      <li>Compteurs d'utilisation (voix et plans par IA, par identifiant anonyme) : tant que tu
+        utilises l'appli, uniquement pour appliquer les limites ; ils ne contiennent pas ce que tu dis.</li>
+      <li>Plans par IA générés, demandes envoyées volontairement pour révision et suggestions : nous
+        les conservons tant qu'ils servent la finalité décrite ; tu peux demander leur suppression.</li>
+      <li>Propositions de compétitions : jusqu'à leur publication ou leur rejet.</li>
+      <li>Audio vocal : nous ne le conservons pas.</li>
+    </ul>
 
 <h2 id="derechos">5. Tes droits</h2>
 <p>
@@ -1518,7 +1726,7 @@
 </div>
 
   <div class="lang-block" id="lang-pt" hidden>
-<p class="meta">WOD Voice Timer · Última atualização: <span id="date-pt">[data]</span></p>
+<p class="meta">AI WOD Coach · Última atualização: <span id="date-pt">16 de outubro de 2026</span></p>
 
 <div class="note">
   Podes usar a maior parte da app <strong>sem criares conta</strong> — o temporizador, o
@@ -1530,7 +1738,7 @@
 
 <h2>1. Responsável pelo tratamento</h2>
 <p>
-  <strong>GutsApps</strong>, criadora da app <strong>WOD Voice Timer</strong>
+  <strong>GutsApps</strong>, criadora da app <strong>AI WOD Coach</strong> (anteriormente «AI WOD Coach»)
   (pacote <code>com.agutierg.kineticvolt</code>), é responsável pelos dados descritos nesta política.
   Contacto: <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a>.
 </p>
@@ -1546,21 +1754,23 @@
 </p>
 
 <h3>2.2 Voz e transcrições (configuração por voz)</h3>
-<p>
-  Quando usas o microfone para configurar um WOD, registar um PR ou pedir um cálculo, o áudio
-  é enviado de forma cifrada para o nosso servidor (alojado na Cloudflare) para ser transcrito e
-  interpretado através de modelos de inteligência artificial. O áudio é processado em tempo real e
-  <strong>não é guardado</strong> de forma permanente; o texto transcrito pode ser conservado
-  brevemente junto com o teu identificador anónimo apenas para aplicar o limite de utilização
-  mensal (expira automaticamente ao fim de 35 dias).
-</p>
-<p>
-  Se um pedido por voz não for bem entendido, podes escolher voluntariamente "Enviar para revisão".
-  Nesse caso guardamos o texto transcrito e a resposta da IA (associados ao teu identificador
-  anónimo, nunca à tua identidade) durante até 180 dias, apenas para melhorar a interpretação por voz.
-</p>
+    <p>
+      Quando usas o microfone para configurar um WOD, registar um PR ou pedir um cálculo, o áudio é
+      enviado de forma cifrada para o nosso servidor (alojado no Google Cloud / Firebase, na União
+      Europeia) e daí para a <strong>API Gemini da Google</strong>, que o transcreve e interpreta com
+      modelos de inteligência artificial. Nós <strong>não guardamos o áudio</strong> nem a transcrição
+      para essa utilização: apenas contamos quantas interpretações fazes por mês, associadas ao teu
+      identificador anónimo, para aplicar o limite de utilização. O mesmo acontece se tocares num
+      exemplo ou escreveres a frase em vez de falar.
+    </p>
+    <p>
+      Se um pedido por voz não for bem entendido, podes escolher voluntariamente «Enviar para revisão».
+      Nesse caso guardamos o texto transcrito e a resposta da IA (associados ao teu identificador
+      anónimo, nunca à tua identidade) apenas para melhorar a interpretação por voz. Podes pedir que os
+      apaguemos escrevendo-nos (ver secção 5).
+    </p>
 
-<h3>2.3 Treinos, PRs e histórico</h3>
+    <h3>2.3 Treinos, PRs e histórico</h3>
 <p>
   Os teus recordes pessoais (PRs), histórico de treinos e definições ficam guardados
   <strong>no teu dispositivo</strong> (base de dados local); essa é a cópia completa e a que
@@ -1636,31 +1846,31 @@
 </p>
 
 <h3>2.5 Conta (opcional)</h3>
-<p>
-  Comunidade e Ligas pedem uma conta gratuita (e-mail e palavra-passe, ou a tua conta Google,
-  através do <strong>Firebase Authentication</strong> da Google) ou, se preferires, podes
-  continuar como convidado. Guardamos o teu e-mail apenas para identificar a tua conta e
-  permitir-te iniciar sessão noutro dispositivo; nunca o mostramos a outros utilizadores. Podes
-  eliminar a tua conta quando quiseres em Perfil → Definições de conta → Eliminar conta (ver
-  secção 5).
-</p>
+    <p>
+      A Comunidade e as Ligas pedem uma conta gratuita (e-mail e palavra-passe, a tua conta Google ou
+      Iniciar sessão com a Apple, através do <strong>Firebase Authentication</strong> da Google) ou, se
+      preferires, continuar como convidado. Guardamos o teu e-mail (com a Apple pode ser o endereço
+      privado que a Apple gera) apenas para identificar a tua conta e deixar-te iniciar sessão noutro
+      dispositivo; nunca o mostramos a outros utilizadores. Podes eliminar a tua conta quando quiseres
+      em Perfil → Definições de conta → Eliminar conta (ver secção 5).
+    </p>
 
-<h3>2.6 Comunidade: @handle, amizades, feed e fotos</h3>
-<p>
-  Com uma conta podes escolher um <strong>@handle</strong> público — diferente da alcunha
-  anónima do Ranking descrita acima — para que outros utilizadores te encontrem e te adicionem
-  como amigo (pedido que a outra pessoa aceita). Também podes: publicar os teus PRs, distintivos
-  ou resultados de Ligas no feed da comunidade, com uma foto opcional; reagir e comentar
-  publicações de outras pessoas; procurar atletas por nome, pelo teu box ou entre pessoas que
-  segues; e definir uma foto de perfil pública opcional. Tudo isto — o teu @handle, as tuas
-  amizades, as tuas publicações, os teus comentários e as tuas fotos — é visível para outros
-  utilizadores da Comunidade enquanto a tua conta estiver ativa, e é apagado quando a eliminas.
-  As fotos que carregas (perfil, feed, Ligas) ficam guardadas no nosso fornecedor de
-  armazenamento na nuvem (Cloudflare R2) num endereço não adivinhável; não as revemos
-  manualmente, exceto se forem denunciadas.
-</p>
+    <h3>2.6 Comunidade: @handle, amizades, feed e fotos</h3>
+    <p>
+      Com uma conta podes escolher um <strong>@handle</strong> público —diferente da alcunha anónima do
+      Ranking descrita acima— para que outros utilizadores te encontrem e te adicionem como amigo
+      (pedido que a outra pessoa aceita). Também podes: publicar no feed da comunidade os teus PRs,
+      insígnias ou resultados de Ligas, com uma foto opcional; reagir e comentar publicações de
+      outros; procurar atletas por nome, pelo teu box ou entre pessoas que segues; e definir uma foto de
+      perfil pública opcional. Tudo isto —o teu @handle, amizades, publicações, comentários e fotos— é
+      visível para outros utilizadores da Comunidade enquanto a tua conta estiver ativa, e é apagado
+      quando a eliminas. As fotos que carregas (perfil, feed, Ligas) são guardadas no <strong>Google
+      Cloud Storage</strong> (Firebase) num endereço impossível de adivinhar. Passam por um filtro
+      automático de segurança (Google Cloud Vision) e as do feed podem ser revistas manualmente antes
+      de serem mostradas.
+    </p>
 
-<h3>2.7 Boxes e localização aproximada</h3>
+    <h3>2.7 Boxes e localização aproximada</h3>
 <p>
   O diretório "Encontra o teu box" pode pedir-te permissão de <strong>localização
   aproximada</strong> para ordenar os ginásios por proximidade; se a concederes, essa localização
@@ -1674,93 +1884,130 @@
 </p>
 
 <h3>2.8 Ligas: resultados, fotos e leitura por IA</h3>
-<p>
-  Com uma conta podes criar Ligas (grupos públicos ou privados) ou juntar-te a elas para competir
-  com o teu box ou grupo de treino. O que registas todos os dias numa Liga — os blocos do treino,
-  os seus valores, uma nota e uma foto opcional — é visível para os restantes membros dessa Liga,
-  junto com o teu @handle. Se usares "Ler foto" para que a IA proponha os blocos a partir de uma
-  foto do teu quadro ou caderno, essa foto é enviada para o <strong>Cloudflare Workers AI</strong>
-  (um modelo de visão) apenas para a ler e propor-te os blocos; tu revés e corriges antes de
-  guardares o que quer que seja. Se criares uma Liga, podes definir-lhe um logótipo, visível para
-  quem a encontrar. Enviamos notificações push (via <strong>Firebase Cloud Messaging</strong>)
-  sobre as tuas Ligas — por exemplo, se alguém te ultrapassar no dia, ou o resumo do fecho
-  semanal — usando o token de notificações do teu dispositivo, associado à tua conta enquanto
-  estiver ativa.
-</p>
+    <p>
+      Com uma conta podes criar ou juntar-te a Ligas (grupos públicos ou privados) para competir com o
+      teu box ou grupo de treino. O que carregas cada dia numa Liga —os blocos do treino, os seus
+      valores, uma nota e uma foto opcional— é visível para os restantes membros dessa Liga, junto ao
+      teu @handle. Se usares «Digitalizar foto» para que a IA proponha os blocos a partir de uma foto
+      do teu quadro ou caderno, essa foto é enviada para a <strong>API Gemini da Google</strong> (um
+      modelo de visão) apenas para a ler e propor-te os blocos; tu revês e corriges antes de guardar
+      seja o que for. Se criares uma Liga, podes dar-lhe um logótipo, visível para quem a encontrar.
+      Enviamos notificações push (via <strong>Firebase Cloud Messaging</strong>) sobre as tuas Ligas
+      —por exemplo, se alguém te ultrapassar no dia, ou o resumo do fecho semanal— usando o token de
+      notificações do teu dispositivo, associado à tua conta enquanto estiver ativa.
+    </p>
 
-<h3>2.9 Sugestões e propostas de competições</h3>
-<p>
-  Se enviares uma sugestão de funcionalidade a partir da caixa de sugestões da app, guardamos o
-  texto (junto com o teu identificador anónimo, ou a tua conta se tiveres sessão iniciada)
-  durante até 365 dias, apenas para avaliar melhorias futuras. Se propuseres uma competição para
-  o motor de busca (nome, país, datas, preço...), esses dados são sobre o
-  <strong>evento</strong>, não sobre ti, e são conservados até serem publicados ou descartados na
-  revisão manual, sem um prazo fixo.
-</p>
+    <h3>2.9 Sugestões e propostas de competições</h3>
+    <p>
+      Se enviares uma sugestão de funcionalidade a partir da caixa da app, guardamos o texto (junto com
+      o teu identificador anónimo ou a tua conta, se tiveres sessão iniciada) apenas para avaliar
+      melhorias futuras; podes pedir que o apaguemos. Se propuseres uma competição para o motor de
+      pesquisa (nome, país, datas, preço...), esses dados são sobre o <strong>evento</strong>, não sobre
+      ti, e são conservados até serem publicados ou descartados na revisão manual.
+    </p>
 
-<h3>2.10 Compras e subscrição</h3>
-<p>
-  As compras (remover anúncios, subscrição Pro) são processadas integralmente através da
-  <strong>Faturação do Google Play</strong>; nós não vemos nem armazenamos os teus dados de
-  pagamento. Para verificar uma subscrição ativa, o teu token de compra (um identificador
-  técnico, não os teus dados bancários) pode ser enviado para o nosso servidor, que o consulta
-  junto da API do Google Play.
-</p>
+    <h3>2.10 Compras e subscrição</h3>
+    <p>
+      As compras (remover anúncios, subscrição Kinetic Pro) são processadas integralmente através do
+      <strong>Google Play Billing</strong> (Android) ou da <strong>App Store</strong> da Apple (iOS);
+      nós não vemos nem guardamos os teus dados de pagamento. Para aplicar os teus limites de
+      utilização, a app informa o nosso servidor se tens uma subscrição ativa (um simples indicador,
+      não os teus dados bancários).
+    </p>
 
-<h3>2.11 Publicidade</h3>
-<p>
-  A versão gratuita mostra anúncios através do <strong>Google AdMob</strong>, incluindo
-  vídeos recompensados opcionais para obteres utilizações extra da IA por voz. O AdMob pode
-  recolher identificadores de publicidade e dados técnicos do dispositivo, de acordo com a
-  própria política de privacidade da Google. Se comprares "remover anúncios" ou subscreveres o
-  Pro, deixas de ver anúncios.
-</p>
+    <h3>2.11 Publicidade</h3>
+    <p>
+      A versão gratuita mostra anúncios através do <strong>Google AdMob</strong>, incluindo vídeos com
+      recompensa opcionais para obter utilizações extra da IA por voz. O AdMob pode recolher
+      identificadores de publicidade e dados técnicos do dispositivo de acordo com a política de
+      privacidade da própria Google. No iOS não pedimos a permissão de rastreamento da Apple (ATT),
+      pelo que não se acede ao identificador de publicidade (IDFA). Se comprares «remover anúncios» ou
+      subscreveres o Pro, deixas de ver anúncios.
+    </p>
 
-<h3>2.12 Permissões do dispositivo</h3>
-<table>
-  <tr><th>Permissão</th><th>Para que é usada</th></tr>
-  <tr><td>Microfone</td><td>Apenas enquanto estás a gravar ativamente um pedido por voz (não há escuta em segundo plano).</td></tr>
-  <tr><td>Câmara / galeria</td><td>Apenas quando escolhes ou tiras uma foto para o teu perfil, o feed, uma Liga ou o seu logótipo, ou para a IA a ler em "Ler foto".</td></tr>
-  <tr><td>Localização aproximada</td><td>Apenas se a concederes, para ordenar "Encontra o teu box" por proximidade (ver 2.7); nunca é enviada para os nossos servidores.</td></tr>
-  <tr><td>Notificações</td><td>Estado do temporizador, e avisos das tuas Ligas se tiveres conta.</td></tr>
-  <tr><td>Serviço em primeiro plano</td><td>Permitir que o cronómetro continue a funcionar com o ecrã desligado.</td></tr>
-  <tr><td>Vibração</td><td>Avisos táteis do temporizador.</td></tr>
-</table>
-<p>
-  A app não acede aos teus contactos nem a ficheiros fora das fotos que escolhes explicitamente
-  partilhar; a câmara, a galeria e a localização só são usadas no momento e para o descrito nesta
-  tabela, nunca em segundo plano.
-</p>
+    <h3>2.12 Permissões do dispositivo</h3>
+    <table>
+      <tr><th>Permissão</th><th>Para que é usada</th></tr>
+      <tr><td>Microfone</td><td>Apenas enquanto gravas ativamente um pedido por voz ou uma mensagem para o chat de planos (sem escuta em segundo plano).</td></tr>
+      <tr><td>Câmara / galeria</td><td>Apenas quando escolhes ou tiras uma foto para o teu perfil, o feed, uma Liga, o seu logótipo ou o resultado de uma prova, para ler o QR de uma Liga, ou para a IA a ler em «Digitalizar foto».</td></tr>
+      <tr><td>Localização aproximada</td><td>Apenas se a concederes, para ordenar «Encontra o teu box» por proximidade (ver 2.7); não é enviada para os nossos servidores.</td></tr>
+      <tr><td>Notificações</td><td>Estado do temporizador, avisos das tuas Ligas se tiveres conta, e os lembretes de prova que programares (criados no teu próprio dispositivo).</td></tr>
+      <tr><td>Serviço em primeiro plano (Android)</td><td>Para que o cronómetro continue a funcionar com o ecrã desligado.</td></tr>
+      <tr><td>Vibração e avisos falados</td><td>Avisos do temporizador e da simulação Hyrox; a voz é a do próprio sistema e é gerada no teu dispositivo.</td></tr>
+    </table>
+    <p>
+      A app não acede aos teus contactos nem a ficheiros além das fotos que escolhes partilhar
+      explicitamente; a câmara, a galeria e a localização só são usadas nesse momento e para o descrito
+      nesta tabela, nunca em segundo plano.
+    </p>
 
-<h2>3. Com quem partilhamos dados</h2>
+    <h3>2.13 Planos de treino com IA</h3>
+    <p>
+      Quando crias um plano com IA, o que escreves ou dizes no chat (o teu objetivo, os teus dias, o
+      teu nível, lesões ou limitações se as mencionares) é enviado para o nosso servidor e para a
+      <strong>API Gemini da Google</strong> para desenhar o plano. A app acrescenta como contexto a tua
+      disciplina escolhida e, se treinas Hyrox, o nome, a data e o tempo objetivo da tua próxima prova.
+      <strong>Não escrevas dados que não queiras partilhar</strong>, por exemplo informação médica
+      detalhada. O plano gerado (nome, resumo do objetivo e os dias com aquecimento, força e metcon) é
+      guardado no nosso servidor com um identificador aleatório e o teu identificador anónimo de
+      dispositivo, e uma cópia completa no teu telemóvel. Podes pedir-nos que apaguemos um plano
+      escrevendo-nos (ver secção 5). O plano com IA é indicativo e não substitui o conselho de um
+      profissional.
+    </p>
+
+    <h3>2.14 Provas e Hyrox</h3>
+    <p>
+      O teu calendário de provas, os objetivos de tempo, as simulações Hyrox e o seu histórico, os
+      resultados, o modo dia de prova e os lembretes são guardados <strong>apenas no teu
+      dispositivo</strong>; os lembretes são notificações locais. Se registares uma prova em «As minhas
+      provas» com uma conta, guardamos na tua conta o país, a cidade, a data, o tempo, o nome do evento
+      e uma foto opcional; só tu os podes ver, a menos que decidas publicar o resultado no feed. Se
+      enviares o teu tempo para o Ranking, é tratado como as restantes marcas do Ranking (ver 2.3 e 2.4).
+    </p>
+
+    <h3>2.15 Relatórios de erros</h3>
+    <p>
+      Nas versões publicadas, o <strong>Firebase Crashlytics</strong> (Google) recebe um relatório
+      quando a app fecha de forma inesperada: dados técnicos do dispositivo (modelo, versão do sistema,
+      estado da app) e um identificador de instalação do Firebase. Não inclui o teu áudio, as tuas
+      fotos nem o conteúdo dos teus treinos. Serve apenas para detetar e corrigir falhas.
+    </p>
+
+    <h2>3. Com quem partilhamos dados</h2>
+    <ul>
+      <li><strong>Google</strong> (Firebase, Google Cloud) — alojamento do nosso servidor e base de dados (funções e base de dados na UE), autenticação de contas, armazenamento das fotos que carregas, notificações push (Cloud Messaging) e relatórios de erros (Crashlytics).</li>
+      <li><strong>Google</strong> (API Gemini) — interpretação de voz, planos de treino com IA e leitura de fotos de Ligas.</li>
+      <li><strong>Google</strong> (Cloud Vision) — filtro automático de segurança das fotos que carregas.</li>
+      <li><strong>Google Places API</strong> — horário e nível de preço dos boxes do diretório.</li>
+      <li><strong>Google AdMob</strong> — publicidade na versão gratuita.</li>
+      <li><strong>Google Play Billing</strong> e <strong>App Store (Apple)</strong> — processamento de compras e subscrições.</li>
+      <li><strong>Apple</strong> e <strong>Google</strong> — início de sessão, se escolheres esse método.</li>
+    </ul>
+    <p>Não vendemos os teus dados a terceiros nem os usamos para fins diferentes dos descritos aqui.</p>
+    <p>
+      Até há pouco, parte destes dados estava alojada na Cloudflare. Migrámo-los para o Firebase e essa
+      infraestrutura será desativada.
+    </p>
+
+    <h2>4. Durante quanto tempo conservamos os dados</h2>
 <ul>
-  <li><strong>Cloudflare</strong> (Workers AI) — transcrição/interpretação de voz, e leitura de fotos de Ligas através de um modelo de visão.</li>
-  <li><strong>Cloudflare</strong> (R2) — armazenamento das fotos que carregas (perfil, feed, Ligas e os seus logótipos).</li>
-  <li><strong>Firebase</strong> (Google) — autenticação de contas e notificações push (Cloud Messaging).</li>
-  <li><strong>API do Google Places</strong> — horário e nível de preço dos boxes do diretório.</li>
-  <li><strong>Google AdMob</strong> — publicidade na versão gratuita.</li>
-  <li><strong>Faturação do Google Play</strong> — processamento de compras e verificação de subscrição.</li>
-</ul>
-<p>Não vendemos os teus dados a terceiros nem os usamos para fins diferentes dos aqui descritos.</p>
-
-<h2>4. Durante quanto tempo conservamos os dados</h2>
-<ul>
-  <li>Dados locais (PRs, histórico, definições): até que os apagues ou desinstales a app.</li>
-  <li>Valor comparável de PRs para o Ranking, e alcunha/país/categoria/género/idade/box (se os
-    definires): até apagares os dados locais, os alterares, ou os apagares.</li>
-  <li>Conta, @handle, amizades, publicações, comentários e fotos da Comunidade: enquanto a conta
-    estiver ativa; apagados permanentemente quando a eliminas.</li>
-  <li>Ligas (participações, resultados diários, notas, fotos e logótipo): enquanto existir a
-    participação/liga; apagados quando eliminas a tua conta, sais da liga, ou a apagas se fores o
-    seu criador.</li>
-  <li>Localização aproximada do diretório de boxes: não é guardada, usada apenas no momento no
-    teu próprio dispositivo.</li>
-  <li>Contadores de utilização por voz (identificador anónimo): 35 dias.</li>
-  <li>Pedidos enviados voluntariamente para revisão: até 180 dias.</li>
-  <li>Sugestões de funcionalidade: até 365 dias.</li>
-  <li>Propostas de competições: sem prazo fixo, até serem publicadas ou descartadas.</li>
-  <li>Áudio de voz: não é armazenado de forma persistente.</li>
-</ul>
+      <li>Dados locais (PRs, histórico, provas, simulações, definições): até os apagares ou desinstalares a app.</li>
+      <li>Valor comparável dos PRs para o Ranking, e alcunha/país/categoria/género/idade/box (se os
+        indicares): até apagares os dados locais, os alterares ou os apagares tu.</li>
+      <li>Conta, @handle, amizades, publicações, comentários, provas e fotos da Comunidade: enquanto a
+        conta estiver ativa; apagados permanentemente ao eliminá-la.</li>
+      <li>Ligas (participações, resultados diários, notas, fotos e logótipo): enquanto existir a
+        participação/liga; apagados quando eliminas a tua conta, sais da liga ou a apagas se fores o
+        criador.</li>
+      <li>Localização aproximada do diretório de boxes: não é guardada, usada apenas no momento no teu
+        próprio dispositivo.</li>
+      <li>Contadores de utilização (voz e planos com IA, por identificador anónimo): enquanto usares a
+        app, apenas para aplicar os limites; não contêm o que dizes.</li>
+      <li>Planos com IA gerados, pedidos enviados voluntariamente para revisão e sugestões:
+        conservamo-los enquanto servirem o fim descrito; podes pedir o seu apagamento.</li>
+      <li>Propostas de competições: até serem publicadas ou descartadas.</li>
+      <li>Áudio de voz: não o guardamos.</li>
+    </ul>
 
 <h2 id="direitos">5. Os teus direitos</h2>
 <p>
@@ -1803,7 +2050,7 @@
 <p>Dúvidas sobre privacidade: <a href="mailto:tucguti@gmail.com">tucguti@gmail.com</a></p>
 </div>
 
-  <footer>WOD Voice Timer — <span id="footer-text">Política de Privacidad</span></footer>
+  <footer>AI WOD Coach — <span id="footer-text">Política de Privacidad</span></footer>
 </div>
 
 <script>
@@ -1826,7 +2073,7 @@
     document.getElementById('title').textContent = TITLES[lang];
     document.getElementById('footer-text').textContent = TITLES[lang];
     document.documentElement.lang = lang;
-    document.title = TITLES[lang] + ' — WOD Voice Timer';
+    document.title = TITLES[lang] + ' — AI WOD Coach';
     try { localStorage.setItem('wvt_lang', lang); } catch (e) {}
   }
   (function () {
@@ -1835,10 +2082,6 @@
     var browserLang = (navigator.language || 'es').toLowerCase().slice(0, 2);
     var initial = saved || (LANGS.indexOf(browserLang) !== -1 ? browserLang : 'es');
     setLang(initial);
-    var today = new Date().toISOString().slice(0, 10);
-    LANGS.forEach(function (l) {
-      document.getElementById('date-' + l).textContent = today;
-    });
   })();
 </script>
 </body>
